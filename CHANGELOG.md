@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes yet.
 
+## [0.5.0] - 2026-09-17
+
+### Added
+
+- New capability: Mock Interview & Written Test — timed written tests (default 5 questions, rubric-scored after answering) and one-question-at-a-time interview practice (technical / behavioral / system design / HR rounds) with per-answer feedback and an end-of-session summary that feeds strengths and gaps back into the career profile
+- New commands: `/CareerOS mock interview`, `/CareerOS mock test` (with natural-language triggers)
+- SKILL.md / SKILL.zh-CN.md: Mock Interview & Written Test section and Command Reference rows
+
 ## [0.4.0] - 2026-09-17
 
 ### Added

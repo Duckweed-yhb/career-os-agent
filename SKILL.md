@@ -1,7 +1,7 @@
 ---
 name: career-os
 description: "Career growth operating system. Identify target roles, analyze skill gaps, generate industrial-complexity projects, turn projects into learning-by-doing Markdown courses, and build portfolios. Use when users mention career planning, job switch, 转行, skill gap, 技能差距, learning roadmap, 学习路线, project recommendation, 项目推荐, side project, 边做边学, or run commands /CareerOS init, /CareerOS analyze, /CareerOS generate project, /CareerOS generate course."
-version: 0.4.0
+version: 0.5.0
 ---
 
 # CareerOS
@@ -267,6 +267,42 @@ Help the user find what to improve in their resume. It complements Phase 2 (the 
 - Prioritize by "what improves the resume most if fixed first", not by ease
 - If the resume doesn't mention the target role at all, flag fit as the top priority rather than polishing bullets
 
+## Mock Interview & Written Test (模拟笔试与面试)
+
+Two practice modes that put the user in the real situation — a timed written test, or an interview run one question at a time.
+
+**When to trigger:**
+- "帮我模拟面试", "面试演练", "Mock interview"
+- "帮我出几道笔试题", "模拟笔试", "Mock test"
+- Command: `/CareerOS mock interview [role]`, `/CareerOS mock test [role]`
+
+**Input:**
+1. Target role — read from the career profile; if missing, ask one question before starting
+2. Round / format — interview: technical / behavioral / system design / HR; written test: quiz / coding / short-answer
+3. Difficulty — align with the user's currently calibrated level; never jump a full tier without saying so
+
+**Mock written test:**
+
+- Deliver one question set (default 5 questions, adjustable) covering the role's core skill points
+- Each question states: estimated time, difficulty, and what it tests
+- After the user answers (or times out), score each question 0–10 against a rubric, quote what was strong, and give weak points with concrete fixes
+- Provide the reference answer outline only after the user has answered — never dump full answers upfront
+
+**Mock interview:**
+
+- Run one question at a time, like a real interview — wait for the user's answer before the next question
+- After each answer: 1 strength, 1 improvement, and a model answer structure (STAR for behavioral, first principles for technical) — keep feedback short, 2–4 sentences
+- Default session: 8 questions (~30–40 min), adjustable; mix round types to match the target role
+- End with a summary: overall impression, top 3 strengths, top 3 gaps, and which gaps flow into the gap list / skill matrix
+
+**Rules:**
+
+- Never invent interview experience for the user; never coach fabrication
+- Questions must be grounded in the target role's real requirements, not generic
+- Behavioral questions must avoid protected characteristics (age, family, health, origin, etc.)
+- If the user is clearly stuck, offer a hint before revealing the model answer — hint first, then the answer
+- Log every session outcome into the career profile: strengths, gaps, next actions
+
 ## Interaction Guidelines
 
 ### On First Boot
@@ -314,6 +350,8 @@ Formal definition of the CareerOS command surface. Every command also responds t
 | `/CareerOS generate course [project]` | "拆成课程", "边做边学", "给我学习路线", "开始做这个项目" | Optional: project name/ID | `course/` folder: overview + one Markdown file per lesson |
 | `/CareerOS build portfolio` | "帮我写项目 README", "简历怎么写", "面试怎么讲" | Optional: project ID | README guide, resume bullets, interview talking points |
 | `/CareerOS review resume [resume]` | "帮我看看简历", "简历哪里能完善", "评估我的简历" | Optional: resume text or file | Score, prioritized issues, rewrite examples |
+| `/CareerOS mock interview [role]` | "帮我模拟面试", "面试演练" | Optional: role / round type | One-question-at-a-time interview with feedback, end-of-session summary |
+| `/CareerOS mock test [role]` | "帮我出笔试题", "模拟笔试" | Optional: role / question types | Question set, scoring rubric, answer feedback |
 
 **Argument rules:**
 - Square brackets `[...]` are optional. Missing optional arguments are filled by asking one targeted question or by reading the saved profile.

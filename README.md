@@ -5,7 +5,7 @@
 > An operating system for your career growth.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](CHANGELOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
 
 **[English](README.md) | [简体中文](README.zh-CN.md)**
@@ -86,6 +86,8 @@ Load the `CareerOS` Skill in your AI assistant, then try:
 /CareerOS generate project --focus=[specific tech, e.g. Redis/microservices]
 /CareerOS generate course [project]  # turn a chosen project into learning-by-doing lessons
 /CareerOS review resume [resume]     # evaluate your resume and find what to improve
+/CareerOS mock interview [role]      # one-question-at-a-time interview practice with feedback
+/CareerOS mock test [role]           # timed written-test practice with scoring
 ```
 
 For a complete walkthrough, see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md). Have questions? See the [FAQ](FAQ.md).
