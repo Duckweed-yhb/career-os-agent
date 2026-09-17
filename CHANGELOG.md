@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes yet.
 
+## [0.4.0] - 2026-09-17
+
+### Added
+
+- New capability: Resume Review — evaluate a resume across 6 dimensions (scannability, results over duties, target-role fit, project & tech description, differentiation, polish), output score + prioritized issues + rewrite examples, and link findings into the career profile and gap analysis
+- New command: `/CareerOS review resume` (with natural-language triggers)
+- SKILL.md / SKILL.zh-CN.md: Resume Review section and Command Reference row
+
 ## [0.3.0] - 2026-09-08
 
 ### Added

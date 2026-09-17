@@ -5,7 +5,7 @@
 > 一套为你的职业成长而设计的操作系统。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](CHANGELOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
 
 **[English](README.md) | [简体中文](README.zh-CN.md)**
@@ -85,6 +85,7 @@
 /CareerOS analyze [你的简历内容或当前技能列表]
 /CareerOS generate project --focus=[具体技术点，如 Redis/微服务]
 /CareerOS generate course [项目]  # 把选定项目拆成边做边学的课程
+/CareerOS review resume [简历]    # 评估简历，找出还能完善的地方
 ```
 
 完整流程示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)。有问题？看 [FAQ](FAQ.md)。

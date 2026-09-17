@@ -1,7 +1,7 @@
 ---
 name: career-os
 description: "Career growth operating system. Identify target roles, analyze skill gaps, generate industrial-complexity projects, turn projects into learning-by-doing Markdown courses, and build portfolios. Use when users mention career planning, job switch, 转行, skill gap, 技能差距, learning roadmap, 学习路线, project recommendation, 项目推荐, side project, 边做边学, or run commands /CareerOS init, /CareerOS analyze, /CareerOS generate project, /CareerOS generate course."
-version: 0.3.0
+version: 0.4.0
 ---
 
 # CareerOS
@@ -231,6 +231,42 @@ Help the user turn their completed projects into career assets:
 - 2-3 resume bullet points per project
 - 3-5 interview talking points
 
+## Resume Review (简历评估)
+
+Help the user find what to improve in their resume. It complements Phase 2 (the resume is a key input to gap analysis) and Phase 5 (the portfolio is built from projects that should end up on the resume).
+
+**When to trigger:**
+- User pastes resume text or uploads a resume file and asks "帮我看看简历哪里能完善", "评估一下我的简历", "简历还有哪里要改"
+- Command: `/CareerOS review resume [resume]`
+
+**Input:**
+1. Resume content — text; if a PDF/DOCX file is uploaded, extract the text first and confirm the extraction is complete
+2. Target role — optional; read from the career profile, and if missing, ask one question before scoring
+
+**Review dimensions (score each 0–10):**
+
+1. **Scannability** — can a recruiter see the highlights in 10 seconds? Length, layout, information density
+2. **Results over duties** — does each bullet state an outcome, a number, or an impact — or just list responsibilities?
+3. **Target-role fit** — do keywords, skills, and experience match the target role or job description?
+4. **Project & tech description** — are projects STAR-shaped? Is the user's personal contribution clear versus team work? Is the tech stack named precisely?
+5. **Differentiation** — is there anything a recruiter would remember after reading?
+6. **Polish** — typos, tense/format consistency, contact info, ordering
+
+**Output:**
+
+- Overall score (0–10, average of dimensions) + a one-sentence diagnosis
+- Dimension scores with a prioritized issue list: **must-fix / should-fix / nice-to-have**
+- For the top 2–3 issues: original line → rewritten example
+- Link to the career profile: update the skill matrix from what the resume reveals, and feed missing items into the Phase 2 gap list
+
+**Rules:**
+
+- Never invent experience, numbers, or achievements that the resume doesn't contain
+- Never help inflate or fabricate a resume — honesty is a hard line
+- Every issue must quote the resume line and explain why it weakens the resume for the target role
+- Prioritize by "what improves the resume most if fixed first", not by ease
+- If the resume doesn't mention the target role at all, flag fit as the top priority rather than polishing bullets
+
 ## Interaction Guidelines
 
 ### On First Boot
@@ -277,6 +313,7 @@ Formal definition of the CareerOS command surface. Every command also responds t
 | `/CareerOS generate project --focus=X` | "给我项目点子", "推荐项目", "想练 X" | Optional `--focus=<tech>` | 2–3 proposals with specs and difficulty band |
 | `/CareerOS generate course [project]` | "拆成课程", "边做边学", "给我学习路线", "开始做这个项目" | Optional: project name/ID | `course/` folder: overview + one Markdown file per lesson |
 | `/CareerOS build portfolio` | "帮我写项目 README", "简历怎么写", "面试怎么讲" | Optional: project ID | README guide, resume bullets, interview talking points |
+| `/CareerOS review resume [resume]` | "帮我看看简历", "简历哪里能完善", "评估我的简历" | Optional: resume text or file | Score, prioritized issues, rewrite examples |
 
 **Argument rules:**
 - Square brackets `[...]` are optional. Missing optional arguments are filled by asking one targeted question or by reading the saved profile.
