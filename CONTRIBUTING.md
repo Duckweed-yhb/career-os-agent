@@ -32,7 +32,7 @@ First off, thanks for taking the time to contribute! 🎉
 
 ## Conventions
 
-- **One language per file.** English and Simplified Chinese content must not be mixed in the same file. Use `README.md` / `README.zh-CN.md` as the reference pattern.
+- **One language per file.** English and Simplified Chinese content must not be mixed in the same file. Use `README.md` (Simplified Chinese) / `README.en.md` (English) as the reference pattern.
 - **Keep examples reproducible.** Example conversations must match the current command set documented in the README.
 - **Update the CHANGELOG.** Add an entry under `[Unreleased]` → `Added` / `Changed` / `Fixed` for every user-visible change.
 

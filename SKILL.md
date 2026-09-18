@@ -1,7 +1,7 @@
 ---
 name: career-os
 description: "Career growth operating system. Identify target roles, analyze skill gaps, generate industrial-complexity projects, turn projects into learning-by-doing Markdown courses, and build portfolios. Use when users mention career planning, job switch, 转行, skill gap, 技能差距, learning roadmap, 学习路线, project recommendation, 项目推荐, side project, 边做边学, or run commands /CareerOS init, /CareerOS analyze, /CareerOS generate project, /CareerOS generate course."
-version: 0.5.0
+version: 0.6.0
 ---
 
 # CareerOS
@@ -414,6 +414,21 @@ Each lesson's acceptance criteria act as a checkbox checklist — the user check
 - The profile is the single source of truth for the user's career state; the course folder is the source of truth for learning progress.
 - If both are missing, start with Phase 1 and create them as you go.
 - If state is missing, ask the user. Don't pretend to know something you don't.
+
+## Evidence, Defaults & Limitations (证据、默认值与局限)
+
+### Evidence & Limitations
+
+- All role requirements, skill hotness, and project recommendations come from domain templates and general industry experience — **not official job data**. Label these as "based on general experience" when presenting them.
+- Separate fact from inference: what the user provides is fact; estimates drawn from templates/experience are inference. Say which is which.
+- Completing a course or project is a learning vehicle, **not a promise of a job offer**. Requirements change with the market.
+- When a domain has little reference material, say so explicitly — never use percentages to fake certainty.
+- The full calculation rules live in [references/methodology.md](references/methodology.md); update that file whenever the criteria change.
+
+### Default Profile
+
+- If the user refuses to supply background (domain, level, or time budget), proceed with an explicitly labeled default profile: **zero-to-beginner base, 8 hours/week, explore-first then commit to a direction**. Tell the user this is a default assumption they can correct at any time.
+- Never silently assume — if the user declines to answer, say "I'll use a default of …" and continue.
 
 ## Domain Templates
 

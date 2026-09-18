@@ -2,103 +2,110 @@
 
 ![CareerOS banner](assets/careeros-banner.jpg)
 
-> An operating system for your career growth.
+> 一套为你的职业成长而设计的操作系统。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.6.0-blue.svg)](CHANGELOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
 
-**[English](README.md) | [简体中文](README.zh-CN.md)**
+**[English](README.en.md) | [简体中文](README.md)**
 
 ---
 
-## Overview
+## 简介
 
-**CareerOS** is not just a learning guide — it's a dynamic career growth engine. It helps you identify your target role, map out the required skill stack, assess where you currently stand, and bridge the gap through **real-world project recommendations**.
+**CareerOS** 是一个给 AI 助手的职业成长技能。输入你的背景和目标，它输出一条可执行的路线：先锁定目标岗位，对照岗位要求找出你的技能差距，再用一个真实项目把这些差距补上——项目会拆成一节节 Markdown 课程，边做边学，最后攒成能写进简历的作品。
 
-It doesn't just tell you what to learn. It gives you something to build. Tailored to your domain, experience level, and learning pace, you walk away with not just new skills, but a **portfolio** you can actually show.
+整个流程会根据你的领域、经验水平和每周能投入的时间调整，不会给你塞超出能力范围的东西。
 
-## Installation
+## 安装
 
-1. **Clone the repository** (or download and extract it):
+1. **克隆仓库**（或下载后解压）：
 
    ```bash
    git clone https://github.com/Duckweed-yhb/career-os-skill.git
    ```
 
-2. **Locate your AI assistant's skills directory:**
+2. **找到你所用 AI 助手的 skills 目录：**
 
-   | Assistant | Skills directory |
+   | 助手 | Skills 目录 |
    |---|---|
    | Claude Code | `~/.claude/skills/` |
-   | Doubao Agent | `<workspace>/.skills/` |
-   | Other assistants | See your assistant's documentation for the skills directory |
+   | 豆包 Agent | `<workspace>/.skills/` |
+   | 其他助手 | 查阅对应助手的文档，确认 skills 目录位置 |
 
-3. **Copy the Skill into a `career-os/` folder** inside that directory:
+3. **把 Skill 放进该目录下的 `career-os/` 文件夹**——整个仓库一起放，课程模板和示例也会被用到：
 
    ```bash
-   # example (Claude Code)
-   mkdir -p ~/.claude/skills/career-os
-   cp SKILL.md ~/.claude/skills/career-os/
+   # 示例（Claude Code）：直接把整个仓库克隆到 skills 目录
+   git clone https://github.com/Duckweed-yhb/career-os-skill.git ~/.claude/skills/career-os
    ```
 
-   Use `SKILL.zh-CN.md` instead if you prefer the Chinese version.
+   仓库里同时有 `SKILL.md`（英文）和 `SKILL.zh-CN.md`（简体中文），助手会自动加载对应语言版本，不需要手动挑文件。
 
-4. **Restart your assistant session** and verify:
+4. **重启助手会话**并验证：
 
    ```text
    /CareerOS init
    ```
 
-   If you see the init welcome message, you are all set.
+   看到初始化欢迎语，就说明安装成功了。
 
-## Core Modules
+## 核心模块
 
-Just like an operating system manages hardware resources, CareerOS manages your career resources:
+就像操作系统管理硬件资源一样，CareerOS 管理你的职业资源：
 
-### 1. Target Identification
-- Parse your interests and background to lock in a high-potential target role.
-- Generate a capability radar for that role.
+### 1. 目标定位
+- 解析你的兴趣与背景，锁定高潜力的目标岗位。
+- 生成该岗位的能力雷达图。
 
-### 2. Skill Gap Analysis
-- Compare your current resume/skills against the target role requirements.
-- Identify the critical missing links.
+### 2. 技能差距分析
+- 对比你当前的简历/技能与目标岗位的要求。
+- 识别出关键的缺失环节。
 
-### 3. Project Generator
-- **No toy projects.** Generate real-world project ideas with industrial-level complexity.
-- Includes tech stack recommendations, difficulty predictions, and acceptance criteria.
+### 3. 项目生成器
+- **拒绝玩具项目。** 根据缺失的技能点，生成具有工业级复杂度的实战项目构思。
+- 包含技术栈建议、难点预测和验收标准。
 
-### 4. Course Builder
-- Turn any chosen project into a step-by-step **learning-by-doing** course.
-- Generates the tech-stack learning route and the project development route, then splits the project into Markdown lessons — each with hands-on tasks and acceptance criteria.
+### 4. 课程生成器
+- 把选定项目变成一步步**边做边学**的课程。
+- 生成技术栈学习路线与项目开发路线，再把整个项目拆成一节节 Markdown 课程——每节都带动手任务和验收标准。
 
-### 5. Portfolio Builder
-- Turn your projects into interview highlights.
-- Resume bullet optimization and GitHub README writing guidance included.
+### 5. 作品集构建
+- 将项目转化为面试中的亮点。
+- 提供简历描述优化建议和 GitHub README 撰写指南。
 
-## How to Use
+### 6. 简历评估
+- 从可扫读性、成果量化、岗位匹配、技术表述等 6 个维度给你的简历打分。
+- 按"必修 / 建议 / 可选"列出问题清单，高优先级问题附"原文 → 改写"示例。
 
-Load the `CareerOS` Skill in your AI assistant, then try:
+### 7. 模拟笔试与面试
+- **模拟面试**：一次一题、等你回答后再出下一题，每答一题给反馈，结束汇总强项与缺口。
+- **模拟笔试**：按目标岗位出限时题目，作答后逐题打分并给改进方向。
+
+## 使用方式
+
+在你的 AI 助手中加载 `CareerOS` Skill，然后尝试：
 
 ```text
 /CareerOS init
-/CareerOS analyze [your resume or current skill list]
-/CareerOS generate project --focus=[specific tech, e.g. Redis/microservices]
-/CareerOS generate course [project]  # turn a chosen project into learning-by-doing lessons
-/CareerOS review resume [resume]     # evaluate your resume and find what to improve
-/CareerOS mock interview [role]      # one-question-at-a-time interview practice with feedback
-/CareerOS mock test [role]           # timed written-test practice with scoring
+/CareerOS analyze [你的简历内容或当前技能列表]
+/CareerOS generate project --focus=[具体技术点，如 Redis/微服务]
+/CareerOS generate course [项目]  # 把选定项目拆成边做边学的课程
+/CareerOS review resume [简历]    # 评估简历，找出还能完善的地方
+/CareerOS mock interview [岗位]   # 一次一题的面试演练，带反馈
+/CareerOS mock test [岗位]        # 限时笔试练习，带评分
 ```
 
-For a complete walkthrough, see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md). Have questions? See the [FAQ](FAQ.md).
+完整流程示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)。有问题？看 [FAQ](FAQ.md)。
 
-## Why CareerOS?
+## 为什么选择 CareerOS？
 
-- **Action-Oriented** — Switch from input mode to output mode.
-- **Context-Aware** — Understands your level; never recommends something too easy or too hard.
-- **Result-Driven** — Everything leads to one thing: a project you can put on your resume.
+- **行动导向** —— 从"输入模式"切换到"输出模式"。
+- **语境感知** —— 理解你的经验水平，不推荐过难或过简单的任务。
+- **结果驱动** —— 一切为了那个能写在简历上的作品。
 
-## License
+## 许可证
 
 [MIT License](LICENSE)
 

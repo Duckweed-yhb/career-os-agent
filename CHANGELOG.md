@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-No unreleased changes yet.
+## [0.6.0] - 2026-09-18
+
+### Added
+
+- Evidence, Defaults & Limitations section in SKILL.md / SKILL.zh-CN.md: recommendations are labeled as based on general experience (not official job data), fact vs. inference is separated, no job-offer promises, explicit handling of low-information domains
+- Default profile rules: when the user declines to give background, proceed with an explicitly labeled default (zero-to-beginner, 8 hours/week, explore-first) instead of silently assuming
+- New `references/methodology.md`: calculation rules for the capability radar, proficiency anchors, gap scoring, difficulty calibration, course granularity, resume review dimensions, mock interview feedback, and limitations
+
+### Changed
+
+- README is now Simplified Chinese by default; the English version moved to the new `README.en.md`; `README.zh-CN.md` removed (both READMEs link to each other)
+- README: rewrite the intro in plainer language (remove template-style phrasing), fix the installation step to clone the whole repo (templates and examples are referenced by the Skill), and add Resume Review and Mock Interview & Written Test to the Core Modules list
+- CONTRIBUTING.md: language-pattern reference updated to README.md / README.en.md
 
 ## [0.5.0] - 2026-09-17
 
