@@ -5,7 +5,7 @@
 > 一套为你的职业成长而设计的操作系统。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.6.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.7.0-blue.svg)](CHANGELOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
 
 **[English](README.en.md) | [简体中文](README.md)**
@@ -83,6 +83,14 @@
 - **模拟面试**：一次一题、等你回答后再出下一题，每答一题给反馈，结束汇总强项与缺口。
 - **模拟笔试**：按目标岗位出限时题目，作答后逐题打分并给改进方向。
 
+### 8. 公司情报
+- 针对目标公司，查证它的面试流程、笔试风格与薪资待遇——每条信息带来源和时效。
+- 查不到公开信息的字段一律留空，绝不编造。
+
+### 9. 招聘全流程模拟
+- 从投简历开始走完整流程：简历初筛 → 笔试 → 面试 → 综合结果，每阶段通过才进入下一阶段。
+- Skill 全程扮演招聘方，反馈区分"模拟判定"与"真实建议"。
+
 ## 使用方式
 
 在你的 AI 助手中加载 `CareerOS` Skill，然后尝试：
@@ -95,6 +103,8 @@
 /CareerOS review resume [简历]    # 评估简历，找出还能完善的地方
 /CareerOS mock interview [岗位]   # 一次一题的面试演练，带反馈
 /CareerOS mock test [岗位]        # 限时笔试练习，带评分
+/CareerOS company [公司] [岗位]   # 查证某公司的面试流程、笔试题方向与薪资
+/CareerOS simulate [公司] [岗位]  # 走一遍"投简历→初筛→笔试→面试"完整流程
 ```
 
 完整流程示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)。有问题？看 [FAQ](FAQ.md)。

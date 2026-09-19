@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-09-19
+
+### Added
+
+- New capability: Company Intelligence — research a specific company's interview flow, written-test style, and salary from public sources, with a hard rule to leave fields blank (never infer) when no public data exists
+- New capability: Full Pipeline Simulation — run the whole recruiting pipeline (submit resume → screening → written test → interview → outcome) with the Skill playing the hiring side and hard gates between stages
+- New commands: `/CareerOS company`, `/CareerOS simulate` (with natural-language triggers)
+- SKILL.md / SKILL.zh-CN.md: Company Intelligence and Full Pipeline Simulation sections + Command Reference rows
+- references/methodology.md: company-intel data discipline and pipeline scoring rules
+
 ## [0.6.0] - 2026-09-18
 
 ### Added

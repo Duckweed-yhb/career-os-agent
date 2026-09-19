@@ -1,7 +1,7 @@
 ---
 name: career-os
 description: "Career growth operating system. Identify target roles, analyze skill gaps, generate industrial-complexity projects, turn projects into learning-by-doing Markdown courses, and build portfolios. Use when users mention career planning, job switch, 转行, skill gap, 技能差距, learning roadmap, 学习路线, project recommendation, 项目推荐, side project, 边做边学, or run commands /CareerOS init, /CareerOS analyze, /CareerOS generate project, /CareerOS generate course."
-version: 0.6.0
+version: 0.7.0
 ---
 
 # CareerOS
@@ -303,6 +303,58 @@ Two practice modes that put the user in the real situation — a timed written t
 - If the user is clearly stuck, offer a hint before revealing the model answer — hint first, then the answer
 - Log every session outcome into the career profile: strengths, gaps, next actions
 
+## Company Intelligence (公司情报)
+
+Research a specific company's hiring picture — interview flow, written-test style, and compensation — and map it onto the user's gap list. The rule of this module: **leave blank rather than guess.**
+
+**When to trigger:**
+- "XX 公司面试难吗", "了解下 XX 的笔试", "XX 薪资怎么样", "我想投 XX"
+- Command: `/CareerOS company <company> [role]`
+
+**Input:**
+1. Company name (required)
+2. Role direction — optional; read from the career profile or ask once
+
+**Data discipline (hard rules):**
+- Search first when the environment supports it; prefer official recruiting pages > established job platforms > interview write-ups / salary leaks.
+- Every fact must carry its source and date. **No source, no fact — leave the field blank** and write "未查到公开信息". Never fill a gap with general experience or inference.
+- Salary: only report a range when at least 2 independent sources agree; a single source is labeled "single source only". Always note city, level/band, and year. A reported range is not an offer.
+- Interview flow / question patterns: only report what public write-ups actually say, and state how recent they are.
+
+**Output:**
+- Verifiable facts only, each with source + date: interview rounds & flow, written-test style & topics, salary range (city / level / year).
+- For any field with no public data, explicitly write "未查到公开信息" — do not fill it.
+- Mapping: only from verifiable facts, list how the company's requirements hit the user's gap list; skip the mapping if nothing verifiable was found.
+- Update the career profile: add the company to the "target companies" list.
+
+## Full Pipeline Simulation (招聘全流程模拟)
+
+Run the user through the whole recruiting pipeline — submit resume → screening → written test → interview → outcome — with the Skill role-playing the hiring side. Each stage must pass before the next begins, like the real thing.
+
+**When to trigger:**
+- "模拟投 XX 公司", "从投简历开始练一遍", "我想走一遍完整招聘流程"
+- Command: `/CareerOS simulate <company> [role]`
+
+**Input:**
+1. Target company — read from the profile or ask once.
+2. Role — from the profile or the Company Intelligence module.
+3. Resume — the user submits text or a file at the apply stage.
+
+**Pipeline stages:**
+
+1. **Apply & screening** — the user submits the resume; the Skill acts as HR: pass / hold / reject with reasons (role fit, keywords, red flags). This is the screener's view, not the resume-review score.
+2. **Written test** — if the resume passes: timed questions (default 5) aligned with Company Intelligence — or the role's general requirements when the company has no public data, labeled as such; scored after answering.
+3. **Interview** — if the test passes: one question at a time, round types aligned with the company's real flow; feedback after each answer.
+4. **Outcome & review** — simulate pass/fail with reasons, summarize strengths and gaps, write gaps back into the skill matrix, and clearly label the result as a drill, not a prediction.
+
+**Rules:**
+- Hard gate: a stage result of "hold" or "reject" stops the pipeline — the user can revise and re-apply, just like reality.
+- When Company Intelligence is empty, use the role's general requirements and say so explicitly.
+- Never fabricate company-specific facts during the simulation. A generic drill with a fictional company is fine if the user asks for one, but it must be labeled as generic.
+- Separate "simulated verdict" from "real advice" in all feedback.
+- Behavioral questions avoid protected characteristics (age, family, health, origin, etc.).
+- Log the pipeline outcome into the career profile: stage reached, verdicts, gaps to fix.
+
 ## Interaction Guidelines
 
 ### On First Boot
@@ -352,6 +404,8 @@ Formal definition of the CareerOS command surface. Every command also responds t
 | `/CareerOS review resume [resume]` | "帮我看看简历", "简历哪里能完善", "评估我的简历" | Optional: resume text or file | Score, prioritized issues, rewrite examples |
 | `/CareerOS mock interview [role]` | "帮我模拟面试", "面试演练" | Optional: role / round type | One-question-at-a-time interview with feedback, end-of-session summary |
 | `/CareerOS mock test [role]` | "帮我出笔试题", "模拟笔试" | Optional: role / question types | Question set, scoring rubric, answer feedback |
+| `/CareerOS company <company> [role]` | "XX 公司面试难吗", "XX 薪资怎么样", "了解下 XX 公司" | Required: company; optional: role | Verifiable facts on interview flow, written-test style, salary — blank where no public data |
+| `/CareerOS simulate <company> [role]` | "模拟投 XX 公司", "走一遍招聘流程" | Required: company; optional: role | Full pipeline drill: resume → screening → written test → interview → outcome |
 
 **Argument rules:**
 - Square brackets `[...]` are optional. Missing optional arguments are filled by asking one targeted question or by reading the saved profile.

@@ -5,7 +5,7 @@
 > An operating system for your career growth.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.6.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.7.0-blue.svg)](CHANGELOG.md)
 [![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
 
 **[English](README.en.md) | [简体中文](README.md)**
@@ -83,6 +83,14 @@ Just like an operating system manages hardware resources, CareerOS manages your 
 - **Mock interview**: one question at a time, feedback after each answer, a summary of strengths and gaps at the end.
 - **Mock written test**: timed questions for the target role, scored with concrete improvement notes after you answer.
 
+### 8. Company Intelligence
+- Research a target company's interview flow, written-test style, and compensation — every fact carries a source and a date.
+- Fields with no public data are left blank; never fabricated.
+
+### 9. Full Pipeline Simulation
+- Run the whole flow from submitting a resume: screening → written test → interview → outcome, with a pass required at each stage.
+- The Skill plays the hiring side throughout and separates "simulated verdict" from "real advice".
+
 ## How to Use
 
 Load the `CareerOS` Skill in your AI assistant, then try:
@@ -95,6 +103,8 @@ Load the `CareerOS` Skill in your AI assistant, then try:
 /CareerOS review resume [resume]     # evaluate your resume and find what to improve
 /CareerOS mock interview [role]      # one-question-at-a-time interview practice with feedback
 /CareerOS mock test [role]           # timed written-test practice with scoring
+/CareerOS company [company] [role]   # research a company's interview flow, test style, and salary
+/CareerOS simulate [company] [role]  # run the full pipeline: apply → screening → test → interview
 ```
 
 For a complete walkthrough, see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md). Have questions? See the [FAQ](FAQ.md).
