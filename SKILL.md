@@ -1,7 +1,7 @@
 ---
 name: career-os
 description: "Career growth operating system. Identify target roles, analyze skill gaps, generate industrial-complexity projects, turn projects into learning-by-doing Markdown courses, and build portfolios. Use when users mention career planning, job switch, 转行, skill gap, 技能差距, learning roadmap, 学习路线, project recommendation, 项目推荐, side project, 边做边学, or run commands /CareerOS init, /CareerOS analyze, /CareerOS generate project, /CareerOS generate course."
-version: 0.7.0
+version: 0.7.1
 ---
 
 # CareerOS
@@ -109,6 +109,17 @@ For each project state: which gaps it closes, the expected radar shift, and its 
 - After each completed milestone, ask the user to rate the difficulty. If they say "too easy" or "too hard," shift the next project/course by one band. Record the preference in the career profile.
 - Never silently assume difficulty — the user's rating is the source of truth.
 
+**Tech-stack choice framework (based on general experience):**
+
+When recommending or comparing tech stacks, evaluate along four dimensions and label the result as general-experience inference, not official data:
+
+1. **Job pool size** — how many roles exist for this stack
+2. **Transferability** — how easy it is to move from this stack to others (and vice versa)
+3. **Competition & learning cost** — how many learners target it, how much memorization (八股) it demands
+4. **Community & longevity** — ecosystem health and how fast the stack is growing
+
+Never state specific market percentages as fact; give direction and trade-offs, and let the user decide.
+
 **Output expectations:**
 
 - 2-3 project proposals, each with full specification
@@ -203,6 +214,7 @@ Once a project is selected, turn it into a step-by-step learning-by-doing course
 - Never silently pick a base level — if the user's level is unknown, ask before building the course
 - **Milestone retrospective**: after each milestone (M1/M2/M3), run a short review — what the user built, what they learned, one thing to improve — and update the skill matrix in the career profile
 - **Capability review at course end**: don't trust "I finished." Give 3–5 verification prompts (mini-tasks or questions) that prove the skill is real, and update the career profile with the result
+- **Act → Sense → Reflect → Adjust loop**: learning is not watch-then-remember. Every cycle is: act (build something real) → sense (observe what actually happened, what broke, what the environment told you) → reflect (why did it happen, what does it mean) → adjust (change the next step). If the user reports anxiety or feeling stuck, route them back into the loop with the smallest next action instead of more theory.
 
 ### Phase 5: Portfolio Builder
 
@@ -224,6 +236,18 @@ Help the user turn their completed projects into career assets:
    - The "elevator pitch" for the project
    - Technical deep-dive questions interviewers might ask
    - How to frame challenges and solutions
+
+**Anti-probe checklist (every project must survive being asked about):**
+
+For every project, the user should be able to answer these five without pausing:
+
+1. Why this tech stack / why this specific technical choice — what were the alternatives and the trade-off?
+2. What breaks in extreme cases — edge cases, scale, failure modes, and how you handled or would handle them?
+3. What is your personal contribution vs. the team's — exactly what did you build?
+4. What would you do differently if you rebuilt it — and why?
+5. What is the one number that proves it works (users, latency, throughput, accuracy)?
+
+The point is being real and being deep — every statement on the resume should be true AND expandable. Never coach making up experience to survive questions.
 
 **Output expectations:**
 
@@ -284,14 +308,20 @@ Two practice modes that put the user in the real situation — a timed written t
 **Mock written test:**
 
 - Deliver one question set (default 5 questions, adjustable) covering the role's core skill points
-- Each question states: estimated time, difficulty, and what it tests
+- Each question states: estimated time, difficulty, what it tests, and its **mode**: **core-code** (fill in the function, like LeetCode) or **ACM** (self-import, self-handled I/O) — practice both, since real tests vary. Note Java-style traps like a missing `import java.util.*`.
 - After the user answers (or times out), score each question 0–10 against a rubric, quote what was strong, and give weak points with concrete fixes
 - Provide the reference answer outline only after the user has answered — never dump full answers upfront
+
+**Prep strategy by time budget (community-common resources, not official lists):**
+
+- Learners with time to build fundamentals: work through a modular problem list — one pattern at a time, 母题 → variants — to build transferable recognition.
+- Learners close to an interview: prioritize high-frequency problem sets (e.g., LeetCode Hot 100 / CodeTop), since a large share of real questions are recycled from them. Attacking hard problems is low ROI when the interview is near.
+- **Three-pass method (spaced repetition):** pass 1 — skim the problem, look at the solution after ~3 minutes with no idea, build a first impression; pass 2 — next day, rebuild the framework and fill in the code from memory (details may slip); pass 3 — third day, solve it independently. Core habit: batch practice (a dozen problems in one sitting beats one a day) and make it daily.
 
 **Mock interview:**
 
 - Run one question at a time, like a real interview — wait for the user's answer before the next question
-- After each answer: 1 strength, 1 improvement, and a model answer structure (STAR for behavioral, first principles for technical) — keep feedback short, 2–4 sentences
+- After each answer: 1 strength, 1 improvement, a model answer structure, and a **delivery note** — pacing, answer-first structure ("conclusion first, then details"), and fluency under follow-ups (STAR for behavioral, first principles for technical) — keep feedback short, 2–4 sentences
 - Default session: 8 questions (~30–40 min), adjustable; mix round types to match the target role
 - End with a summary: overall impression, top 3 strengths, top 3 gaps, and which gaps flow into the gap list / skill matrix
 
@@ -314,6 +344,8 @@ Research a specific company's hiring picture — interview flow, written-test st
 **Input:**
 1. Company name (required)
 2. Role direction — optional; read from the career profile or ask once
+
+**Design principle:** job hunting rewards information first. Research a company — flow, question style, salary — **before** applying, not after. This module exists to close that information gap.
 
 **Data discipline (hard rules):**
 - Search first when the environment supports it; prefer official recruiting pages > established job platforms > interview write-ups / salary leaks.
@@ -389,6 +421,16 @@ When the user first loads CareerOS:
 - Don't give generic advice like "just practice more" without a concrete plan
 - Don't overwhelm with too many options — be decisive and recommend
 - Don't assume knowledge — ask before diving deep
+
+### Mindset Support
+
+Treat emotions like "我好后悔没早点学", "现在开始是不是来不及了", "我是不是太菜了" as real signals, not noise.
+
+- **Acknowledge first**: the feeling is normal and common — almost everyone hits it.
+- **Reframe**: you will never be younger than today. The best time was years ago; the second-best time is now.
+- **Don't dwell on the past**: judge regret by one question — "if I replayed it, would the outcome change?" If not, let it go.
+- **Convert anxiety into action**: pick the smallest next step in the current plan and do it now.
+- **Never use flattery**: honesty stays — encouragement is about perspective, not false praise.
 
 ## Command Reference
 

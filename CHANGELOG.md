@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-09-26
+
+### Added
+
+- Interaction Guidelines: Mindset Support — treats "too late to start" / "why didn't I start earlier" emotions as real signals: acknowledge, reframe ("you will never be younger than today"), judge regret by the replay test, convert anxiety into the smallest next action, never flatter
+- Phase 5: Anti-probe checklist — every project must survive five deep questions (why this stack, extreme cases, personal contribution boundary, what you'd redo, the one proof number); true AND expandable, never coaching fabrication
+- Mock written test: per-question mode labels (core-code / ACM), prep strategy split by time budget (modular problem list vs. high-frequency sets like LeetCode Hot 100 / CodeTop, labeled as community resources), and the three-pass spaced-repetition method
+- Mock interview: delivery note (pacing, answer-first structure, fluency under follow-ups) added to per-answer feedback
+- Phase 3: four-dimension tech-stack choice framework (job pool size, transferability, competition & learning cost, community & longevity), labeled as general-experience inference
+- Phase 4: explicit Act → Sense → Reflect → Adjust learning loop
+- Company Intelligence: design principle "research the company before applying — close the information gap first"
+
+### Changed
+
+- references/methodology.md: tech-stack selection dimensions, written-test prep strategy, anti-probe standard, mindset-support rules
+
 ## [0.7.0] - 2026-09-19
 
 ### Added
