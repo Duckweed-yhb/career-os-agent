@@ -18,6 +18,19 @@
 
 The whole flow adapts to your domain, experience level, and how much time you can spend each week — it won't hand you something far above or below where you are.
 
+## What Problem It Solves
+
+**The usual pain**：you finish tutorials but don't know where to go; your demos never make it onto a resume; you discover your gaps only when it's time to apply.
+
+CareerOS answers three problems:
+
+- **Direction** — locks your interests and background into 1-3 executable target roles, with a capability radar for each
+- **Fragmented learning** — turns gaps into one project-driven path; the project becomes lessons you work through by building
+- **Unfit to apply** — resume review, written-test and interview drills, company intel, and a full pipeline simulation until you're ready for the real thing
+
+**Who it's for**: career switchers starting from zero, students, and developers looking to change jobs or level up.
+**Who it's not for**: anyone who only wants to be told "what to learn" and won't build anything — it delivers an output-driven path, not a course list.
+
 ## Installation
 
 1. **Clone the repository** (or download and extract it):
@@ -50,6 +63,21 @@ The whole flow adapts to your domain, experience level, and how much time you ca
    ```
 
    If you see the init welcome message, you are all set.
+
+## Repository Structure
+
+```
+career-os-skill/
+├── SKILL.md            # Skill definition (English) — the core instructions your assistant loads
+├── SKILL.zh-CN.md      # Skill definition (Simplified Chinese)
+├── references/         # Recommendation rules & methodology (scoring, data discipline)
+├── templates/          # Domain templates: starting skeletons for projects/courses
+├── examples/           # Real conversation walkthroughs + sample courses (look here first)
+├── assets/             # Repository banner and social preview
+└── README.md           # Usage docs (this file)
+```
+
+Day to day you only need the SKILL files; `templates/` and `examples/` are referenced automatically by the Skill — no manual maintenance.
 
 ## Core Modules
 
@@ -108,6 +136,8 @@ Load the `CareerOS` Skill in your AI assistant, then try:
 ```
 
 For a complete walkthrough, see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md). Have questions? See the [FAQ](FAQ.md).
+
+> **Network note**: `company` (Company Intelligence) and `simulate` (Pipeline Simulation) rely on web search to verify public information. Offline, they explicitly mark fields as "未查到公开信息" or fall back to generic role requirements — they never fabricate data.
 
 ## Why CareerOS?
 

@@ -133,3 +133,14 @@ CareerOS: 不会。我会把 Redis 部分拆成渐进增强阶段，你随时可
 - `analyze` 输出可量化的差距，而不是空泛的"你还需努力"
 - `generate project` 给的是**工业级项目**，附技术栈、难点、验收标准和难度评级
 - 任何一步都根据用户水平动态调整（Context-Aware），绝不推荐过难或过易的任务
+
+## 更多命令
+
+上面的示例只走了"定位 → 差距 → 项目"三段。完整指令面还包括：
+
+- `/CareerOS review resume` —— 评估简历，按优先级列出必修/建议/可选问题
+- `/CareerOS mock interview`、`/CareerOS mock test` —— 一次一题的面试演练与限时笔试
+- `/CareerOS company` —— 查证目标公司的面试流程、笔试题方向与薪资（查不到就留空，绝不编造）
+- `/CareerOS simulate` —— 从投简历开始走完整招聘流程：初筛 → 笔试 → 面试 → 结果
+
+完整指令表见 README 的"使用方式"章节。

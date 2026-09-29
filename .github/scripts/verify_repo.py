@@ -7,6 +7,15 @@ ROOT = Path(__file__).resolve().parents[2]
 errors = []
 
 
+def _read_text(path):
+    """Read a UTF-8 text file defensively; on failure record an error and return ''."""
+    try:
+        return path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as exc:
+        errors.append(f"[read] {path.name}: {exc}")
+        return ""
+
+
 def check_skill_frontmatter():
     """SKILL.md must start with valid front matter (name + description)."""
     for skill in ["SKILL.md", "SKILL.zh-CN.md"]:
@@ -14,7 +23,7 @@ def check_skill_frontmatter():
         if not path.exists():
             errors.append(f"[frontmatter] missing file: {skill}")
             continue
-        text = path.read_text(encoding="utf-8")
+        text = _read_text(path)
         if not text.startswith("---\n"):
             errors.append(f"[frontmatter] {skill} must start with `---` YAML front matter")
             continue
@@ -32,7 +41,7 @@ def check_relative_links():
     for md in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "FAQ.md"]:
         if not md.exists():
             continue
-        text = md.read_text(encoding="utf-8")
+        text = _read_text(md)
         for target in re.findall(r"\]\(([^)#]+?)(?:#[^)]*)?\)", text):
             if target.startswith(("http://", "https://", "mailto:", "data:")):
                 continue
@@ -48,28 +57,28 @@ def check_changelog():
     if not path.exists():
         errors.append("[changelog] CHANGELOG.md missing")
         return
-    text = path.read_text(encoding="utf-8")
+    text = _read_text(path)
     if "## [Unreleased]" not in text:
         errors.append("[changelog] CHANGELOG.md must contain an [Unreleased] section")
 
 
 def check_version_consistency():
     """SKILL front-matter version, README badge, and latest CHANGELOG version must match."""
-    skill_text = (ROOT / "SKILL.md").read_text(encoding="utf-8")
+    skill_text = _read_text(ROOT / "SKILL.md")
     m = re.search(r"^version:\s*([\d.]+)", skill_text, re.MULTILINE)
     if not m:
         errors.append("[version] SKILL.md missing `version:` in front matter")
         return
     skill_version = m.group(1)
 
-    readme_text = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_text = _read_text(ROOT / "README.md")
     m = re.search(r"badge/version-([\d.]+)-blue", readme_text)
     if not m:
         errors.append("[version] README.md missing shields.io version badge")
         return
     badge_version = m.group(1)
 
-    changelog_text = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    changelog_text = _read_text(ROOT / "CHANGELOG.md")
     m = re.search(r"^## \[([\d.]+)\]", changelog_text, re.MULTILINE)
     if not m:
         errors.append("[version] CHANGELOG.md missing a released version section")
@@ -81,11 +90,31 @@ def check_version_consistency():
         errors.append(f"[version] version mismatch: {versions}")
 
 
+def check_examples_commands():
+    """Every /CareerOS command used under examples/ must exist in the Command Reference."""
+    known = set()
+    skill_text = _read_text(ROOT / "SKILL.md")
+    for row in re.findall(r"\| `/CareerOS ([^`]+)` \|", skill_text):
+        known.add(row.split()[0])
+    if not known:
+        errors.append("[examples] no /CareerOS commands found in SKILL.md Command Reference")
+        return
+    examples_dir = ROOT / "examples"
+    if not examples_dir.exists():
+        return
+    for md in sorted(examples_dir.rglob("*.md")):
+        text = _read_text(md)
+        for cmd in re.findall(r"/CareerOS ([a-z]+)", text):
+            if cmd not in known:
+                errors.append(f"[examples] {md.relative_to(ROOT)}: unknown command /CareerOS {cmd}")
+
+
 def main():
     check_skill_frontmatter()
     check_relative_links()
     check_changelog()
     check_version_consistency()
+    check_examples_commands()
     if errors:
         print("\n".join(errors))
         sys.exit(1)
