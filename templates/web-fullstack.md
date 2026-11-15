@@ -1,45 +1,45 @@
-# Template: Web Full-Stack
+# 模板：Web 全栈
 
-## Domain & typical roles
+## 领域与典型岗位
 
-- Roles: Full-Stack Engineer, Backend Engineer (Node.js), Frontend Engineer with API ownership
-- User domains: web apps, SaaS products, internal tools, e-commerce
+- 岗位：全栈工程师、后端工程师（Node.js 方向）、兼管接口的前端工程师
+- 用户领域：Web 应用、SaaS 产品、内部工具、电商
 
-## Canonical tech stack
+## 规范技术栈
 
-| Layer | Default | Alternatives |
+| 层次 | 默认 | 替代方案 |
 |---|---|---|
-| Frontend | React + TypeScript + Vite | Vue 3, Next.js |
-| Backend | Node.js + Fastify/Express + TypeScript | NestJS, Python FastAPI |
-| Database | PostgreSQL | MySQL, MongoDB |
-| Cache/Queue | Redis | — |
-| Ops | Docker + GitHub Actions | — |
+| 前端 | React + TypeScript + Vite | Vue 3、Next.js |
+| 后端 | Node.js + Fastify/Express + TypeScript | NestJS、Python FastAPI |
+| 数据库 | PostgreSQL | MySQL、MongoDB |
+| 缓存 / 队列 | Redis | — |
+| 运维 | Docker + GitHub Actions | — |
 
-## Project archetypes
+## 项目原型
 
-1. **Team task / project management tool** — auth, CRUD, state machine, notifications (Difficulty 2)
-2. **URL shortener + analytics** — redirect service, link tracking, aggregation queries (Difficulty 1–2)
-3. **E-commerce checkout flow** — cart, order state machine, payment-webhook simulation, inventory (Difficulty 2–3)
-4. **Real-time collaboration board** — WebSocket, presence, conflict handling (Difficulty 3)
+1. **团队任务 / 项目管理工具** —— 认证、CRUD、状态机、通知（难度 2）
+2. **短链服务 + 访问分析** —— 跳转服务、链接追踪、聚合查询（难度 1–2）
+3. **电商结算流程** —— 购物车、订单状态机、支付回调模拟、库存（难度 2–3）
+4. **实时协作看板** —— WebSocket、在线状态、冲突处理（难度 3）
 
-## Typical milestones
+## 典型里程碑
 
-- **M1 Skeleton**: project scaffold, DB schema + migrations, auth (register/login), CI pipeline stub
-- **M2 Core features**: domain CRUD, business rules/state machine, tests
-- **M3 Hardening**: caching, performance (indexes, P95 targets), error handling, deploy (Docker)
+- **M1 骨架**：项目脚手架、数据库 schema + 迁移、认证（注册 / 登录）、CI 流水线桩
+- **M2 核心功能**：领域 CRUD、业务规则 / 状态机、测试
+- **M3 加固**：缓存、性能（索引、P95 目标）、错误处理、部署（Docker）
 
-## Lesson patterns
+## 课程切分模式
 
-Web full-stack courses usually slice as:
+Web 全栈课程通常这样切：
 
-1. Environment & first running API (env, framework basics, hello world route)
-2. Data modeling & migrations (schema, seed, first query)
-3. Auth (sessions/JWT, middleware)
-4. Core CRUD (each entity one lesson: model → route → UI)
-5. Business rules / state transitions
-6. Caching & performance
-7. Testing
-8. Docker & CI/CD
-9. Polish: README, demo, deploy
+1. 环境与第一个能跑的 API（环境、框架基础、hello 路由）
+2. 数据建模与迁移（schema、种子数据、第一个查询）
+3. 认证（session / JWT、中间件）
+4. 核心 CRUD（每个实体一节课：模型 → 路由 → 界面）
+5. 业务规则 / 状态流转
+6. 缓存与性能
+7. 测试
+8. Docker 与 CI/CD
+9. 收尾：README、演示、部署
 
-Each lesson pairs one knowledge increment with one project increment.
+每节课都要把一个知识增量和一个项目增量配对。

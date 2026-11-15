@@ -1,33 +1,32 @@
 ---
-name: Bug report
-about: Report a problem with the CareerOS Skill so we can fix it
+name: Bug 报告
+about: 报告 CareerOS Skill 的问题，方便我们修复
 title: "[Bug] "
 labels: bug
 assignees: ''
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**问题描述**
+清楚、简洁地说明这是什么问题。
 
-**To reproduce**
-Steps to reproduce the behavior:
-1. Run `/CareerOS ...`
-2. Provide the input ...
-3. See the error/wrong output ...
+**复现步骤**
+1. 执行 `/CareerOS ...`
+2. 输入了……
+3. 看到报错 / 错误输出……
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**期望行为**
+清楚、简洁地说明你期望发生什么。
 
-**Actual behavior**
-What actually happened, including any error messages or unexpected output.
+**实际行为**
+实际发生了什么，包括报错信息或非预期输出。
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**截图**
+如有必要，附截图帮助说明问题。
 
-**Environment**
-- AI assistant / platform: (e.g. Claude Code, Doubao Agent, other)
-- Skill version (if known): 
-- OS: 
+**环境**
+- AI 助手 / 平台：（例如 Claude Code、豆包 Agent、其他）
+- Skill 版本（如已知）：
+- 操作系统：
 
-**Additional context**
-Anything else that might be relevant.
+**补充信息**
+其他可能相关的信息。

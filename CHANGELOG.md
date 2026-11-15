@@ -1,102 +1,114 @@
-# Changelog
+# 更新日志
 
-All notable changes to this project will be documented in this file.
+英文版见 [CHANGELOG.en.md](CHANGELOG.en.md)。
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+本文件记录本项目所有值得注意的变更。
 
-## [Unreleased]
+格式遵循 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/spec/v2.0.0.html)。
+
+## [未发布]
+
+### 变更
+
+- 仓库更名为 `career-os-agent`：原 `career-os-skill` 的全部内容迁入本仓库，skill 层留在根目录，Agent 规划文档收进 `docs/agent/`，技术栈看板预览放进 `preview/`
+- 新增 `docs/agent/DESIGN.md`：能力清单、架构设计、Python 先修合并为一份设计方案
+- `README.md` / `README.en.md` 重写为双层门面：上层写 skill 怎么装怎么用，下层写 Agent 要做什么
+- 移除 `SKILL.zh-CN.md`（内容已并入中文主文档 `SKILL.md`）
+- 文档语言改为**中文优先**：`SKILL.md` 改为中文主文档，原英文版转存为 `SKILL.en.md`，原 `SKILL.zh-CN.md` 移除（助手仍只加载 `SKILL.md`，无需改安装方式）
+- `FAQ` / `CONTRIBUTING` / `CODE_OF_CONDUCT` / `CHANGELOG` 改为中文，英文版分别保留为 `*.en.md`
+- `templates/` 说明与领域模板、`.github/ISSUE_TEMPLATE/` 模板改为中文
+- 校验脚本与单元测试改为检查 `SKILL.md` / `SKILL.en.md` 与中英配对文档
 
 ## [0.7.1] - 2026-09-26
 
-### Added
+### 新增
 
-- Interaction Guidelines: Mindset Support — treats "too late to start" / "why didn't I start earlier" emotions as real signals: acknowledge, reframe ("you will never be younger than today"), judge regret by the replay test, convert anxiety into the smallest next action, never flatter
-- Phase 5: Anti-probe checklist — every project must survive five deep questions (why this stack, extreme cases, personal contribution boundary, what you'd redo, the one proof number); true AND expandable, never coaching fabrication
-- Mock written test: per-question mode labels (core-code / ACM), prep strategy split by time budget (modular problem list vs. high-frequency sets like LeetCode Hot 100 / CodeTop, labeled as community resources), and the three-pass spaced-repetition method
-- Mock interview: delivery note (pacing, answer-first structure, fluency under follow-ups) added to per-answer feedback
-- Phase 3: four-dimension tech-stack choice framework (job pool size, transferability, competition & learning cost, community & longevity), labeled as general-experience inference
-- Phase 4: explicit Act → Sense → Reflect → Adjust learning loop
-- Company Intelligence: design principle "research the company before applying — close the information gap first"
+- 交互指南：心态支持 —— 把"现在开始是不是来不及了""为什么没早点学"这类情绪当真实信号处理：先接住，再重新框定（"你不会再有比今天更年轻的一天"），用"重来一遍结局会不会变"判断是否该放下，把焦虑转成当前最小的下一步，且绝不虚假吹捧
+- 第五阶段：抗问穿清单 —— 每个项目都必须扛得住五个深挖问题（为什么用这套技术、极端情况怎么处理、个人贡献边界、重做会改哪里、哪个数字证明有效）；要求真实且可展开，绝不教用户编造经历
+- 模拟笔试：每题标注模式（核心代码 / ACM），按时间预算分流的备考策略（模块化题单 vs LeetCode Hot 100、CodeTop 等高频题集，标注为社区常用资源），以及三遍间隔重复刷题法
+- 模拟面试：每答一题的反馈里增加"表达提示"（节奏、先结论后细节、被追问时的流畅度）
+- 第三阶段：四维技术栈选型框架（岗位存量、可迁移性、竞争与学习成本、社区与生命周期），标注为基于通用经验的推断
+- 第四阶段：明确的"行动 → 感知 → 反思 → 调整"学习闭环
+- 公司情报：确立设计原则"投递前先查公司，把信息差补上"
 
-### Changed
+### 变更
 
-- references/methodology.md: tech-stack selection dimensions, written-test prep strategy, anti-probe standard, mindset-support rules
+- `references/methodology.md`：补充技术栈选型维度、笔试备考策略、抗问穿标准、心态支持口径
 
 ## [0.7.0] - 2026-09-19
 
-### Added
+### 新增
 
-- New capability: Company Intelligence — research a specific company's interview flow, written-test style, and salary from public sources, with a hard rule to leave fields blank (never infer) when no public data exists
-- New capability: Full Pipeline Simulation — run the whole recruiting pipeline (submit resume → screening → written test → interview → outcome) with the Skill playing the hiring side and hard gates between stages
-- New commands: `/CareerOS company`, `/CareerOS simulate` (with natural-language triggers)
-- SKILL.md / SKILL.zh-CN.md: Company Intelligence and Full Pipeline Simulation sections + Command Reference rows
-- references/methodology.md: company-intel data discipline and pipeline scoring rules
+- 新能力：公司情报 —— 从公开来源查证目标公司的面试流程、笔试风格与薪资，并定下硬规则：没有公开数据就留空，绝不推断
+- 新能力：招聘全流程模拟 —— 走完整招聘流水线（投简历 → 初筛 → 笔试 → 面试 → 结果），由 Skill 扮演招聘方，阶段之间设硬门禁
+- 新指令：`/CareerOS company`、`/CareerOS simulate`（含自然语言触发词）
+- `SKILL.md` / `SKILL.zh-CN.md`：新增公司情报与招聘全流程模拟两节，并补指令表行
+- `references/methodology.md`：补充公司情报数据纪律与流水线评分规则
 
 ## [0.6.0] - 2026-09-18
 
-### Added
+### 新增
 
-- Evidence, Defaults & Limitations section in SKILL.md / SKILL.zh-CN.md: recommendations are labeled as based on general experience (not official job data), fact vs. inference is separated, no job-offer promises, explicit handling of low-information domains
-- Default profile rules: when the user declines to give background, proceed with an explicitly labeled default (zero-to-beginner, 8 hours/week, explore-first) instead of silently assuming
-- New `references/methodology.md`: calculation rules for the capability radar, proficiency anchors, gap scoring, difficulty calibration, course granularity, resume review dimensions, mock interview feedback, and limitations
+- `SKILL.md` / `SKILL.zh-CN.md`：新增"证据、默认值与局限"一节 —— 推荐一律标注为基于通用经验（不是官方岗位数据），区分事实与推断，不承诺 offer，并对信息稀少的领域做明确处理
+- 默认档案规则：用户拒绝提供背景时，改用显式标注的默认档（零基础、每周 8 小时、先探索后定方向），而不是默默假设
+- 新增 `references/methodology.md`：能力雷达、水平锚点、差距评分、难度校准、课程粒度、简历评估维度、模拟面试反馈与局限的计算口径
 
-### Changed
+### 变更
 
-- README is now Simplified Chinese by default; the English version moved to the new `README.en.md`; `README.zh-CN.md` removed (both READMEs link to each other)
-- README: rewrite the intro in plainer language (remove template-style phrasing), fix the installation step to clone the whole repo (templates and examples are referenced by the Skill), and add Resume Review and Mock Interview & Written Test to the Core Modules list
-- CONTRIBUTING.md: language-pattern reference updated to README.md / README.en.md
+- README 默认改为简体中文；英文版移到新的 `README.en.md`；删除 `README.zh-CN.md`（两份 README 互相链接）
+- README：用更平实的语言重写简介（去掉模板腔），修正安装步骤为克隆整个仓库（templates 与 examples 会被 Skill 引用），并在核心模块列表里补上简历评估与模拟笔试面试
+- `CONTRIBUTING.md`：语言规范引用更新为 `README.md` / `README.en.md`
 
 ## [0.5.0] - 2026-09-17
 
-### Added
+### 新增
 
-- New capability: Mock Interview & Written Test — timed written tests (default 5 questions, rubric-scored after answering) and one-question-at-a-time interview practice (technical / behavioral / system design / HR rounds) with per-answer feedback and an end-of-session summary that feeds strengths and gaps back into the career profile
-- New commands: `/CareerOS mock interview`, `/CareerOS mock test` (with natural-language triggers)
-- SKILL.md / SKILL.zh-CN.md: Mock Interview & Written Test section and Command Reference rows
+- 新能力：模拟笔试与面试 —— 限时笔试（默认 5 题，作答后按评分标准批改）与一次一题的面试演练（技术 / 行为 / 系统设计 / HR 轮），每题给反馈，结束时汇总并把强项与缺口写回职业档案
+- 新指令：`/CareerOS mock interview`、`/CareerOS mock test`（含自然语言触发词）
+- `SKILL.md` / `SKILL.zh-CN.md`：新增模拟笔试与面试一节，并补指令表行
 
 ## [0.4.0] - 2026-09-17
 
-### Added
+### 新增
 
-- New capability: Resume Review — evaluate a resume across 6 dimensions (scannability, results over duties, target-role fit, project & tech description, differentiation, polish), output score + prioritized issues + rewrite examples, and link findings into the career profile and gap analysis
-- New command: `/CareerOS review resume` (with natural-language triggers)
-- SKILL.md / SKILL.zh-CN.md: Resume Review section and Command Reference row
+- 新能力：简历评估 —— 六个维度打分（可扫读性、成果优先于职责、岗位匹配、项目与技术表述、差异化、细节打磨），输出总分 + 按优先级排列的问题 + 改写示例，并把发现回写到职业档案与差距分析
+- 新指令：`/CareerOS review resume`（含自然语言触发词）
+- `SKILL.md` / `SKILL.zh-CN.md`：新增简历评估一节，并补指令表行
 
 ## [0.3.0] - 2026-09-08
 
-### Added
+### 新增
 
-- Zero-base course example ([`examples/course-zero/`](examples/course-zero/00-course-overview.md)): overview + first two lessons, showing how the course adapts to a complete beginner
-- Study schedule generation: weekly time budget → week-by-week lesson plan in the course overview
+- 零基础课程示例（[`examples/course-zero/`](examples/course-zero/00-course-overview.md)）：总览 + 前两节课，展示课程如何适配完全零基础的用户
+- 学习排期生成：按每周可投入时间生成逐周课程计划，写进课程总览
 
-### Changed
+### 变更
 
-- SKILL.md / SKILL.zh-CN.md: standard six-axis capability radar dimensions (Language & Frameworks, Data & Storage, Engineering Practice, Architecture & Design, Domain Knowledge, Soft Skills)
-- SKILL.md / SKILL.zh-CN.md: proficiency anchors for beginner / intermediate / advanced assessment
-- SKILL.md / SKILL.zh-CN.md: growth path planning — a 3-project serial path (Foundation → Capability → Showcase) per target role
-- SKILL.md / SKILL.zh-CN.md: Phase 4 course schedule step (version 0.3.0)
-- CI: version consistency check (SKILL ↔ README badge ↔ CHANGELOG)
+- `SKILL.md` / `SKILL.zh-CN.md`：六轴能力雷达标准化（语言与框架、数据与存储、工程实践、架构与设计、领域知识、软技能）
+- `SKILL.md` / `SKILL.zh-CN.md`：初 / 中 / 高三档水平锚点
+- `SKILL.md` / `SKILL.zh-CN.md`：成长路径规划 —— 每个目标岗位给一条三项目串行路径（Foundation → Capability → Showcase）
+- `SKILL.md` / `SKILL.zh-CN.md`：第四阶段增加课程排期步骤（0.3.0 版）
+- CI：版本一致性校验（SKILL ↔ README 徽章 ↔ CHANGELOG）
 
 ## [0.2.0] - 2026-09-08
 
-### Added
+### 新增
 
-- YAML front matter (name, description, version)
-- Phase 4 Course Builder — learning-by-doing Markdown courses
-- Command Reference, Debug Protocol, Domain Templates sections
-- Difficulty calibration bands and milestone feedback loop
-- State persistence via `career-profile.md` and course progress
-- Domain template library ([`templates/`](templates/README.md))
-- Course example ([`examples/course/`](examples/course/00-course-overview.md))
-- FAQ ([`FAQ.md`](FAQ.md))
-- CI workflow verifying front matter, links, and changelog
-- Code of Conduct, issue templates, repository banner, social preview assets
-- Contribution guide ([`CONTRIBUTING.md`](CONTRIBUTING.md))
-- Bilingual README with banner, badges, installation guide, and new commands
+- YAML front matter（name、description、version）
+- 第四阶段 课程生成器 —— 边做边学的 Markdown 课程
+- 指令参考、卡点救援协议、领域模板库三节
+- 难度档位校准与里程碑反馈闭环
+- 通过 `career-profile.md` 与课程进度实现状态持久化
+- 领域模板库（[`templates/`](templates/README.md)）
+- 课程示例（[`examples/course/`](examples/course/00-course-overview.md)）
+- FAQ（[`FAQ.md`](FAQ.md)）
+- CI 工作流：校验 front matter、链接与更新日志
+- 行为准则、issue 模板、仓库横幅与社会预览图
+- 贡献指南（[`CONTRIBUTING.md`](CONTRIBUTING.md)）
+- 中英双语 README，含横幅、徽章、安装说明与新指令
 
 ## [0.1.0] - 2026-09-08
 
-### Added
+### 新增
 
-- Initial project scaffold: repository, README description, MIT LICENSE
+- 项目初始骨架：仓库、README 说明、MIT LICENSE

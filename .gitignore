@@ -43,6 +43,7 @@ out/
 coverage/
 .coverage
 .pytest_cache/
+.ruff_cache/
 
 # --- Misc ---
 .cache/

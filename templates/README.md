@@ -1,29 +1,29 @@
-# Domain Templates
+# 领域模板库
 
-This directory holds optional domain templates that make CareerOS projects and courses more concrete.
+本目录存放可选的领域模板，用来让 CareerOS 生成的项目与课程更具体。
 
-## How it works
+## 怎么工作
 
-- One Markdown file per domain (e.g. `web-fullstack.md`, `ai-data.md`, `devops.md`).
-- When generating a project or course, CareerOS matches the user's domain to a template and uses its structure — typical milestones, tech-stack skeletons, lesson patterns — as the starting skeleton.
-- If no template matches, CareerOS falls back to the generic rules in the SKILL.
+- 一个领域一个 Markdown 文件（例如 `web-fullstack.md`、`ai-data.md`、`devops.md`）。
+- 生成项目或课程时，CareerOS 会把用户的领域匹配到某个模板，用它的结构——典型里程碑、技术栈骨架、课程切分模式——作为起点骨架。
+- 没有匹配的模板时，退回 SKILL 里的通用规则。
 
-## Template format
+## 模板格式
 
-Each template should contain:
+每个模板应包含：
 
-1. **Domain name & typical roles** — who this applies to (e.g. Full-Stack Engineer, Data Engineer)
-2. **Canonical tech stack** — the default stack with common alternatives
-3. **Project archetypes** — 3–5 realistic project shapes in this domain (with difficulty hints)
-4. **Typical milestones** — the M1/M2/M3 skeleton that fits most projects in this domain
-5. **Lesson patterns** — how courses are usually sliced in this domain (e.g. "env → API → data → ops")
+1. **领域与典型岗位** —— 适用于谁（例如全栈工程师、数据工程师）
+2. **规范技术栈** —— 默认栈与常见替代方案
+3. **项目原型** —— 该领域 3–5 个真实项目形态（附难度提示）
+4. **典型里程碑** —— 适配该领域多数项目的 M1/M2/M3 骨架
+5. **课程切分模式** —— 该领域课程通常怎么切（例如"环境 → API → 数据 → 运维"）
 
-## How to add a template
+## 怎么新增模板
 
-1. Create `<domain>.md` following the format above.
-2. Keep it concise: a template is a skeleton, not a full course.
-3. Update the SKILL's Domain Templates section if the naming convention changes.
+1. 按上面的格式新建 `<领域>.md`。
+2. 保持精简：模板是骨架，不是完整课程。
+3. 命名约定变化时，同步更新 SKILL 的「领域模板库」一节。
 
-## Language rule
+## 语言规则
 
-One language per file (same convention as the rest of the repo). Name the file with `-zh` suffix for Chinese versions (e.g. `web-fullstack.zh-CN.md`).
+一个文件一种语言（与仓库其余部分一致）。英文版用 `-en` 后缀命名（例如 `web-fullstack.en.md`）。

@@ -2,148 +2,142 @@
 
 ![CareerOS banner](assets/careeros-banner.jpg)
 
-> 一套为你的职业成长而设计的操作系统。
+> 一套为你的职业成长而设计的操作系统。Skill 是配方，Agent 是能自己开火做饭的厨师。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.7.1-blue.svg)](CHANGELOG.md)
-[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
+[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-agent)](https://github.com/Duckweed-yhb/career-os-agent)
 
-**[English](README.en.md) | [简体中文](README.md)**
+**[English](README.en.md) | 简体中文**
 
 ---
 
-## 简介
+## 这是什么
 
-**CareerOS** 是一个给 AI 助手的职业成长技能。输入你的背景和目标，它输出一条可执行的路线：先锁定目标岗位，对照岗位要求找出你的技能差距，再用一个真实项目把这些差距补上——项目会拆成一节节 Markdown 课程，边做边学，最后攒成能写进简历的作品。
+CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗位要求找出技能差距 → 用一个真实项目把差距补上 → 项目拆成 Markdown 课程，边做边学 → 攒成能写进简历的作品。
 
-整个流程会根据你的领域、经验水平和每周能投入的时间调整，不会给你塞超出能力范围的东西。
+这个仓库装了两层东西：
 
-## 它解决什么问题
+| 层 | 是什么 | 状态 |
+|---|---|---|
+| **Skill 层** | 一份 `SKILL.md` 指令，九个模块，挂到 AI 助手里就能用 | 已可用（v0.7.1） |
+| **Agent 层** | 把九个模块沉淀成工具集，加上运行时、长期记忆、主动跟进、可视化看板 | 规划阶段，目前只有文档 |
 
-**现状痛点**：学了一堆教程却不知道往哪走；做过的 demo 写不进简历；临近投递才发现差距在哪。
+两层的分工：skill 把方法论、模块边界和数据纪律沉淀下来；agent 在这套地基上长出编排能力，从「你敲一条命令、它答一次」变成「它自己知道下一步该干什么」。
 
-CareerOS 对应解决三件事：
+## Skill 层：装起来用
 
-- **迷茫** —— 把你的兴趣和背景锁成 1-3 个可执行的目标岗位，并给出能力雷达图
-- **学得散** —— 把差距变成一条项目驱动的学习路线，项目拆成课程，边做边学
-- **投不出去** —— 简历评估、笔试面试演练、公司情报、招聘全流程模拟，练到能真上战场
-
-**适合谁**：零基础转行者、在校生、想跳槽或晋升的开发者。
-**不适合谁**：只想听"该学什么"、不打算动手做项目的人——它给的是输出型路线，不是课程清单。
-
-## 安装
-
-1. **克隆仓库**（或下载后解压）：
+1. 克隆仓库（或下载后解压）：
 
    ```bash
-   git clone https://github.com/Duckweed-yhb/career-os-skill.git
+   git clone https://github.com/Duckweed-yhb/career-os-agent.git
    ```
 
-2. **找到你所用 AI 助手的 skills 目录：**
+2. 找到你所用 AI 助手的 skills 目录：
 
    | 助手 | Skills 目录 |
    |---|---|
    | Claude Code | `~/.claude/skills/` |
    | 豆包 Agent | `<workspace>/.skills/` |
-   | 其他助手 | 查阅对应助手的文档，确认 skills 目录位置 |
+   | 其他助手 | 查阅对应助手的文档 |
 
-3. **把 Skill 放进该目录下的 `career-os/` 文件夹**——整个仓库一起放，课程模板和示例也会被用到：
+3. 把整个仓库放进该目录下的 `career-os/` 文件夹——`templates/` 和 `examples/` 会被 Skill 自动引用，别只拷一份 `SKILL.md`：
 
    ```bash
-   # 示例（Claude Code）：直接把整个仓库克隆到 skills 目录
-   git clone https://github.com/Duckweed-yhb/career-os-skill.git ~/.claude/skills/career-os
+   # 示例（Claude Code）
+   git clone https://github.com/Duckweed-yhb/career-os-agent.git ~/.claude/skills/career-os
    ```
 
-   仓库里同时有 `SKILL.md`（英文）和 `SKILL.zh-CN.md`（简体中文），助手会自动加载对应语言版本，不需要手动挑文件。
+   助手只加载 `SKILL.md`，它是中文核心指令；想用英文指令就把 `SKILL.en.md` 改名替换过去。
 
-4. **重启助手会话**并验证：
+4. 重启助手会话并验证：
 
    ```text
    /CareerOS init
    ```
 
-   看到初始化欢迎语，就说明安装成功了。
+   看到初始化欢迎语，就装好了。
 
-## 仓库结构
+## 九个模块
 
-```
-career-os-skill/
-├── SKILL.md            # 技能定义（英文）——助手加载的核心指令
-├── SKILL.zh-CN.md      # 技能定义（简体中文版）
-├── references/         # 推荐口径与方法论（评分规则、数据纪律）
-├── templates/          # 领域模板：生成项目/课程时的起点骨架
-├── examples/           # 真实对话示例 + 课程样例（想看效果先看这里）
-├── assets/             # 仓库横幅与社交预览图
-└── README.md           # 使用文档（本文件）
-```
+| # | 模块 | 一句话 |
+|---|---|---|
+| 1 | 目标定位 | 把兴趣和背景锁成 1–3 个目标岗位，出六维能力雷达 |
+| 2 | 技能差距 | 岗位要求对用户自评，按「影响 × 紧迫度」排序缺口 |
+| 3 | 项目生成 | 按缺口给工业级复杂度的项目，拒绝玩具项目 |
+| 4 | 课程生成 | 把项目拆成边做边学的 Markdown 课程，每课都有可勾选的验收 |
+| 5 | 作品集 | 项目 → README 指南 + 简历描述 + 面试讲法 |
+| 6 | 简历评估 | 六维打分，按必修 / 建议 / 可选列问题，附「原文 → 改写」 |
+| 7 | 模拟笔试面试 | 限时出题逐题打分；面试一次一问、每答反馈 |
+| 8 | 公司情报 | 面试流程、笔试风格、薪资，每条带来源与时效，查不到就留空 |
+| 9 | 招聘全流程 | 投简历 → 初筛 → 笔试 → 面试 → 结果，阶段硬门禁 |
 
-装好后日常只需要 SKILL 双版；`templates/` 和 `examples/` 会被 Skill 自动引用，不用手动维护。
+两个模块依赖联网：`company`（公司情报）和 `simulate`（流程模拟）。离线环境下它们会明确标注「未查到公开信息」或改用岗位通用要求，不编造数据。
 
-## 核心模块
-
-就像操作系统管理硬件资源一样，CareerOS 管理你的职业资源：
-
-### 1. 目标定位
-- 解析你的兴趣与背景，锁定高潜力的目标岗位。
-- 生成该岗位的能力雷达图。
-
-### 2. 技能差距分析
-- 对比你当前的简历/技能与目标岗位的要求。
-- 识别出关键的缺失环节。
-
-### 3. 项目生成器
-- **拒绝玩具项目。** 根据缺失的技能点，生成具有工业级复杂度的实战项目构思。
-- 包含技术栈建议、难点预测和验收标准。
-
-### 4. 课程生成器
-- 把选定项目变成一步步**边做边学**的课程。
-- 生成技术栈学习路线与项目开发路线，再把整个项目拆成一节节 Markdown 课程——每节都带动手任务和验收标准。
-
-### 5. 作品集构建
-- 将项目转化为面试中的亮点。
-- 提供简历描述优化建议和 GitHub README 撰写指南。
-
-### 6. 简历评估
-- 从可扫读性、成果量化、岗位匹配、技术表述等 6 个维度给你的简历打分。
-- 按"必修 / 建议 / 可选"列出问题清单，高优先级问题附"原文 → 改写"示例。
-
-### 7. 模拟笔试与面试
-- **模拟面试**：一次一题、等你回答后再出下一题，每答一题给反馈，结束汇总强项与缺口。
-- **模拟笔试**：按目标岗位出限时题目，作答后逐题打分并给改进方向。
-
-### 8. 公司情报
-- 针对目标公司，查证它的面试流程、笔试风格与薪资待遇——每条信息带来源和时效。
-- 查不到公开信息的字段一律留空，绝不编造。
-
-### 9. 招聘全流程模拟
-- 从投简历开始走完整流程：简历初筛 → 笔试 → 面试 → 综合结果，每阶段通过才进入下一阶段。
-- Skill 全程扮演招聘方，反馈区分"模拟判定"与"真实建议"。
-
-## 使用方式
-
-在你的 AI 助手中加载 `CareerOS` Skill，然后尝试：
+## 常用指令
 
 ```text
 /CareerOS init
 /CareerOS analyze [你的简历内容或当前技能列表]
 /CareerOS generate project --focus=[具体技术点，如 Redis/微服务]
-/CareerOS generate course [项目]  # 把选定项目拆成边做边学的课程
-/CareerOS review resume [简历]    # 评估简历，找出还能完善的地方
-/CareerOS mock interview [岗位]   # 一次一题的面试演练，带反馈
-/CareerOS mock test [岗位]        # 限时笔试练习，带评分
-/CareerOS company [公司] [岗位]   # 查证某公司的面试流程、笔试题方向与薪资
-/CareerOS simulate [公司] [岗位]  # 走一遍"投简历→初筛→笔试→面试"完整流程
+/CareerOS generate course [项目]   # 把选定项目拆成边做边学的课程
+/CareerOS review resume [简历]     # 评估简历，找出还能完善的地方
+/CareerOS mock interview [岗位]    # 一次一题的面试演练，带反馈
+/CareerOS mock test [岗位]         # 限时笔试练习，带评分
+/CareerOS company [公司] [岗位]    # 查证面试流程、笔试方向与薪资
+/CareerOS simulate [公司] [岗位]   # 走一遍"投简历→初筛→笔试→面试"完整流程
 ```
 
-完整流程示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)。有问题？看 [FAQ](FAQ.md)。
+完整对话示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)，常见问题见 [FAQ.md](FAQ.md)。
 
-> **联网说明**：`company`（公司情报）和 `simulate`（流程模拟）在查证公开信息时依赖网络搜索。离线环境下它们会明确标注"未查到公开信息"或改用岗位通用要求，绝不编造数据。
+## Agent 层：现在有什么
 
-## 为什么选择 CareerOS？
+只有设计文档，没有代码——这是有意的，先把边界和取舍定清楚再动手。
 
-- **行动导向** —— 从"输入模式"切换到"输出模式"。
-- **语境感知** —— 理解你的经验水平，不推荐过难或过简单的任务。
-- **结果驱动** —— 一切为了那个能写在简历上的作品。
+| 文档 | 内容 |
+|---|---|
+| [docs/agent/DESIGN.md](docs/agent/DESIGN.md) | 设计方案：能力清单、四层架构与数据流、技术栈选型、演进路线图，以及自己动手实现要先补到的 Python 门槛 |
+
+五阶段路线图：
+
+| 阶段 | 目标 | 状态 |
+|---|---|---|
+| 一 · 地基 | 运行时 + 意图理解 + 统一契约 + 档案持久化 | 未开始 |
+| 二 · 工具平移 | 定位 / 差距 / 项目 / 课程 平移为 tools，跑通最小闭环 | 未开始 |
+| 三 · 求职闭环 | 简历评估 / 模拟笔试面试 / 作品集 | 未开始 |
+| 四 · 联网与主动 | 公司情报 / 全流程模拟 / 跨会话记忆 / 主动复盘 | 未开始 |
+| 五 · 可视化 | 能力雷达、学习进度、路线图 | 未开始 |
+
+## 目录结构
+
+```
+career-os-agent/
+├── SKILL.md / SKILL.en.md        # Skill 核心指令（中 / 英）
+├── README.md / README.en.md      # 本文档（中 / 英）
+├── FAQ.md / FAQ.en.md            # 常见问题
+├── CONTRIBUTING.md / *.en.md     # 贡献指南
+├── CODE_OF_CONDUCT.md / *.en.md  # 行为准则
+├── CHANGELOG.md / CHANGELOG.en.md
+├── references/methodology.md     # 所有评分口径与数据纪律（雷达、校准、简历六维…）
+├── templates/                    # 领域模板：项目与课程的起点骨架
+├── examples/                     # 完整对话示例 + 课程样例
+├── assets/                       # 仓库横幅与社交预览图
+├── docs/agent/DESIGN.md          # 设计方案：能力 + 架构 + Python 先修
+├── preview/                      # 技术栈看板（单页 HTML，浏览器直接打开）
+└── .github/                      # CI 校验脚本与 issue 模板
+```
+
+文档语言规则：主文档中文，英文版同目录加 `.en.md` 后缀，一个文件不混用两种语言。
+
+## 设计预览
+
+`preview/career-os-agent-技术栈看板.html` 回答一个问题：把一个 skill 做成 Agent，技术要学到哪一步。按「了解 / 熟练 / 精通」三级锚定，逐项给概念清单和可验证的实操验收。
+
+![技术栈看板](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
+
+## 和原 career-os-skill 仓库的关系
+
+这个仓库承接原 `career-os-skill` 的全部内容：skill 层在这里继续维护，Agent 层从它的九大模块长出来。旧仓库逐步停用。
 
 ## 许可证
 

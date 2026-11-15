@@ -1,4 +1,3 @@
-import os
 import re
 import sys
 from pathlib import Path
@@ -18,7 +17,7 @@ def _read_text(path):
 
 def check_skill_frontmatter():
     """SKILL.md must start with valid front matter (name + description)."""
-    for skill in ["SKILL.md", "SKILL.zh-CN.md"]:
+    for skill in ["SKILL.md", "SKILL.en.md"]:
         path = ROOT / skill
         if not path.exists():
             errors.append(f"[frontmatter] missing file: {skill}")
@@ -37,8 +36,13 @@ def check_skill_frontmatter():
 
 
 def check_relative_links():
-    """Every relative link in README*/FAQ must point to an existing file."""
-    for md in [ROOT / "README.md", ROOT / "README.zh-CN.md", ROOT / "FAQ.md"]:
+    """Every relative link in README*/FAQ* must point to an existing file."""
+    for md in [
+        ROOT / "README.md",
+        ROOT / "README.en.md",
+        ROOT / "FAQ.md",
+        ROOT / "FAQ.en.md",
+    ]:
         if not md.exists():
             continue
         text = _read_text(md)
@@ -58,8 +62,8 @@ def check_changelog():
         errors.append("[changelog] CHANGELOG.md missing")
         return
     text = _read_text(path)
-    if "## [Unreleased]" not in text:
-        errors.append("[changelog] CHANGELOG.md must contain an [Unreleased] section")
+    if not any(m in text for m in ("## [Unreleased]", "## [未发布]")):
+        errors.append("[changelog] CHANGELOG.md must contain an [Unreleased] / [未发布] section")
 
 
 def check_version_consistency():
@@ -85,7 +89,11 @@ def check_version_consistency():
         return
     changelog_version = m.group(1)
 
-    versions = {"SKILL": skill_version, "README badge": badge_version, "CHANGELOG": changelog_version}
+    versions = {
+        "SKILL": skill_version,
+        "README badge": badge_version,
+        "CHANGELOG": changelog_version,
+    }
     if len(set(versions.values())) != 1:
         errors.append(f"[version] version mismatch: {versions}")
 
@@ -109,10 +117,28 @@ def check_examples_commands():
                 errors.append(f"[examples] {md.relative_to(ROOT)}: unknown command /CareerOS {cmd}")
 
 
+def check_doc_pairs():
+    """Main docs are Chinese; each must ship an English twin (`*.en.md`)."""
+    pairs = [
+        ("SKILL.md", "SKILL.en.md"),
+        ("README.md", "README.en.md"),
+        ("FAQ.md", "FAQ.en.md"),
+        ("CONTRIBUTING.md", "CONTRIBUTING.en.md"),
+        ("CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT.en.md"),
+        ("CHANGELOG.md", "CHANGELOG.en.md"),
+    ]
+    for main, en in pairs:
+        if not (ROOT / main).exists():
+            errors.append(f"[docs] missing Chinese main doc: {main}")
+        if not (ROOT / en).exists():
+            errors.append(f"[docs] missing English doc: {en}")
+
+
 def main():
     check_skill_frontmatter()
     check_relative_links()
     check_changelog()
+    check_doc_pairs()
     check_version_consistency()
     check_examples_commands()
     if errors:

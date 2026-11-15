@@ -2,148 +2,142 @@
 
 ![CareerOS banner](assets/careeros-banner.jpg)
 
-> An operating system for your career growth.
+> An operating system for your career growth. The skill is the recipe; the agent is the cook who can light the stove.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.7.1-blue.svg)](CHANGELOG.md)
-[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-skill)](https://github.com/Duckweed-yhb/career-os-skill)
+[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-agent)](https://github.com/Duckweed-yhb/career-os-agent)
 
-**[English](README.en.md) | [简体中文](README.md)**
+**English | [简体中文](README.md)**
 
 ---
 
-## Overview
+## What this is
 
-**CareerOS** is a skill for AI assistants that turns career growth into an executable path. Give it your background and goals, and it works out a route: lock in a target role, compare that role's requirements against your current skills, then close the gap by building a real project — the project gets split into Markdown lessons you work through one by one, and you end up with a portfolio you can actually show.
+CareerOS gives you a route, not a course list: lock a target role → find the skill gaps against that role → close them with one real project → split the project into Markdown lessons you build through → end up with something you can put on a resume.
 
-The whole flow adapts to your domain, experience level, and how much time you can spend each week — it won't hand you something far above or below where you are.
+The repository holds two layers:
 
-## What Problem It Solves
+| Layer | What it is | Status |
+|---|---|---|
+| **Skill layer** | A single `SKILL.md` instruction with nine modules, loaded by your AI assistant | Available (v0.7.1) |
+| **Agent layer** | The nine modules turned into tools, plus a runtime, long-term memory, proactive follow-up and a dashboard | Design stage — documents only |
 
-**The usual pain**：you finish tutorials but don't know where to go; your demos never make it onto a resume; you discover your gaps only when it's time to apply.
+How they divide the work: the skill settles the methodology, module boundaries and data discipline; the agent grows orchestration on top of that foundation, moving from "you type a command, it answers once" to "it knows what the next step is".
 
-CareerOS answers three problems:
+## Skill layer: install and use
 
-- **Direction** — locks your interests and background into 1-3 executable target roles, with a capability radar for each
-- **Fragmented learning** — turns gaps into one project-driven path; the project becomes lessons you work through by building
-- **Unfit to apply** — resume review, written-test and interview drills, company intel, and a full pipeline simulation until you're ready for the real thing
-
-**Who it's for**: career switchers starting from zero, students, and developers looking to change jobs or level up.
-**Who it's not for**: anyone who only wants to be told "what to learn" and won't build anything — it delivers an output-driven path, not a course list.
-
-## Installation
-
-1. **Clone the repository** (or download and extract it):
+1. Clone the repository (or download and extract it):
 
    ```bash
-   git clone https://github.com/Duckweed-yhb/career-os-skill.git
+   git clone https://github.com/Duckweed-yhb/career-os-agent.git
    ```
 
-2. **Locate your AI assistant's skills directory:**
+2. Locate your AI assistant's skills directory:
 
    | Assistant | Skills directory |
    |---|---|
    | Claude Code | `~/.claude/skills/` |
    | Doubao Agent | `<workspace>/.skills/` |
-   | Other assistants | See your assistant's documentation for the skills directory |
+   | Other assistants | See your assistant's documentation |
 
-3. **Put the Skill inside a `career-os/` folder** in that directory — copy the whole repo, not just SKILL.md, because the course templates and examples live alongside it:
+3. Put the whole repository inside a `career-os/` folder there — `templates/` and `examples/` are referenced by the skill automatically, so don't copy `SKILL.md` alone:
 
    ```bash
-   # example (Claude Code): clone the whole repo into your skills directory
-   git clone https://github.com/Duckweed-yhb/career-os-skill.git ~/.claude/skills/career-os
+   # example (Claude Code)
+   git clone https://github.com/Duckweed-yhb/career-os-agent.git ~/.claude/skills/career-os
    ```
 
-   The repo ships with both `SKILL.md` (English) and `SKILL.zh-CN.md` (Simplified Chinese) — your assistant loads whichever version fits your language; no manual file picking needed.
+   The assistant loads only `SKILL.md`, which is the Chinese core instruction. For English instructions, rename `SKILL.en.md` over it.
 
-4. **Restart your assistant session** and verify:
+4. Restart your assistant session and verify:
 
    ```text
    /CareerOS init
    ```
 
-   If you see the init welcome message, you are all set.
+   If you see the init welcome message, you are set.
 
-## Repository Structure
+## The nine modules
 
-```
-career-os-skill/
-├── SKILL.md            # Skill definition (English) — the core instructions your assistant loads
-├── SKILL.zh-CN.md      # Skill definition (Simplified Chinese)
-├── references/         # Recommendation rules & methodology (scoring, data discipline)
-├── templates/          # Domain templates: starting skeletons for projects/courses
-├── examples/           # Real conversation walkthroughs + sample courses (look here first)
-├── assets/             # Repository banner and social preview
-└── README.md           # Usage docs (this file)
-```
+| # | Module | In one line |
+|---|---|---|
+| 1 | Target identification | Locks interests and background into 1–3 target roles, with a six-axis capability radar |
+| 2 | Skill gaps | Role requirements against your self-assessment, ranked by impact × urgency |
+| 3 | Project generator | Industrial-level projects aimed at the gaps; no toy projects |
+| 4 | Course builder | The project split into learning-by-doing Markdown lessons, each with checkable acceptance criteria |
+| 5 | Portfolio | Project → README guide + resume bullets + interview talking points |
+| 6 | Resume review | Six-dimension scoring, issues tiered must-fix / should-fix / nice-to-have, with before → after rewrites |
+| 7 | Mock test & interview | Timed questions scored one by one; interviews run one question at a time with feedback after each answer |
+| 8 | Company intelligence | Interview flow, written-test style and pay, each fact carrying a source and a date; blanks stay blank |
+| 9 | Full pipeline simulation | Apply → screening → written test → interview → outcome, with hard gates between stages |
 
-Day to day you only need the SKILL files; `templates/` and `examples/` are referenced automatically by the Skill — no manual maintenance.
+Two modules need the network: `company` (company intelligence) and `simulate` (pipeline simulation). Offline they explicitly report "未查到公开信息" or fall back to generic role requirements — they never fabricate data.
 
-## Core Modules
-
-Just like an operating system manages hardware resources, CareerOS manages your career resources:
-
-### 1. Target Identification
-- Parse your interests and background to lock in a high-potential target role.
-- Generate a capability radar for that role.
-
-### 2. Skill Gap Analysis
-- Compare your current resume/skills against the target role requirements.
-- Identify the critical missing links.
-
-### 3. Project Generator
-- **No toy projects.** Generate real-world project ideas with industrial-level complexity.
-- Includes tech stack recommendations, difficulty predictions, and acceptance criteria.
-
-### 4. Course Builder
-- Turn any chosen project into a step-by-step **learning-by-doing** course.
-- Generates the tech-stack learning route and the project development route, then splits the project into Markdown lessons — each with hands-on tasks and acceptance criteria.
-
-### 5. Portfolio Builder
-- Turn your projects into interview highlights.
-- Resume bullet optimization and GitHub README writing guidance included.
-
-### 6. Resume Review
-- Scores your resume across 6 dimensions: scannability, results over duties, target-role fit, project & tech description, differentiation, and polish.
-- Lists issues by priority (must-fix / should-fix / nice-to-have), with rewrite examples for the top issues.
-
-### 7. Mock Interview & Written Test
-- **Mock interview**: one question at a time, feedback after each answer, a summary of strengths and gaps at the end.
-- **Mock written test**: timed questions for the target role, scored with concrete improvement notes after you answer.
-
-### 8. Company Intelligence
-- Research a target company's interview flow, written-test style, and compensation — every fact carries a source and a date.
-- Fields with no public data are left blank; never fabricated.
-
-### 9. Full Pipeline Simulation
-- Run the whole flow from submitting a resume: screening → written test → interview → outcome, with a pass required at each stage.
-- The Skill plays the hiring side throughout and separates "simulated verdict" from "real advice".
-
-## How to Use
-
-Load the `CareerOS` Skill in your AI assistant, then try:
+## Common commands
 
 ```text
 /CareerOS init
 /CareerOS analyze [your resume or current skill list]
 /CareerOS generate project --focus=[specific tech, e.g. Redis/microservices]
-/CareerOS generate course [project]  # turn a chosen project into learning-by-doing lessons
-/CareerOS review resume [resume]     # evaluate your resume and find what to improve
-/CareerOS mock interview [role]      # one-question-at-a-time interview practice with feedback
-/CareerOS mock test [role]           # timed written-test practice with scoring
-/CareerOS company [company] [role]   # research a company's interview flow, test style, and salary
-/CareerOS simulate [company] [role]  # run the full pipeline: apply → screening → test → interview
+/CareerOS generate course [project]   # turn a chosen project into learning-by-doing lessons
+/CareerOS review resume [resume]      # review your resume and find what to improve
+/CareerOS mock interview [role]       # interview drill, one question at a time, with feedback
+/CareerOS mock test [role]            # timed written-test practice with scoring
+/CareerOS company [company] [role]    # research interview flow, test style and pay
+/CareerOS simulate [company] [role]   # run the full pipeline: apply → screening → test → interview
 ```
 
-For a complete walkthrough, see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md). Have questions? See the [FAQ](FAQ.md).
+For a full walkthrough see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md); for questions see the [FAQ](FAQ.en.md).
 
-> **Network note**: `company` (Company Intelligence) and `simulate` (Pipeline Simulation) rely on web search to verify public information. Offline, they explicitly mark fields as "未查到公开信息" or fall back to generic role requirements — they never fabricate data.
+## Agent layer: what exists today
 
-## Why CareerOS?
+Design documents only, no code — deliberately, so the boundaries and trade-offs are settled before any implementation.
 
-- **Action-Oriented** — Switch from input mode to output mode.
-- **Context-Aware** — Understands your level; never recommends something too easy or too hard.
-- **Result-Driven** — Everything leads to one thing: a project you can put on your resume.
+| Document | Content |
+|---|---|
+| [docs/agent/DESIGN.md](docs/agent/DESIGN.md) | Design doc: capability list, the four layers and one typical data flow, stack options, roadmap, and the Python prerequisites for building it yourself |
+
+Five-stage roadmap:
+
+| Stage | Goal | Status |
+|---|---|---|
+| 1 · Foundation | Runtime + intent parsing + unified contract + profile persistence | Not started |
+| 2 · Port the tools | Positioning / gaps / projects / courses ported to tools, minimal loop working | Not started |
+| 3 · Job-hunt loop | Resume review / mock test & interview / portfolio | Not started |
+| 4 · Network & proactive | Company intel / pipeline simulation / cross-session memory / review prompts | Not started |
+| 5 · Dashboard | Capability radar, learning progress, roadmap | Not started |
+
+## Repository structure
+
+```
+career-os-agent/
+├── SKILL.md / SKILL.en.md        # Skill core instructions (Chinese / English)
+├── README.md / README.en.md      # This document (Chinese / English)
+├── FAQ.md / FAQ.en.md            # FAQ
+├── CONTRIBUTING.md / *.en.md     # Contribution guide
+├── CODE_OF_CONDUCT.md / *.en.md  # Code of conduct
+├── CHANGELOG.md / CHANGELOG.en.md
+├── references/methodology.md     # Every scoring rule and data discipline
+├── templates/                    # Domain templates: starting skeletons for projects and courses
+├── examples/                     # Full conversation walkthrough + sample courses
+├── assets/                       # Banner and social preview
+├── docs/agent/DESIGN.md          # Design doc: capabilities, architecture, Python prerequisites
+├── preview/                      # Tech-stack board (single HTML page)
+└── .github/                      # CI verification script and issue templates
+```
+
+Docs are Chinese-first: the main file is Chinese, with an English twin using an `.en.md` suffix. Never mix two languages in one file.
+
+## Design preview
+
+`preview/career-os-agent-技术栈看板.html` answers one question: to turn a skill into an agent, how far does the tech have to go? Each item is anchored at Understand / Proficient / Mastery, with a concept list and one hands-on acceptance check.
+
+![Tech stack board](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
+
+## Relation to the old career-os-skill repo
+
+This repository takes over everything from `career-os-skill`: the skill layer is maintained here, and the agent layer grows out of its nine modules. The old repository is being retired.
 
 ## License
 

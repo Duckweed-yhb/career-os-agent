@@ -1,48 +1,50 @@
-# Contributing to CareerOS
+# 贡献指南
 
-First off, thanks for taking the time to contribute! 🎉
+英文版见 [CONTRIBUTING.en.md](CONTRIBUTING.en.md)。
 
-## What you can contribute
+先说一句：谢谢你愿意花时间参与。
 
-- **Skill prompt improvements** — make the `/CareerOS` commands smarter, add new sub-commands, or refine the decision logic.
-- **Project recommendation rules** — new templates for target roles, tech stacks, difficulty calibration, or acceptance criteria.
-- **Examples** — real conversation walkthroughs under `examples/`. A good example shows the full flow from `init` to a project recommendation.
-- **Documentation** — fix typos, clarify wording, or improve the README.
-- **Translations** — maintain or add localized docs (currently English and Simplified Chinese).
+## 可以贡献什么
 
-## Getting started
+- **技能提示词改进** —— 让 `/CareerOS` 的指令更聪明，增加新子命令，或打磨判断逻辑。
+- **项目推荐规则** —— 为目标岗位、技术栈、难度校准或验收标准补充新模板。
+- **示例** —— `examples/` 下的真实对话走查。好的示例要能把从 `init` 到项目推荐的完整流程走一遍。
+- **文档** —— 修错别字、把表述讲清楚、改进 README。
+- **翻译** —— 维护或补充多语言文档（目前是中文和英文双版）。
 
-1. **Fork** the repository and clone it locally.
-2. **Create a branch** with a descriptive name:
+## 开始之前
+
+1. **Fork** 仓库并克隆到本地。
+2. **建分支**，名字写清楚要干什么：
 
    ```bash
    git checkout -b feat/your-feature
    ```
 
-3. **Make your changes.** Keep them focused on one topic per pull request.
-4. **Commit** with a clear message:
+3. **改代码 / 文档**。一个 pull request 只做一件事。
+4. **提交**，commit message 写清楚：
 
    ```bash
-   git commit -m "feat: add X"        # new capability
-   git commit -m "fix: correct Y"     # bug fix
-   git commit -m "docs: update Z"     # documentation only
+   git commit -m "feat: add X"        # 新能力
+   git commit -m "fix: correct Y"     # 修 bug
+   git commit -m "docs: update Z"     # 只改文档
    ```
 
-5. **Push** and open a **Pull Request** against `main`.
+5. **推送**并向 `main` 开 **Pull Request**。
 
-## Conventions
+## 约定
 
-- **One language per file.** English and Simplified Chinese content must not be mixed in the same file. Use `README.md` (Simplified Chinese) / `README.en.md` (English) as the reference pattern.
-- **Keep examples reproducible.** Example conversations must match the current command set documented in the README.
-- **Update the CHANGELOG.** Add an entry under `[Unreleased]` → `Added` / `Changed` / `Fixed` for every user-visible change.
+- **一个文件一种语言。** 中英内容不要混在同一个文件里。参照 `README.md`（中文）/ `README.en.md`（英文）的配对方式：主文档中文，英文版加 `.en.md` 后缀。
+- **示例要可复现。** 示例对话必须和 README 里当前记录的指令集一致。
+- **更新 CHANGELOG。** 凡是用户可见的改动，都在 `[Unreleased]` 下的 `新增` / `变更` / `修复` 里补一条。
 
-## Pull request checklist
+## Pull Request 检查清单
 
-- [ ] The change addresses a single clear purpose.
-- [ ] Language is consistent within each touched file.
-- [ ] CHANGELOG.md is updated if the change is user-visible.
-- [ ] The PR description explains *what* changed and *why*.
+- [ ] 这次改动只解决一个明确的问题。
+- [ ] 每个被改动的文件内部语言一致。
+- [ ] 用户可见的改动已更新 `CHANGELOG.md`。
+- [ ] PR 描述说明了*改了什么*和*为什么改*。
 
-## Getting help
+## 需要帮助
 
-If you have questions or an idea you are unsure about, open an issue first — discussion before code saves everyone time.
+有疑问或想法还没把握，先开 issue —— 先讨论再动手，大家都省时间。

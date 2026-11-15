@@ -1,22 +1,22 @@
 ---
-name: Feature request
-about: Suggest an idea or improvement for CareerOS
+name: 功能建议
+about: 为 CareerOS 提一个想法或改进建议
 title: "[Feature] "
 labels: enhancement
 assignees: ''
 ---
 
-**Is your feature request related to a problem?**
-A clear and concise description of what the problem is. Ex. "When I run `/CareerOS analyze`, I wish [...]"
+**这个需求与某个问题有关吗？**
+清楚、简洁地说明问题是什么。例如"我跑 `/CareerOS analyze` 时，希望……"
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**你希望的方案**
+清楚、简洁地说明你希望发生什么。
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+**你考虑过的其他方案**
+清楚、简洁地说明你考虑过的替代方案或功能。
 
-**Acceptance criteria (optional)**
-What should be true for this feature to be considered done?
+**验收标准（可选）**
+满足什么条件才算这个功能做完了？
 
-**Additional context**
-Add any other context, examples, or screenshots about the feature request here.
+**补充信息**
+附上其他背景、示例或截图。
