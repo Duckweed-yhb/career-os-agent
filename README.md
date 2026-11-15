@@ -135,9 +135,9 @@ career-os-agent/
 
 ![技术栈看板](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
-## 和原 career-os-skill 仓库的关系
+## 仓库沿革
 
-这个仓库承接原 `career-os-skill` 的全部内容：skill 层在这里继续维护，Agent 层从它的九大模块长出来。旧仓库逐步停用。
+本仓库原名 `career-os-skill`，现更名为 `career-os-agent`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。
 
 ## 许可证
 

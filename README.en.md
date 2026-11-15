@@ -135,9 +135,9 @@ Docs are Chinese-first: the main file is Chinese, with an English twin using an 
 
 ![Tech stack board](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
-## Relation to the old career-os-skill repo
+## Repo history
 
-This repository takes over everything from `career-os-skill`: the skill layer is maintained here, and the agent layer grows out of its nine modules. The old repository is being retired.
+This repo used to be called `career-os-skill`; it is now `career-os-agent`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.
 
 ## License
 

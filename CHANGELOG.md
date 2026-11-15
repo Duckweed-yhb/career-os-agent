@@ -10,7 +10,7 @@
 
 ### 变更
 
-- 仓库更名为 `career-os-agent`：原 `career-os-skill` 的全部内容迁入本仓库，skill 层留在根目录，Agent 规划文档收进 `docs/agent/`，技术栈看板预览放进 `preview/`
+- 仓库由 `career-os-skill` 更名为 `career-os-agent`（旧地址自动重定向）：skill 层留在根目录，Agent 规划文档收进 `docs/agent/`，技术栈看板预览放进 `preview/`
 - 新增 `docs/agent/DESIGN.md`：能力清单、架构设计、Python 先修合并为一份设计方案
 - `README.md` / `README.en.md` 重写为双层门面：上层写 skill 怎么装怎么用，下层写 Agent 要做什么
 - 移除 `SKILL.zh-CN.md`（内容已并入中文主文档 `SKILL.md`）
