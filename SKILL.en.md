@@ -255,6 +255,31 @@ The point is being real and being deep — every statement on the resume should 
 - 2-3 resume bullet points per project
 - 3-5 interview talking points
 
+## Resume Generation (简历生成)
+
+Turn the profile, projects and course sign-offs into a resume that can actually be submitted, instead of making the user stare at a blank template. Review (next section) finds the flaws; this module ships a first version.
+
+**When it runs:**
+- "Write my resume", "build a resume from my projects", "tailor it for this role"
+- Command: `/CareerOS build resume [role]`
+
+**Input:**
+1. Target role — from the profile; ask once if missing
+2. Material — profile (skill matrix, finished projects, course sign-offs), the user's old resume if pasted, resume bullets produced by the portfolio module
+3. Language — Chinese, English, or both; both editions share the same facts
+
+**What it does:**
+
+1. **Draft** — take facts from the material only; pick the 3–5 most relevant bullets for the target role, each leading with a result and a number
+2. **Structure** — emit JSON (basics / summary / experience / projects / education / skills / languages) matching the data shape in `tools/resume-builder/index.html`, ready to paste into the editor
+3. **Tailor** — one version per role from the same facts; never invent experience to raise the match
+4. **Deliver** — the JSON plus a Markdown draft, and point at the local editor for layout and PDF export, then `review resume` to score and iterate
+
+**Rules:**
+- Real material only: mark gaps "to fill", never invent companies, dates or numbers
+- One page first: 1–2 pages for Chinese, one page for English; cut secondary bullets rather than shrinking type
+- ATS-safe: single column, standard section headings, one date format, no text baked into images, no nested tables
+- Same facts across editions: wording may differ, numbers and dates must not
 ## Resume Review (简历评估)
 
 Help the user find what to improve in their resume. It complements Phase 2 (the resume is a key input to gap analysis) and Phase 5 (the portfolio is built from projects that should end up on the resume).
@@ -443,6 +468,7 @@ Formal definition of the CareerOS command surface. Every command also responds t
 | `/CareerOS generate project --focus=X` | "给我项目点子", "推荐项目", "想练 X" | Optional `--focus=<tech>` | 2–3 proposals with specs and difficulty band |
 | `/CareerOS generate course [project]` | "拆成课程", "边做边学", "给我学习路线", "开始做这个项目" | Optional: project name/ID | `course/` folder: overview + one Markdown file per lesson |
 | `/CareerOS build portfolio` | "帮我写项目 README", "简历怎么写", "面试怎么讲" | Optional: project ID | README guide, resume bullets, interview talking points |
+| `/CareerOS build resume [role]` | "write my resume", "tailor it for this role" | Optional: role; optional: Chinese / English / both | Structured resume JSON + Markdown draft, ready for the local editor |
 | `/CareerOS review resume [resume]` | "帮我看看简历", "简历哪里能完善", "评估我的简历" | Optional: resume text or file | Score, prioritized issues, rewrite examples |
 | `/CareerOS mock interview [role]` | "帮我模拟面试", "面试演练" | Optional: role / round type | One-question-at-a-time interview with feedback, end-of-session summary |
 | `/CareerOS mock test [role]` | "帮我出笔试题", "模拟笔试" | Optional: role / question types | Question set, scoring rubric, answer feedback |

@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareerOS · 简历编辑器 / Resume Builder</title>
+<style>
+:root{
+  --bg:#0D1714; --bg2:#11201B; --card:#142A23; --card2:#1A362D;
+  --line:rgba(88,184,154,.22); --line2:rgba(255,255,255,.08);
+  --ink:#E9F1EC; --ink2:#A6B8B0; --ink3:#77887F;
+  --gold:#E8B34B; --jade:#58B89A; --jade2:#2E8B73; --warn:#D9A03F;
+  --r:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:300;font-size:14px;line-height:1.6}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+
+/* ---------- 顶栏 ---------- */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 16px;background:rgba(13,23,20,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.brand{font-family:"Noto Serif SC",Georgia,"Songti SC",serif;font-size:15px;letter-spacing:.02em;margin-right:6px}
+.brand em{color:var(--gold);font-style:normal}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden}
+.seg button{padding:5px 13px;background:transparent;border:0;color:var(--ink2);font-size:13px}
+.seg button.on{background:var(--jade2);color:#fff}
+.btn{padding:5px 11px;border:1px solid var(--line2);border-radius:8px;background:var(--card);color:var(--ink2);font-size:13px}
+.btn:hover{border-color:var(--line);color:var(--ink)}
+.btn.primary{background:var(--jade2);border-color:var(--jade2);color:#fff}
+.spacer{flex:1}
+.zoom{display:flex;align-items:center;gap:6px;color:var(--ink3);font-size:12px}
+.zoom input{width:90px;accent-color:var(--jade)}
+
+/* ---------- 主区 ---------- */
+.main{display:flex;align-items:flex-start;gap:0;min-height:calc(100vh - 49px)}
+.form-panel{width:392px;flex:0 0 392px;padding:14px 14px 60px;border-right:1px solid var(--line);height:calc(100vh - 49px);overflow:auto}
+
+details{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);margin-bottom:10px}
+details[open]{border-color:var(--line)}
+summary{padding:10px 13px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink)}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:5px;height:5px;border-right:1.5px solid var(--jade);border-bottom:1.5px solid var(--jade);transform:rotate(-45deg);transition:.15s;margin-right:2px}
+details[open] summary::before{transform:rotate(45deg)}
+summary .cnt{margin-left:auto;color:var(--ink3);font-size:11px}
+.pad{padding:4px 13px 13px}
+
+.row{display:block;margin-bottom:9px}
+.row span{display:block;font-size:11px;letter-spacing:.04em;color:var(--ink3);margin-bottom:3px}
+.row input,.row textarea{width:100%;padding:6px 9px;background:var(--bg2);border:1px solid var(--line2);border-radius:7px;color:var(--ink);font-size:13px;outline:none}
+.row input:focus,.row textarea:focus{border-color:var(--jade)}
+.row textarea{resize:vertical;min-height:64px;line-height:1.55}
+.hint{font-size:11px;color:var(--ink3);margin:-3px 0 8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+
+.item-card{border:1px solid var(--line2);border-radius:10px;padding:10px;margin-bottom:9px;background:var(--bg2)}
+.item-card .top{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.item-card .top b{font-size:12px;color:var(--ink2);font-weight:500}
+.item-card .top .del{margin-left:auto;border:1px solid var(--line2);background:transparent;color:var(--ink3);border-radius:6px;padding:1px 7px;font-size:12px}
+.item-card .top .del:hover{color:#e08a72;border-color:#e08a72}
+.add{width:100%;padding:6px;border:1px dashed var(--line2);border-radius:8px;background:transparent;color:var(--ink3);font-size:12px}
+.add:hover{border-color:var(--jade);color:var(--jade)}
+
+.range-row{display:grid;grid-template-columns:76px 1fr 40px;align-items:center;gap:8px;margin-bottom:8px;font-size:11px;color:var(--ink3)}
+.range-row input[type=range]{accent-color:var(--jade)}
+.range-row .v{text-align:right;color:var(--ink2)}
+.chk{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2);margin:6px 0}
+.chk input{accent-color:var(--jade)}
+
+/* ---------- 预览 ---------- */
+.preview{flex:1;padding:18px 22px 70px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.ats{width:100%;max-width:900px;background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:10px 14px}
+.ats-head{display:flex;align-items:center;gap:10px;cursor:pointer}
+.ats-head .label{font-size:12px;letter-spacing:.06em;color:var(--ink3);text-transform:uppercase}
+.ats-score{font-family:"Noto Serif SC",Georgia,serif;font-size:20px;color:var(--gold)}
+.ats-score small{font-size:11px;color:var(--ink3);margin-left:2px}
+.ats-bar{flex:1;height:5px;background:var(--bg2);border-radius:99px;overflow:hidden}
+.ats-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--jade2),var(--jade));width:0;transition:.3s}
+.ats-list{margin-top:9px;display:none;grid-template-columns:1fr 1fr;gap:4px 18px}
+.ats.open .ats-list{display:grid}
+.ats-list div{font-size:12px;display:flex;gap:7px;align-items:flex-start;line-height:1.45}
+.ats-list .ok{color:var(--jade)}
+.ats-list .no{color:var(--warn)}
+.ats-list span.t{color:var(--ink2)}
+
+.page-wrap{width:100%;display:flex;justify-content:center}
+.page{width:210mm;min-height:297mm;background:#fff;color:#1a1a1a;
+  padding:calc(var(--pm) * 1mm);
+  font-family:var(--page-font);font-size:calc(10.5pt * var(--fs));
+  line-height:var(--dens);
+  box-shadow:0 18px 50px rgba(0,0,0,.45);zoom:var(--zoom);text-align:left}
+.page.zh{--page-font:"Noto Serif SC",Georgia,"Songti SC","SimSun",serif}
+.page.en{--page-font:"Noto Serif SC",Georgia,"Times New Roman",serif}
+
+.page h1{font-size:2.05em;line-height:1.15;letter-spacing:.01em;font-weight:600;color:#111}
+.rh{display:flex;align-items:flex-start;gap:16px;padding-bottom:10px;border-bottom:2px solid var(--accent)}
+.rh-l{flex:1}
+.rh-sub{margin-top:3px;font-size:1.02em;color:#444}
+.rh-contact{margin-top:6px;font-size:.86em;color:#555;line-height:1.5}
+.rh-photo{width:24mm;height:31mm;object-fit:cover;border-radius:2px;filter:grayscale(8%)}
+
+.sec{margin-top:15px}
+.sec h2{font-size:.95em;letter-spacing:.14em;text-transform:uppercase;color:#222;font-weight:600;
+  padding-bottom:3px;border-bottom:1px solid rgba(0,0,0,.16);margin-bottom:9px}
+.page.zh .sec h2{letter-spacing:.2em}
+.item{margin-bottom:11px;break-inside:avoid}
+.it-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.it-head b{font-size:1em;font-weight:600;color:#111}
+.it-date{font-size:.88em;color:#666;white-space:nowrap}
+.it-org{font-size:.9em;color:#555;margin-top:1px}
+.it-tech{font-size:.86em;color:#666;margin-top:1px}
+.page ul{margin:5px 0 0 1.05em}
+.page ul li{font-size:.94em;color:#222;margin-bottom:2px}
+.page p{font-size:.94em;color:#222}
+
+/* ---------- 打印 ---------- */
+@media print{
+  .bar,.form-panel,.ats,.tip{display:none !important}
+  body{background:#fff}
+  .main{display:block}
+  .preview{padding:0;display:block}
+  .page-wrap{display:block}
+  .page{zoom:1 !important;box-shadow:none;margin:0;width:210mm;min-height:auto}
+  @page{size:A4;margin:0}
+}
+.tip{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;background:var(--card2);
+  border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;color:var(--ink2);z-index:30;display:none}
+.tip.show{display:block}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="brand">CareerOS <em>· 简历编辑器</em></div>
+  <div class="seg" id="langSeg">
+    <button data-lang="zh" class="on">中文版</button>
+    <button data-lang="en">English</button>
+  </div>
+  <button class="btn" id="btnDemo">载入示例</button>
+  <button class="btn" id="btnClear">清空</button>
+  <button class="btn" id="btnImport">导入 JSON</button>
+  <button class="btn" id="btnExport">导出 JSON</button>
+  <button class="btn" id="btnMd">导出 Markdown</button>
+  <button class="btn primary" id="btnPrint">打印 / 存为 PDF</button>
+  <div class="spacer"></div>
+  <div class="zoom">缩放 <input type="range" id="zoom" min="0.55" max="1.15" step="0.05" value="0.85"></div>
+  <input type="file" id="fileJson" accept="application/json" hidden>
+  <input type="file" id="filePhoto" accept="image/*" hidden>
+</header>
+
+<div class="main">
+  <aside class="form-panel" id="form"></aside>
+  <section class="preview">
+    <div class="ats" id="ats">
+      <div class="ats-head" id="atsHead">
+        <div class="label">ATS 自查</div>
+        <div class="ats-score" id="atsScore">0<small>/100</small></div>
+        <div class="ats-bar"><i id="atsBar"></i></div>
+        <div class="label" style="opacity:.7">点开看明细</div>
+      </div>
+      <div class="ats-list" id="atsList"></div>
+    </div>
+    <div class="page-wrap"><article class="page" id="page"></article></div>
+  </section>
+  <div class="tip" id="tip"></div>
+</div>
+
+<script>
+const KEY = 'careeros-resume-v1';
+
+/* ---------- 数据 ---------- */
+const blankDoc = () => ({
+  basics: { name:'', headline:'', email:'', phone:'', location:'', links:'' },
+  summary: '',
+  experience: [],
+  projects: [],
+  education: [],
+  skills: '',
+  languages: ''
+});
+
+const blank = () => ({
+  version: 1,
+  active: 'zh',
+  settings: { accent:'#2E8B73', fs:1, dens:1.45, pm:16, showPhoto:true, photo:'', zoom:0.85 },
+  zh: blankDoc(),
+  en: blankDoc()
+});
+
+const demo = () => ({
+  version: 1, active: 'zh',
+  settings: { accent:'#2E8B73', fs:1, dens:1.45, pm:16, showPhoto:false, photo:'', zoom:0.85 },
+  zh: {
+    basics:{ name:'张三', headline:'电气工程 → 后端开发', email:'zhangsan@example.com', phone:'138-0000-0000', location:'深圳', links:'github.com/zhangsan' },
+    summary:'电气工程背景，自学 Python 与后端开发，已完成 3 个可运行项目。目标岗位为后端开发实习生，能独立完成接口开发、数据库建模与本地部署。',
+    experience:[{ org:'某供电公司', role:'电气实习生', start:'2024.07', end:'2024.09',
+      bullets:'参与 10kV 配电线路巡检，累计覆盖 32 个台区\n用 Excel 整理 200+ 条缺陷记录，输出周报 8 份\n协助班组完成 2 次停电检修方案编制' }],
+    projects:[{ name:'TaskFlow', role:'独立开发', start:'2025.03', end:'2025.05', stack:'FastAPI · PostgreSQL · React',
+      bullets:'实现 JWT 鉴权与任务看板，本地压测支撑 50 并发\n用 Docker Compose 一键起环境，部署文档控制在一页' }],
+    education:[{ school:'哈尔滨工业大学（深圳）', degree:'本科', major:'电气工程及其自动化', start:'2022.09', end:'2026.06' }],
+    skills:'Python\nFastAPI\nPostgreSQL\nDocker\nGit\nLinux',
+    languages:'中文（母语）\n英语（CET-4 445）'
+  },
+  en: {
+    basics:{ name:'San Zhang', headline:'Electrical Engineering → Backend', email:'zhangsan@example.com', phone:'+86 138-0000-0000', location:'Shenzhen, China', links:'github.com/zhangsan' },
+    summary:'Electrical engineering background, self-taught Python and backend development with three runnable projects. Targeting a backend internship: API development, data modelling and local deployment.',
+    experience:[{ org:'A power supply company', role:'Electrical Engineering Intern', start:'07/2024', end:'09/2024',
+      bullets:'Inspected 10kV distribution lines across 32 substation areas\nConsolidated 200+ defect records in Excel and shipped 8 weekly reports\nHelped draft 2 outage maintenance plans' }],
+    projects:[{ name:'TaskFlow', role:'Solo developer', start:'03/2025', end:'05/2025', stack:'FastAPI · PostgreSQL · React',
+      bullets:'Built JWT auth and a task board; load-tested at 50 concurrent requests\nOne-command local environment via Docker Compose, deployment guide kept to one page' }],
+    education:[{ school:'Harbin Institute of Technology, Shenzhen', degree:'B.Eng.', major:'Electrical Engineering and Automation', start:'09/2022', end:'06/2026' }],
+    skills:'Python\nFastAPI\nPostgreSQL\nDocker\nGit\nLinux',
+    languages:'Chinese (native)\nEnglish (CET-4 445)'
+  }
+});
+
+let data = load() || demo();
+
+/* ---------- 存取 ---------- */
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(!raw) return null;
+    const o = JSON.parse(raw);
+    return normalize(o);
+  }catch(e){ return null; }
+}
+function normalize(o){
+  const b = blank();
+  const out = Object.assign(b, o);
+  out.settings = Object.assign(b.settings, o.settings || {});
+  out.zh = Object.assign(blankDoc(), o.zh || {});
+  out.en = Object.assign(blankDoc(), o.en || {});
+  out.zh.basics = Object.assign(blankDoc().basics, (o.zh||{}).basics || {});
+  out.en.basics = Object.assign(blankDoc().basics, (o.en||{}).basics || {});
+  return out;
+}
+let saveTimer = null;
+function save(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }, 250);
+}
+
+/* ---------- 工具 ---------- */
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const lines = s => String(s||'').split('\n').map(x=>x.trim()).filter(Boolean);
+const cur = () => data[data.active];
+
+const LABELS = {
+  zh:{ basics:'基本信息', summary:'个人简介', exp:'实习 / 工作经历', proj:'项目经历', edu:'教育背景',
+       skills:'技能', langs:'语言能力', style:'版式与导出',
+       name:'姓名', headline:'一句话定位', email:'邮箱', phone:'电话', location:'城市', links:'主页 / GitHub',
+       summaryHint:'3–5 句，说清背景、做了什么、目标岗位', org:'单位', role:'职位 / 角色', start:'开始', end:'结束',
+       bullets:'要点（一行一条）', pname:'项目名', stack:'技术栈', school:'学校', degree:'学历', major:'专业',
+       skillsHint:'一行一项，5–15 项', langsHint:'一行一项，如「英语（CET-6 520）」', accent:'强调色',
+       addExp:'+ 添加经历', addProj:'+ 添加项目', addEdu:'+ 添加教育', photo:'上传照片（可选）', showPhoto:'显示照片',
+       fs:'字号', dens:'行距', pm:'页边距(mm)', del:'删除', empty:'（无）', e1:'经历 1', e2:'项目', e3:'教育' },
+  en:{ basics:'Basics', summary:'Summary', exp:'Experience', proj:'Projects', edu:'Education',
+       skills:'Skills', langs:'Languages', style:'Layout & export',
+       name:'Full name', headline:'Headline', email:'Email', phone:'Phone', location:'Location', links:'Website / GitHub',
+       summaryHint:'3–5 sentences: background, what you built, target role', org:'Company', role:'Role', start:'Start', end:'End',
+       bullets:'Bullets (one per line)', pname:'Project', stack:'Stack', school:'School', degree:'Degree', major:'Major',
+       skillsHint:'One per line, 5–15', langsHint:'One per line, e.g. "Spanish (B2)"', accent:'Accent',
+       addExp:'+ Add experience', addProj:'+ Add project', addEdu:'+ Add education', photo:'Upload photo (optional)', showPhoto:'Show photo',
+       fs:'Font size', dens:'Line height', pm:'Margin (mm)', del:'Remove', empty:'(none)', e1:'Experience', e2:'Project', e3:'Education' }
+};
+const L = () => LABELS[data.active];
+
+/* ---------- 表单 ---------- */
+function field(label, path, ph, type){
+  const v = getPath(path);
+  if(type === 'textarea')
+    return '<label class="row"><span>'+esc(label)+'</span><textarea data-path="'+path+'" placeholder="'+esc(ph||'')+'">'+esc(v)+'</textarea></label>';
+  return '<label class="row"><span>'+esc(label)+'</span><input data-path="'+path+'" type="text" value="'+esc(v)+'" placeholder="'+esc(ph||'')+'"></label>';
+}
+
+function buildForm(){
+  const t = L();
+  const d = cur();
+  const secs = [];
+
+  secs.push(section(t.basics, `
+    ${field(t.name,'basics.name')}
+    ${field(t.headline,'basics.headline')}
+    <div class="two">${field(t.email,'basics.email')}${field(t.phone,'basics.phone')}</div>
+    <div class="two">${field(t.location,'basics.location')}${field(t.links,'basics.links')}</div>`));
+
+  secs.push(section(t.summary, `<div class="hint">${esc(t.summaryHint)}</div>${field('', 'summary', '', 'textarea')}`));
+
+  secs.push(section(t.exp, listBlock('experience', t.addExp, (it,i)=>`
+      <div class="item-card">
+        <div class="top"><b>${esc(t.e1)} ${i+1}</b><button class="del" data-del="experience" data-idx="${i}">${esc(t.del)}</button></div>
+        <div class="two">${field(t.org,'experience.'+i+'.org')}${field(t.role,'experience.'+i+'.role')}</div>
+        <div class="two">${field(t.start,'experience.'+i+'.start')}${field(t.end,'experience.'+i+'.end')}</div>
+        ${field(t.bullets,'experience.'+i+'.bullets','', 'textarea')}
+      </div>`), d.experience.length));
+
+  secs.push(section(t.proj, listBlock('projects', t.addProj, (it,i)=>`
+      <div class="item-card">
+        <div class="top"><b>${esc(t.e2)} ${i+1}</b><button class="del" data-del="projects" data-idx="${i}">${esc(t.del)}</button></div>
+        ${field(t.pname,'projects.'+i+'.name')}
+        <div class="two">${field(t.role,'projects.'+i+'.role')}${field(t.stack,'projects.'+i+'.stack')}</div>
+        <div class="two">${field(t.start,'projects.'+i+'.start')}${field(t.end,'projects.'+i+'.end')}</div>
+        ${field(t.bullets,'projects.'+i+'.bullets','', 'textarea')}
+      </div>`), d.projects.length));
+
+  secs.push(section(t.edu, listBlock('education', t.addEdu, (it,i)=>`
+      <div class="item-card">
+        <div class="top"><b>${esc(t.e3)} ${i+1}</b><button class="del" data-del="education" data-idx="${i}">${esc(t.del)}</button></div>
+        ${field(t.school,'education.'+i+'.school')}
+        <div class="two">${field(t.degree,'education.'+i+'.degree')}${field(t.major,'education.'+i+'.major')}</div>
+        <div class="two">${field(t.start,'education.'+i+'.start')}${field(t.end,'education.'+i+'.end')}</div>
+      </div>`), d.education.length));
+
+  secs.push(section(t.skills, `<div class="hint">${esc(t.skillsHint)}</div>${field('','skills','', 'textarea')}`));
+  secs.push(section(t.langs, `<div class="hint">${esc(t.langsHint)}</div>${field('','languages','', 'textarea')}`));
+
+  secs.push(section(t.style, `
+    <div class="range-row"><span>${esc(t.accent)}</span><input type="color" id="setAccent" value="${esc(data.settings.accent)}" style="width:44px;height:24px;background:none;border:1px solid var(--line2);border-radius:6px"><span></span></div>
+    <div class="range-row"><span>${esc(t.fs)}</span><input type="range" id="setFs" min="0.8" max="1.25" step="0.02" value="${data.settings.fs}"><span class="v" id="vFs">${data.settings.fs.toFixed(2)}</span></div>
+    <div class="range-row"><span>${esc(t.dens)}</span><input type="range" id="setDens" min="1.2" max="1.8" step="0.02" value="${data.settings.dens}"><span class="v" id="vDens">${data.settings.dens.toFixed(2)}</span></div>
+    <div class="range-row"><span>${esc(t.pm)}</span><input type="range" id="setPm" min="10" max="24" step="1" value="${data.settings.pm}"><span class="v" id="vPm">${data.settings.pm}</span></div>
+    <div class="chk"><input type="checkbox" id="setPhoto" ${data.settings.showPhoto?'checked':''}><span>${esc(t.showPhoto)}</span></div>
+    <button class="add" id="btnPhoto">${esc(t.photo)}</button>`));
+
+  form.innerHTML = secs.join('');
+  bindForm();
+}
+
+function section(title, inner){
+  return `<details open><summary>${esc(title)}<span class="cnt"></span></summary><div class="pad">${inner}</div></details>`;
+}
+function listBlock(kind, addLabel, render, count){
+  const d = cur();
+  const items = d[kind] || [];
+  return (items.length ? items.map(render).join('') : `<div class="hint">${esc(L().empty)}</div>`)
+    + `<button class="add" data-add="${kind}">${esc(addLabel)}</button>`;
+}
+
+function bindForm(){
+  const d = cur();
+  form.querySelectorAll('[data-path]').forEach(el=>{
+    el.addEventListener('input', ()=>{
+      const path = el.dataset.path;
+      if(!path) return;
+      setPath(path, el.value);
+      save(); renderPreview(); renderAts();
+    });
+  });
+  form.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click', ()=>{
+    const kind = b.dataset.add;
+    if(kind === 'experience') d.experience.push({org:'',role:'',start:'',end:'',bullets:''});
+    if(kind === 'projects') d.projects.push({name:'',role:'',start:'',end:'',stack:'',bullets:''});
+    if(kind === 'education') d.education.push({school:'',degree:'',major:'',start:'',end:''});
+    save(); buildForm(); renderPreview(); renderAts();
+  }));
+  form.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{
+    cur()[b.dataset.del].splice(+b.dataset.idx,1);
+    save(); buildForm(); renderPreview(); renderAts();
+  }));
+  const acc = document.getElementById('setAccent');
+  if(acc) acc.addEventListener('input', ()=>{ data.settings.accent = acc.value; save(); renderPreview(); });
+  const fs = document.getElementById('setFs');
+  if(fs) fs.addEventListener('input', ()=>{ data.settings.fs = +fs.value; document.getElementById('vFs').textContent = (+fs.value).toFixed(2); save(); renderPreview(); });
+  const de = document.getElementById('setDens');
+  if(de) de.addEventListener('input', ()=>{ data.settings.dens = +de.value; document.getElementById('vDens').textContent = (+de.value).toFixed(2); save(); renderPreview(); });
+  const pm = document.getElementById('setPm');
+  if(pm) pm.addEventListener('input', ()=>{ data.settings.pm = +pm.value; document.getElementById('vPm').textContent = pm.value; save(); renderPreview(); });
+  const ph = document.getElementById('setPhoto');
+  if(ph) ph.addEventListener('change', ()=>{ data.settings.showPhoto = ph.checked; save(); renderPreview(); });
+  const bp = document.getElementById('btnPhoto');
+  if(bp) bp.addEventListener('click', ()=> document.getElementById('filePhoto').click());
+}
+
+function getPath(path){
+  const parts = path.split('.');
+  let o = cur();
+  for(const p of parts){
+    if(o == null) return '';
+    o = o[/^\d+$/.test(p) ? +p : p];
+  }
+  return o == null ? '' : o;
+}
+function setPath(path, val){
+  const parts = path.split('.');
+  let o = cur();
+  for(let i=0;i<parts.length-1;i++){
+    const p = /^\d+$/.test(parts[i]) ? +parts[i] : parts[i];
+    if(o[p] == null) o[p] = {};
+    o = o[p];
+  }
+  const last = parts[parts.length-1];
+  o[/^\d+$/.test(last) ? +last : last] = val;
+}
+
+/* ---------- 预览 ---------- */
+function renderPreview(){
+  const d = cur();
+  const lang = data.active;
+  const t = L();
+  const s = data.settings;
+  page.className = 'page ' + lang;
+  page.style.setProperty('--accent', s.accent);
+  page.style.setProperty('--fs', s.fs);
+  page.style.setProperty('--dens', s.dens);
+  page.style.setProperty('--pm', s.pm);
+  page.style.setProperty('--zoom', s.zoom);
+
+  const b = d.basics;
+  const contact = [b.email, b.phone, b.location, b.links].filter(Boolean).map(esc).join(' · ');
+  const photo = (s.showPhoto && s.photo) ? `<img class="rh-photo" src="${s.photo}" alt="">` : '';
+
+  const head = `<header class="rh"><div class="rh-l">
+      <h1>${esc(b.name || (lang==='zh'?'姓名':'Your Name'))}</h1>
+      ${b.headline ? `<div class="rh-sub">${esc(b.headline)}</div>` : ''}
+      ${contact ? `<div class="rh-contact">${contact}</div>` : ''}
+    </div>${photo}</header>`;
+
+  const secSummary = d.summary ? block(lang==='zh'?'个人简介':'Profile', `<p>${esc(d.summary).replace(/\n/g,'<br>')}</p>`) : '';
+  const secExp = d.experience.length ? block(lang==='zh'?'实习 / 工作经历':'Experience', d.experience.map(x=>entry(x.org, x.role, x.start, x.end, x.bullets, '')).join('')) : '';
+  const secProj = d.projects.length ? block(lang==='zh'?'项目经历':'Projects', d.projects.map(x=>entry(x.name, x.role, x.start, x.end, x.bullets, x.stack)).join('')) : '';
+  const secEdu = d.education.length ? block(lang==='zh'?'教育背景':'Education', d.education.map(x=>entry(x.school, [x.degree, x.major].filter(Boolean).join(' · '), x.start, x.end, '', '')).join('')) : '';
+  const skills = lines(d.skills);
+  const secSkill = skills.length ? block(lang==='zh'?'技能':'Skills', `<p>${skills.map(esc).join(lang==='zh'?'　·　':' · ')}</p>`) : '';
+  const langs = lines(d.languages);
+  const secLang = langs.length ? block(lang==='zh'?'语言能力':'Languages', `<p>${langs.map(esc).join(lang==='zh'?'　·　':' · ')}</p>`) : '';
+
+  const body = lang==='zh'
+    ? [secSummary, secEdu, secExp, secProj, secSkill, secLang].join('')
+    : [secSummary, secExp, secProj, secEdu, secSkill, secLang].join('');
+
+  page.innerHTML = head + body;
+}
+
+function block(title, inner){
+  return `<section class="sec"><h2>${esc(title)}</h2>${inner}</section>`;
+}
+function entry(title, sub, start, end, bullets, tech){
+  const dates = (start || end) ? `${esc(start)}${start&&end?' – ':''}${esc(end)}` : '';
+  const bl = lines(bullets);
+  return `<div class="item">
+    <div class="it-head"><b>${esc(title)}</b>${dates?`<span class="it-date">${dates}</span>`:''}</div>
+    ${sub?`<div class="it-org">${esc(sub)}</div>`:''}
+    ${tech?`<div class="it-tech">${esc(tech)}</div>`:''}
+    ${bl.length?`<ul>${bl.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+  </div>`;
+}
+
+/* ---------- ATS 自查 ---------- */
+function renderAts(){
+  const d = cur();
+  const lang = data.active;
+  const b = d.basics;
+  const bullets = [...d.experience, ...d.projects].flatMap(x=>lines(x.bullets));
+  const dates = [...d.experience, ...d.projects, ...d.education].flatMap(x=>[x.start, x.end]).filter(Boolean);
+  const quant = bullets.filter(x=>/\d/.test(x)).length;
+  const skills = lines(d.skills);
+  const totalChars = (b.name+b.headline+b.email+b.phone+b.location+d.summary+bullets.join('')+d.education.map(x=>x.school+x.major).join('')).length;
+  const fams = new Set(dates.map(x=>{
+    if(/^\d{4}\.\d{1,2}$/.test(x)) return 'Y.MM';
+    if(/^\d{4}-\d{1,2}$/.test(x)) return 'Y-MM';
+    if(/^\d{2}\/\d{4}$/.test(x)) return 'MM/YYYY';
+    if(/^\d{4}年\d{1,2}月$/.test(x)) return 'Y年M月';
+    if(/^\d{4}$/.test(x)) return 'Y';
+    return 'other';
+  }));
+
+  const checks = [
+    { ok: !!(b.name && b.name.trim()), t: lang==='zh'?'有姓名':'Name present' },
+    { ok: !!(b.email || b.phone), t: lang==='zh'?'有邮箱或电话':'Email or phone present' },
+    { ok: d.summary.length >= 20 && d.summary.length <= 260, t: lang==='zh'?'简介 20–260 字':'Summary 20–260 chars' },
+    { ok: d.experience.length + d.projects.length >= 1, t: lang==='zh'?'至少一段经历或项目':'At least one entry' },
+    { ok: bullets.length >= 3, t: lang==='zh'?'要点至少 3 条':'At least 3 bullets' },
+    { ok: quant >= Math.max(1, Math.ceil(bullets.length*0.4)), t: lang==='zh'?'四成要点带数字':'40% of bullets quantified' },
+    { ok: fams.size <= 1, t: lang==='zh'?'日期写法统一':'Consistent date format' },
+    { ok: skills.length >= 5 && skills.length <= 15, t: lang==='zh'?'技能 5–15 项':'5–15 skills' },
+    { ok: totalChars <= (lang==='zh'?1300:4800), t: lang==='zh'?'内容量接近单页':'Fits one page' }
+  ];
+  const passed = checks.filter(c=>c.ok).length;
+  const score = Math.round(passed/checks.length*100);
+  atsScore.innerHTML = score + '<small>/100</small>';
+  atsBar.style.width = score + '%';
+  atsList.innerHTML = checks.map(c=>`<div class="${c.ok?'ok':'no'}">${c.ok?'✓':'✗'}<span class="t">${esc(c.t)}</span></div>`).join('');
+}
+
+/* ---------- 导出 / 导入 ---------- */
+function download(name, text, mime){
+  const blob = new Blob([text], {type: mime || 'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1500);
+}
+
+function toMarkdown(){
+  const d = cur(); const lang = data.active; const b = d.basics;
+  const out = [];
+  out.push(`# ${b.name || ''}`);
+  if(b.headline) out.push(`> ${b.headline}`);
+  const c = [b.email, b.phone, b.location, b.links].filter(Boolean).join(' · ');
+  if(c) out.push(c);
+  if(d.summary) out.push(`\n## ${lang==='zh'?'个人简介':'Profile'}\n\n${d.summary}`);
+  const sec = (title, items) => { if(!items.length) return; out.push(`\n## ${title}`);
+    items.forEach(x=>{ out.push(`\n**${[x.org||x.name||x.school, x.role||[x.degree,x.major].filter(Boolean).join(' · ')].filter(Boolean).join(' · ')}**  ${[x.start,x.end].filter(Boolean).join('–')}`);
+      lines(x.bullets).forEach(l=>out.push(`- ${l}`));
+      if(x.stack) out.push(`- 技术栈：${x.stack}`);
+    });
+  };
+  sec(lang==='zh'?'实习 / 工作经历':'Experience', d.experience);
+  sec(lang==='zh'?'项目经历':'Projects', d.projects);
+  sec(lang==='zh'?'教育背景':'Education', d.education);
+  const sk = lines(d.skills); if(sk.length) out.push(`\n## ${lang==='zh'?'技能':'Skills'}\n\n${sk.join(' · ')}`);
+  const lg = lines(d.languages); if(lg.length) out.push(`\n## ${lang==='zh'?'语言能力':'Languages'}\n\n${lg.join(' · ')}`);
+  return out.join('\n') + '\n';
+}
+
+/* ---------- 提示 ---------- */
+let tipTimer = null;
+function tip(msg){
+  tipEl.textContent = msg;
+  tipEl.classList.add('show');
+  clearTimeout(tipTimer);
+  tipTimer = setTimeout(()=>tipEl.classList.remove('show'), 2600);
+}
+
+/* ---------- 事件 ---------- */
+const formEl = document.getElementById('form');
+const page = document.getElementById('page');
+const atsScore = document.getElementById('atsScore');
+const atsBar = document.getElementById('atsBar');
+const atsList = document.getElementById('atsList');
+const tipEl = document.getElementById('tip');
+const form = formEl;
+
+document.getElementById('langSeg').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-lang]');
+  if(!b) return;
+  data.active = b.dataset.lang;
+  document.querySelectorAll('#langSeg button').forEach(x=>x.classList.toggle('on', x === b));
+  save(); buildForm(); renderPreview(); renderAts();
+});
+
+document.getElementById('atsHead').addEventListener('click', ()=> document.getElementById('ats').classList.toggle('open'));
+
+document.getElementById('zoom').addEventListener('input', e=>{
+  data.settings.zoom = +e.target.value; save();
+  page.style.setProperty('--zoom', data.settings.zoom);
+});
+
+document.getElementById('btnDemo').addEventListener('click', ()=>{
+  data = demo(); syncUi(); save(); buildForm(); renderPreview(); renderAts(); tip('已载入示例');
+});
+document.getElementById('btnClear').addEventListener('click', ()=>{
+  data = blank(); data.active = currentLang(); syncUi(); save(); buildForm(); renderPreview(); renderAts(); tip('已清空');
+});
+document.getElementById('btnPrint').addEventListener('click', ()=> window.print());
+document.getElementById('btnExport').addEventListener('click', ()=>{
+  download('careeros-resume.json', JSON.stringify(data, null, 2), 'application/json'); tip('已导出 JSON');
+});
+document.getElementById('btnMd').addEventListener('click', ()=>{
+  download('careeros-resume.md', toMarkdown(), 'text/markdown;charset=utf-8'); tip('已导出 Markdown');
+});
+document.getElementById('btnImport').addEventListener('click', ()=> document.getElementById('fileJson').click());
+document.getElementById('fileJson').addEventListener('change', e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const o = normalize(JSON.parse(r.result));
+      data = o; syncUi(); save(); buildForm(); renderPreview(); renderAts(); tip('已导入 JSON');
+    }catch(err){ tip('导入失败：不是有效的 JSON'); }
+  };
+  r.readAsText(f);
+  e.target.value = '';
+});
+document.getElementById('filePhoto').addEventListener('change', e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => { data.settings.photo = r.result; data.settings.showPhoto = true; save(); buildForm(); renderPreview(); tip('照片已更新'); };
+  r.readAsDataURL(f);
+  e.target.value = '';
+});
+
+function currentLang(){ return data.active || 'zh'; }
+function syncUi(){
+  document.querySelectorAll('#langSeg button').forEach(x=>x.classList.toggle('on', x.dataset.lang === data.active));
+  document.getElementById('zoom').value = data.settings.zoom;
+  page.style.setProperty('--zoom', data.settings.zoom);
+}
+
+/* ---------- 启动 ---------- */
+syncUi();
+buildForm();
+renderPreview();
+renderAts();
+save();
+</script>
+</body>
+</html>

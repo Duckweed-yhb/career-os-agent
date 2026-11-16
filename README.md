@@ -79,6 +79,7 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
 /CareerOS analyze [你的简历内容或当前技能列表]
 /CareerOS generate project --focus=[具体技术点，如 Redis/微服务]
 /CareerOS generate course [项目]   # 把选定项目拆成边做边学的课程
+/CareerOS build resume [岗位]      # 从档案起草简历，中英双版，交给本地编辑器排版
 /CareerOS review resume [简历]     # 评估简历，找出还能完善的地方
 /CareerOS mock interview [岗位]    # 一次一题的面试演练，带反馈
 /CareerOS mock test [岗位]         # 限时笔试练习，带评分
@@ -120,6 +121,7 @@ career-os-agent/
 ├── templates/                    # 领域模板：项目与课程的起点骨架
 ├── examples/                     # 完整对话示例 + 课程样例
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # 设计方案：能力 + 架构 + Python 先修
+├── tools/resume-builder/index.html  # 离线简历编辑器（左表单右 A4，中英双版，打印成 PDF）
 ├── preview/                      # 技术栈看板：单页 HTML + 一张整页截图
 └── .github/                      # CI 校验脚本与 issue 模板
 ```
@@ -132,6 +134,18 @@ career-os-agent/
 
 ![技术栈看板](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
+## 简历编辑器
+
+`tools/resume-builder/index.html` 是一个离线单文件简历编辑器：双击打开就能用，不装环境、不联网。
+
+- **中英双版同一份数据**：中文版教育在前、可放照片；英文版经历在前。切换只换版式，不动内容
+- **左表单右 A4**：右边就是打印出来的样子；字号、行距、页边距、强调色随调
+- **自动保存**：内容存在浏览器本地，关掉再打开还在
+- **JSON 导入导出**：备份、换机器都靠它；也能导出 Markdown 交给 AI 继续改
+- **打印成 PDF**：点「打印 / 存为 PDF」，边距选「无」，勾选「背景图形」保住强调色
+- **ATS 自查**：姓名、联系方式、简介长度、要点条数、四成要点带数字、日期写法统一、技能 5–15 项、是否接近单页，共 9 项，缺哪项当场列出来
+
+内容从哪来：先 `/CareerOS build resume` 从档案和项目起草一版，粘进编辑器排版导出，最后 `/CareerOS review resume` 打分迭代。
 ## 仓库沿革
 
 本仓库原名 `career-os-skill`，现更名为 `career-os-agent`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。

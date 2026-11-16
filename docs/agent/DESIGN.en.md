@@ -35,7 +35,7 @@ CareerOS Agent (three layers)
 ├── Tool layer (nine modules, pluggable)
 │   ├── Role radar          ├── Gap analysis
 │   ├── Project generator   ├── Course builder
-│   ├── Portfolio           ├── Resume review
+│   ├── Portfolio           ├── Resume gen & review
 │   ├── Mock test + interview ├── Company intel
 │   └── Full pipeline simulation
 │
@@ -83,9 +83,10 @@ Cross-cutting: dashboard (radar / progress / roadmap) · local data ownership ·
 
 - Turns projects into resume highlights: bullet rewrites plus a GitHub README guide.
 
-#### 1.3.6 Resume review
+#### 1.3.6 Resume generation and review
 
-- Scores across six dimensions (scannability / results over duties / role fit / project description / differentiation / polish) and lists issues as must-fix, should-fix, nice-to-have.
+- Generation: drafts a version from the profile, projects and course sign-offs, one per role, and emits structured JSON for the local editor (`tools/resume-builder/index.html`).
+- Review: scores across six dimensions (scannability / results over duties / role fit / project description / differentiation / polish) and lists issues as must-fix, should-fix, nice-to-have.
 
 #### 1.3.7 Mock written test and interview
 

@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- New standalone module "resume generation" and the `/CareerOS build resume` command: drafts from profile, projects and course sign-offs, one version per role, emitting structured JSON
+- New `tools/resume-builder/index.html`: offline single-file resume builder with Chinese and English editions sharing one dataset, live A4 preview, local autosave, JSON import/export, print-to-PDF and nine ATS checks
+- `references/methodology.md` gains resume generation rules; the tool entry in `docs/agent/DESIGN.md` becomes "resume generation and review"
 - Dropped the decorative images: repository banner, social preview, the mobile screenshot and the board review report are gone; only one full-page screenshot remains (and the README header banner with it)
 - Merged fragments: the template rules from `templates/README.md` now live in CONTRIBUTING's "Adding a domain template" section
 - English twins added for the main docs: `docs/agent/DESIGN.en.md` and `references/methodology.en.md`, and the CI pair check now covers both

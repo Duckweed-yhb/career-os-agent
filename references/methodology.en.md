@@ -41,6 +41,13 @@ Every assessment asks the user to self-rate by skill category. Never guess from 
 - Every lesson must contain both a knowledge increment and a project increment; acceptance criteria must be runnable and demonstrable.
 - Beginners get smaller lessons and more scaffolding; experienced users get denser lessons that land directly on the first real gap.
 
+## Resume generation rules
+
+- Real material only: profile, finished projects, course sign-offs, the user's own words. Mark gaps "to fill"; never invent companies, dates or numbers.
+- One version per role: pick the 3–5 most relevant bullets for the target role from the same facts, each leading with a result and a number.
+- One page first: 1–2 pages for Chinese, one page for English; cut secondary bullets rather than shrinking type.
+- ATS-safe: single column, standard section headings, one date format, no text baked into images, no nested tables.
+- Same facts across editions: wording may differ, but numbers, dates and titles must not.
 ## Resume review dimensions
 
 Six dimensions, 0–10 each: scannability, results over duties, role fit, project and technical description, differentiation, polish. Total is the average. Issues are tiered must-fix / should-fix / nice-to-have, ordered by "fix this first for the biggest gain".

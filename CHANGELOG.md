@@ -10,6 +10,9 @@
 
 ### 变更
 
+- 新增独立模块「简历生成」与指令 `/CareerOS build resume`：从档案、项目、课程验收起草，一岗一版，输出结构化 JSON
+- 新增 `tools/resume-builder/index.html`：离线单文件简历编辑器，中英双版共享一份数据、A4 实时预览、本地自动保存、JSON 导入导出、打印成 PDF、9 项 ATS 自查
+- `references/methodology.md` 增「简历生成口径」；`docs/agent/DESIGN.md` 的工具条目扩为「简历生成与评估」
 - 仓库去掉装饰图：横幅、社交预览图、移动端截图与看板体检报告一并删除，只留一张整页截图（README 顶部横幅同步去掉）
 - 融合碎片文档：`templates/README.md` 的模板规则并入 `CONTRIBUTING.md` 的「新增领域模板」一节，不再单独成文
 - 主文档补齐英文版：新增 `docs/agent/DESIGN.en.md`、`references/methodology.en.md`，CI 的中英配对检查同步覆盖这两对

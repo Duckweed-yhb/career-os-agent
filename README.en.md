@@ -79,6 +79,7 @@ Two modules need the network: `company` (company intelligence) and `simulate` (p
 /CareerOS analyze [your resume or current skill list]
 /CareerOS generate project --focus=[specific tech, e.g. Redis/microservices]
 /CareerOS generate course [project]   # turn a chosen project into learning-by-doing lessons
+/CareerOS build resume [role]         # draft a resume from your profile, Chinese and English editions
 /CareerOS review resume [resume]      # review your resume and find what to improve
 /CareerOS mock interview [role]       # interview drill, one question at a time, with feedback
 /CareerOS mock test [role]            # timed written-test practice with scoring
@@ -120,6 +121,7 @@ career-os-agent/
 ├── templates/                    # Domain templates: starting skeletons for projects and courses
 ├── examples/                     # Full conversation walkthrough + sample courses
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # Design doc: capabilities, architecture, Python prerequisites
+├── tools/resume-builder/index.html  # offline resume builder (form left, A4 right, zh + en, prints to PDF)
 ├── preview/                      # Tech-stack board: single HTML page + one full-page screenshot
 └── .github/                      # CI verification script and issue templates
 ```
@@ -132,6 +134,18 @@ Docs are Chinese-first: every main doc is Chinese with an English twin using an 
 
 ![Tech stack board](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
+## Resume builder
+
+`tools/resume-builder/index.html` is a single offline file: double-click it, no setup, no network.
+
+- **One dataset, two editions**: a Chinese edition with education first and an optional photo, and an English edition with experience first. Switching changes the layout only
+- **Form left, A4 right**: the right pane is exactly what prints; font size, line height, margins and accent colour are adjustable
+- **Autosave**: content lives in browser local storage
+- **JSON import / export**: for backups or moving machines; Markdown export for handing content back to the AI
+- **Print to PDF**: choose "Print / Save as PDF", margins None, and enable background graphics to keep the accent colour
+- **Nine ATS checks**: name, contact, summary length, bullet count, 40% quantified, consistent date format, 5–15 skills, and whether it fits one page — every failing item is listed on the spot
+
+Where the content comes from: `/CareerOS build resume` drafts it from the profile and projects, paste it into the editor for layout and PDF, then `/CareerOS review resume` to score and iterate.
 ## Repo history
 
 This repo used to be called `career-os-skill`; it is now `career-os-agent`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.
