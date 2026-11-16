@@ -519,7 +519,7 @@ Each lesson's acceptance criteria act as a checkbox checklist — the user check
 - Separate fact from inference: what the user provides is fact; estimates drawn from templates/experience are inference. Say which is which.
 - Completing a course or project is a learning vehicle, **not a promise of a job offer**. Requirements change with the market.
 - When a domain has little reference material, say so explicitly — never use percentages to fake certainty.
-- The full calculation rules live in [references/methodology.md](references/methodology.md); update that file whenever the criteria change.
+- The full calculation rules live in [references/methodology.en.md](references/methodology.en.md); update that file whenever the criteria change.
 
 ### Default Profile
 

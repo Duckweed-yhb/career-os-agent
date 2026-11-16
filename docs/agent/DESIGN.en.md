@@ -254,8 +254,8 @@ A career growth agent that runs on its own
 career-os-agent/
 ├── README.md / README.en.md      front page (positioning)
 ├── SKILL.md / SKILL.en.md        skill layer core instructions (capability source)
-├── references/methodology.md     scoring rules and data discipline
-├── docs/agent/DESIGN.md          this document (capabilities + architecture + prerequisites)
+├── references/methodology.md / *.en.md  scoring rules and data discipline
+├── docs/agent/DESIGN.md / DESIGN.en.md  this document (capabilities + architecture + prerequisites)
 └── preview/                      tech-stack board (single HTML page)
 ```
 

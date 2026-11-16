@@ -96,7 +96,7 @@ Design documents only, no code — deliberately, so the boundaries and trade-off
 
 | Document | Content |
 |---|---|
-| [docs/agent/DESIGN.md](docs/agent/DESIGN.md) | Design doc: capability list, the four layers and one typical data flow, stack options, roadmap, and the Python prerequisites for building it yourself |
+| [docs/agent/DESIGN.en.md](docs/agent/DESIGN.en.md) | Design doc: capability list, the four layers and one typical data flow, stack options, roadmap, and the Python prerequisites for building it yourself |
 
 Five-stage roadmap:
 
