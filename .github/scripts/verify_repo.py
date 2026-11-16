@@ -126,6 +126,8 @@ def check_doc_pairs():
         ("CONTRIBUTING.md", "CONTRIBUTING.en.md"),
         ("CODE_OF_CONDUCT.md", "CODE_OF_CONDUCT.en.md"),
         ("CHANGELOG.md", "CHANGELOG.en.md"),
+        ("docs/agent/DESIGN.md", "docs/agent/DESIGN.en.md"),
+        ("references/methodology.md", "references/methodology.en.md"),
     ]
     for main, en in pairs:
         if not (ROOT / main).exists():

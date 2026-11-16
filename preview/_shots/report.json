@@ -10,8 +10,7 @@
   "shots": {
     "desktop": {
       "slices": [
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop_p1of2.jpg",
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop_p2of2.jpg"
+        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop.jpg"
       ],
       "sliceHint": "按顺序 Read slices 里的各分片。",
       "truncated": false,
@@ -45,10 +44,7 @@
     },
     "mobile": {
       "slices": [
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p1of4.jpg",
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p2of4.jpg",
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p3of4.jpg",
-        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p4of4.jpg"
+        "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile.jpg"
       ],
       "sliceHint": "按顺序 Read slices 里的各分片。",
       "truncated": false,
@@ -129,8 +125,7 @@
       {
         "viewport": "desktop",
         "tiles": [
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop_p1of2.jpg",
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop_p2of2.jpg"
+          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_desktop.jpg"
         ],
         "visualCoverage": {
           "complete": true,
@@ -140,10 +135,7 @@
       {
         "viewport": "mobile",
         "tiles": [
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p1of4.jpg",
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p2of4.jpg",
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p3of4.jpg",
-          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile_p4of4.jpg"
+          "E:\\future\\yhb\\04-项目与开源\\career-os-agent\\preview\\_shots\\career-os-agent-技术栈看板_mobile.jpg"
         ],
         "visualCoverage": {
           "complete": true,

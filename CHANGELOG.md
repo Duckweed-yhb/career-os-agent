@@ -10,6 +10,9 @@
 
 ### 变更
 
+- 融合碎片文档：`templates/README.md` 的模板规则并入 `CONTRIBUTING.md` 的「新增领域模板」一节，不再单独成文
+- 主文档补齐英文版：新增 `docs/agent/DESIGN.en.md`、`references/methodology.en.md`，CI 的中英配对检查同步覆盖这两对
+- 清理 `preview/_shots` 的 6 张派生切片，只保留桌面 / 移动整页截图
 - 仓库由 `career-os-skill` 更名为 `career-os-agent`（旧地址自动重定向）：skill 层留在根目录，Agent 规划文档收进 `docs/agent/`，技术栈看板预览放进 `preview/`
 - 新增 `docs/agent/DESIGN.md`：能力清单、架构设计、Python 先修合并为一份设计方案
 - `README.md` / `README.en.md` 重写为双层门面：上层写 skill 怎么装怎么用，下层写 Agent 要做什么

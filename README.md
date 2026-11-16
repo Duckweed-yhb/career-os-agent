@@ -118,16 +118,16 @@ career-os-agent/
 ├── CONTRIBUTING.md / *.en.md     # 贡献指南
 ├── CODE_OF_CONDUCT.md / *.en.md  # 行为准则
 ├── CHANGELOG.md / CHANGELOG.en.md
-├── references/methodology.md     # 所有评分口径与数据纪律（雷达、校准、简历六维…）
+├── references/methodology.md / *.en.md  # 评分口径与数据纪律（雷达、校准、简历六维…）
 ├── templates/                    # 领域模板：项目与课程的起点骨架
 ├── examples/                     # 完整对话示例 + 课程样例
 ├── assets/                       # 仓库横幅与社交预览图
-├── docs/agent/DESIGN.md          # 设计方案：能力 + 架构 + Python 先修
+├── docs/agent/DESIGN.md / DESIGN.en.md  # 设计方案：能力 + 架构 + Python 先修
 ├── preview/                      # 技术栈看板（单页 HTML，浏览器直接打开）
 └── .github/                      # CI 校验脚本与 issue 模板
 ```
 
-文档语言规则：主文档中文，英文版同目录加 `.en.md` 后缀，一个文件不混用两种语言。
+文档语言规则：主文档一律中文，英文版同目录加 `.en.md` 后缀，一个文件不混用两种语言。`examples/` 与 `templates/` 是可复用的内容骨架，只提供中文。
 
 ## 设计预览
 

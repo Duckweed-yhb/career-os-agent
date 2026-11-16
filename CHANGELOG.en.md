@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Merged fragments: the template rules from `templates/README.md` now live in CONTRIBUTING's "Adding a domain template" section
+- English twins added for the main docs: `docs/agent/DESIGN.en.md` and `references/methodology.en.md`, and the CI pair check now covers both
+- Dropped the six derived screenshot slices in `preview/_shots`, keeping the full desktop and mobile shots
 - Repo renamed from `career-os-skill` to `career-os-agent` (the old URL redirects): the skill layer stays at the root, agent design docs go under `docs/agent/`, and the tech-stack preview sits in `preview/`
 - Added `docs/agent/DESIGN.md`: capabilities, architecture and Python prerequisites merged into one design doc
 - `README.md` / `README.en.md` rewritten as a two-layer front page: skill install and usage on top, what the agent will do below

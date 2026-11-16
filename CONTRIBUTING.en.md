@@ -36,6 +36,15 @@ First off, thanks for taking the time to contribute! 🎉
 - **Keep examples reproducible.** Example conversations must match the current command set documented in the README.
 - **Update the CHANGELOG.** Add an entry under `[Unreleased]` → `Added` / `Changed` / `Fixed` for every user-visible change.
 
+## Adding a domain template
+
+`templates/` holds one file per domain, used as the starting skeleton when generating projects or courses (currently `web-fullstack.md`).
+
+1. Create `<domain>.md`, e.g. `ai-data.md` or `devops.md`.
+2. Each template covers five parts: domain and typical roles, the canonical stack (with common alternatives), 3–5 project archetypes, the usual M1/M2/M3 milestones, and how the course is split.
+3. Keep it lean — a template is a skeleton, not a full course.
+4. When no template matches, the skill falls back to its general rules, so templates are always optional and a missing one never blocks generation.
+
 ## Pull request checklist
 
 - [ ] The change addresses a single clear purpose.

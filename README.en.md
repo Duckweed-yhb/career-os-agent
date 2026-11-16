@@ -118,16 +118,16 @@ career-os-agent/
 ├── CONTRIBUTING.md / *.en.md     # Contribution guide
 ├── CODE_OF_CONDUCT.md / *.en.md  # Code of conduct
 ├── CHANGELOG.md / CHANGELOG.en.md
-├── references/methodology.md     # Every scoring rule and data discipline
+├── references/methodology.md / *.en.md  # Every scoring rule and data discipline
 ├── templates/                    # Domain templates: starting skeletons for projects and courses
 ├── examples/                     # Full conversation walkthrough + sample courses
 ├── assets/                       # Banner and social preview
-├── docs/agent/DESIGN.md          # Design doc: capabilities, architecture, Python prerequisites
+├── docs/agent/DESIGN.md / DESIGN.en.md  # Design doc: capabilities, architecture, Python prerequisites
 ├── preview/                      # Tech-stack board (single HTML page)
 └── .github/                      # CI verification script and issue templates
 ```
 
-Docs are Chinese-first: the main file is Chinese, with an English twin using an `.en.md` suffix. Never mix two languages in one file.
+Docs are Chinese-first: every main doc is Chinese with an English twin using an `.en.md` suffix. Never mix two languages in one file. `examples/` and `templates/` are reusable content skeletons and ship in Chinese only.
 
 ## Design preview
 
