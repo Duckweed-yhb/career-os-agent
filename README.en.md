@@ -1,7 +1,5 @@
 # CareerOS
 
-![CareerOS banner](assets/careeros-banner.jpg)
-
 > An operating system for your career growth. The skill is the recipe; the agent is the cook who can light the stove.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -121,9 +119,8 @@ career-os-agent/
 ├── references/methodology.md / *.en.md  # Every scoring rule and data discipline
 ├── templates/                    # Domain templates: starting skeletons for projects and courses
 ├── examples/                     # Full conversation walkthrough + sample courses
-├── assets/                       # Banner and social preview
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # Design doc: capabilities, architecture, Python prerequisites
-├── preview/                      # Tech-stack board (single HTML page)
+├── preview/                      # Tech-stack board: single HTML page + one full-page screenshot
 └── .github/                      # CI verification script and issue templates
 ```
 

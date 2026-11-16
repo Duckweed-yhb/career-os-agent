@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Dropped the decorative images: repository banner, social preview, the mobile screenshot and the board review report are gone; only one full-page screenshot remains (and the README header banner with it)
 - Merged fragments: the template rules from `templates/README.md` now live in CONTRIBUTING's "Adding a domain template" section
 - English twins added for the main docs: `docs/agent/DESIGN.en.md` and `references/methodology.en.md`, and the CI pair check now covers both
 - Dropped the six derived screenshot slices in `preview/_shots`, keeping the full desktop and mobile shots

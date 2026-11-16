@@ -1,7 +1,5 @@
 # CareerOS
 
-![CareerOS banner](assets/careeros-banner.jpg)
-
 > 一套为你的职业成长而设计的操作系统。Skill 是配方，Agent 是能自己开火做饭的厨师。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -121,9 +119,8 @@ career-os-agent/
 ├── references/methodology.md / *.en.md  # 评分口径与数据纪律（雷达、校准、简历六维…）
 ├── templates/                    # 领域模板：项目与课程的起点骨架
 ├── examples/                     # 完整对话示例 + 课程样例
-├── assets/                       # 仓库横幅与社交预览图
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # 设计方案：能力 + 架构 + Python 先修
-├── preview/                      # 技术栈看板（单页 HTML，浏览器直接打开）
+├── preview/                      # 技术栈看板：单页 HTML + 一张整页截图
 └── .github/                      # CI 校验脚本与 issue 模板
 ```
 

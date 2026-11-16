@@ -49,8 +49,6 @@ def check_relative_links():
         for target in re.findall(r"\]\(([^)#]+?)(?:#[^)]*)?\)", text):
             if target.startswith(("http://", "https://", "mailto:", "data:")):
                 continue
-            if target.startswith("assets/"):
-                continue  # binary assets; presence not enforced here
             if (ROOT / target).exists():
                 continue
             errors.append(f"[link] {md.name}: broken relative link -> {target}")

@@ -10,6 +10,7 @@
 
 ### 变更
 
+- 仓库去掉装饰图：横幅、社交预览图、移动端截图与看板体检报告一并删除，只留一张整页截图（README 顶部横幅同步去掉）
 - 融合碎片文档：`templates/README.md` 的模板规则并入 `CONTRIBUTING.md` 的「新增领域模板」一节，不再单独成文
 - 主文档补齐英文版：新增 `docs/agent/DESIGN.en.md`、`references/methodology.en.md`，CI 的中英配对检查同步覆盖这两对
 - 清理 `preview/_shots` 的 6 张派生切片，只保留桌面 / 移动整页截图
