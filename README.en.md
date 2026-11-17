@@ -121,8 +121,8 @@ career-os-agent/
 ├── templates/                    # Domain templates: starting skeletons for projects and courses
 ├── examples/                     # Full conversation walkthrough + sample courses
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # Design doc: capabilities, architecture, Python prerequisites
+├── docs/ROADMAP.md / ROADMAP.en.md      # What comes next: peers, priorities, exit conditions
 ├── tools/resume-builder/index.html  # offline resume builder (form left, A4 right, zh + en, prints to PDF)
-├── preview/                      # Tech-stack board (single HTML page, open in a browser)
 └── .github/                      # CI verification script and issue templates
 ```
 
@@ -141,6 +141,9 @@ Docs are Chinese-first: every main doc is Chinese with an English twin using an 
 
 Where the content comes from: `/CareerOS build resume` drafts it from the profile and projects, paste it into the editor for layout and PDF, then `/CareerOS review resume` to score and iterate.
 
+## What comes next
+
+Anything not built yet lives in [docs/ROADMAP.en.md](docs/ROADMAP.en.md): where comparable projects already are, the priority order, and when each item should be deleted. The README only covers what works today.
 ## Repo history
 
 This repo used to be called `career-os-skill`; it is now `career-os-agent`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.

@@ -10,6 +10,8 @@
 
 ### 变更
 
+- 新增 `docs/ROADMAP.md` / `ROADMAP.en.md`：调研同类项目（career-ops、Resume-Matcher、Reactive Resume、JSON Resume、JobSpy）后给出的后续方向、优先级与退出条件；README 增一节指针
+- 删除 `preview/`：技术栈看板 HTML 与截图一并移出，仓库只剩 skill 文档、示例与简历工具
 - README 去掉「设计预览」小节与看板截图：README 只讲能做什么，看板 HTML 仍留在 `preview/` 自行打开
 - 新增独立模块「简历生成」与指令 `/CareerOS build resume`：从档案、项目、课程验收起草，一岗一版，输出结构化 JSON
 - 新增 `tools/resume-builder/index.html`：离线单文件简历编辑器，中英双版共享一份数据、A4 实时预览、本地自动保存、JSON 导入导出、打印成 PDF、9 项 ATS 自查

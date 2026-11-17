@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- New `docs/ROADMAP.md` / `ROADMAP.en.md`: a survey of comparable projects (career-ops, Resume-Matcher, Reactive Resume, JSON Resume, JobSpy) turned into next steps, priorities and exit conditions; README gains a pointer
+- `preview/` removed: the board page and its screenshot are gone, leaving only skill docs, examples and the resume tool
 - README drops the "design preview" section and the board screenshot; the board HTML stays in `preview/`
 - New standalone module "resume generation" and the `/CareerOS build resume` command: drafts from profile, projects and course sign-offs, one version per role, emitting structured JSON
 - New `tools/resume-builder/index.html`: offline single-file resume builder with Chinese and English editions sharing one dataset, live A4 preview, local autosave, JSON import/export, print-to-PDF and nine ATS checks

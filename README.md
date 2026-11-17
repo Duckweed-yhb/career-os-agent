@@ -121,8 +121,8 @@ career-os-agent/
 ├── templates/                    # 领域模板：项目与课程的起点骨架
 ├── examples/                     # 完整对话示例 + 课程样例
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # 设计方案：能力 + 架构 + Python 先修
+├── docs/ROADMAP.md / ROADMAP.en.md      # 后续完善方向：同类项目、优先级、退出条件
 ├── tools/resume-builder/index.html  # 离线简历编辑器（左表单右 A4，中英双版，打印成 PDF）
-├── preview/                      # 技术栈看板（单页 HTML，浏览器直接打开）
 └── .github/                      # CI 校验脚本与 issue 模板
 ```
 
@@ -141,6 +141,9 @@ career-os-agent/
 
 内容从哪来：先 `/CareerOS build resume` 从档案和项目起草一版，粘进编辑器排版导出，最后 `/CareerOS review resume` 打分迭代。
 
+## 后续方向
+
+没做完的事都写在 [docs/ROADMAP.md](docs/ROADMAP.md)：同类项目已经做到哪、下一步的优先级、每条什么时候该删。README 只讲现在能用什么。
 ## 仓库沿革
 
 本仓库原名 `career-os-skill`，现更名为 `career-os-agent`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。

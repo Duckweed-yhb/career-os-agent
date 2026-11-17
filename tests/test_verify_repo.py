@@ -88,6 +88,8 @@ class VerifyRepoTestCase(unittest.TestCase):
         self._write("docs/agent/DESIGN.en.md", "# Design\n")
         self._write("references/methodology.md", "# 方法论\n")
         self._write("references/methodology.en.md", "# Methodology\n")
+        self._write("docs/ROADMAP.md", "# 路线\n")
+        self._write("docs/ROADMAP.en.md", "# Roadmap\n")
         self._write("examples/demo.md", "用户: /CareerOS init")
         self._write("SKILL.md", SKILL_TMPL.format(name="career-os", version="0.1.0") + CMD_REF_TMPL.format(cmd="init"))
 
