@@ -10,6 +10,7 @@
 
 ### 变更
 
+- README 去掉「设计预览」小节与看板截图：README 只讲能做什么，看板 HTML 仍留在 `preview/` 自行打开
 - 新增独立模块「简历生成」与指令 `/CareerOS build resume`：从档案、项目、课程验收起草，一岗一版，输出结构化 JSON
 - 新增 `tools/resume-builder/index.html`：离线单文件简历编辑器，中英双版共享一份数据、A4 实时预览、本地自动保存、JSON 导入导出、打印成 PDF、9 项 ATS 自查
 - `references/methodology.md` 增「简历生成口径」；`docs/agent/DESIGN.md` 的工具条目扩为「简历生成与评估」

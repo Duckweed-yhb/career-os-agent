@@ -122,17 +122,11 @@ career-os-agent/
 ├── examples/                     # Full conversation walkthrough + sample courses
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # Design doc: capabilities, architecture, Python prerequisites
 ├── tools/resume-builder/index.html  # offline resume builder (form left, A4 right, zh + en, prints to PDF)
-├── preview/                      # Tech-stack board: single HTML page + one full-page screenshot
+├── preview/                      # Tech-stack board (single HTML page, open in a browser)
 └── .github/                      # CI verification script and issue templates
 ```
 
 Docs are Chinese-first: every main doc is Chinese with an English twin using an `.en.md` suffix. Never mix two languages in one file. `examples/` and `templates/` are reusable content skeletons and ship in Chinese only.
-
-## Design preview
-
-`preview/career-os-agent-技术栈看板.html` answers one question: to turn a skill into an agent, how far does the tech have to go? Each item is anchored at Understand / Proficient / Mastery, with a concept list and one hands-on acceptance check.
-
-![Tech stack board](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
 ## Resume builder
 
@@ -146,6 +140,7 @@ Docs are Chinese-first: every main doc is Chinese with an English twin using an 
 - **Nine ATS checks**: name, contact, summary length, bullet count, 40% quantified, consistent date format, 5–15 skills, and whether it fits one page — every failing item is listed on the spot
 
 Where the content comes from: `/CareerOS build resume` drafts it from the profile and projects, paste it into the editor for layout and PDF, then `/CareerOS review resume` to score and iterate.
+
 ## Repo history
 
 This repo used to be called `career-os-skill`; it is now `career-os-agent`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.

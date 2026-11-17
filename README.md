@@ -122,17 +122,11 @@ career-os-agent/
 ├── examples/                     # 完整对话示例 + 课程样例
 ├── docs/agent/DESIGN.md / DESIGN.en.md  # 设计方案：能力 + 架构 + Python 先修
 ├── tools/resume-builder/index.html  # 离线简历编辑器（左表单右 A4，中英双版，打印成 PDF）
-├── preview/                      # 技术栈看板：单页 HTML + 一张整页截图
+├── preview/                      # 技术栈看板（单页 HTML，浏览器直接打开）
 └── .github/                      # CI 校验脚本与 issue 模板
 ```
 
 文档语言规则：主文档一律中文，英文版同目录加 `.en.md` 后缀，一个文件不混用两种语言。`examples/` 与 `templates/` 是可复用的内容骨架，只提供中文。
-
-## 设计预览
-
-`preview/career-os-agent-技术栈看板.html` 回答一个问题：把一个 skill 做成 Agent，技术要学到哪一步。按「了解 / 熟练 / 精通」三级锚定，逐项给概念清单和可验证的实操验收。
-
-![技术栈看板](preview/_shots/career-os-agent-技术栈看板_desktop.jpg)
 
 ## 简历编辑器
 
@@ -146,6 +140,7 @@ career-os-agent/
 - **ATS 自查**：姓名、联系方式、简介长度、要点条数、四成要点带数字、日期写法统一、技能 5–15 项、是否接近单页，共 9 项，缺哪项当场列出来
 
 内容从哪来：先 `/CareerOS build resume` 从档案和项目起草一版，粘进编辑器排版导出，最后 `/CareerOS review resume` 打分迭代。
+
 ## 仓库沿革
 
 本仓库原名 `career-os-skill`，现更名为 `career-os-agent`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。
