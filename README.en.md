@@ -18,7 +18,7 @@ The repository holds two layers:
 
 | Layer | What it is | Status |
 |---|---|---|
-| **Skill layer** | A single `SKILL.md` instruction with nine modules, loaded by your AI assistant | Available (v0.7.1) |
+| **Skill layer** | A single `SKILL.md` instruction with nine modules, loaded by your AI assistant | Available (v0.8.0) |
 | **Agent layer** | The nine modules turned into tools, plus a runtime, long-term memory, proactive follow-up and a dashboard | Design stage — documents only |
 
 How they divide the work: the skill settles the methodology, module boundaries and data discipline; the agent grows orchestration on top of that foundation, moving from "you type a command, it answers once" to "it knows what the next step is".
