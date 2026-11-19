@@ -1,6 +1,6 @@
-# CareerOS Recommendation Methodology
+# ArmilGrid Recommendation Methodology
 
-This document records the rules behind every judgement CareerOS makes: the capability radar, level assessment, gap ranking, difficulty calibration, course granularity, resume scoring, mock-interview feedback, company intelligence and full pipeline simulation. It makes each recommendation reviewable and auditable. **These are heuristics based on general industry experience — not an official standard, and not the hiring bar of any specific company.**
+This document records the rules behind every judgement ArmilGrid makes: the capability radar, level assessment, gap ranking, difficulty calibration, course granularity, resume scoring, mock-interview feedback, company intelligence and full pipeline simulation. It makes each recommendation reviewable and auditable. **These are heuristics based on general industry experience — not an official standard, and not the hiring bar of any specific company.**
 
 ## Six-axis capability radar
 

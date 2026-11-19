@@ -38,7 +38,7 @@
 
 ## 执行
 
-辱骂、骚扰或其他不可接受行为的实例，可通过在 https://github.com/Duckweed-yhb/career-os-agent/issues 开 issue 的方式，报告给负责执行的社区领导者。
+辱骂、骚扰或其他不可接受行为的实例，可通过在 https://github.com/Duckweed-yhb/ArmilGrid/issues 开 issue 的方式，报告给负责执行的社区领导者。
 
 所有投诉都会被及时且公平地审查和处理。
 

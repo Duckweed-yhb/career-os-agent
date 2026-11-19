@@ -97,22 +97,22 @@ def check_version_consistency():
 
 
 def check_examples_commands():
-    """Every /CareerOS command used under examples/ must exist in the Command Reference."""
+    """Every /armil command used under examples/ must exist in the Command Reference."""
     known = set()
     skill_text = _read_text(ROOT / "SKILL.md")
-    for row in re.findall(r"\| `/CareerOS ([^`]+)` \|", skill_text):
+    for row in re.findall(r"\| `/armil ([^`]+)` \|", skill_text):
         known.add(row.split()[0])
     if not known:
-        errors.append("[examples] no /CareerOS commands found in SKILL.md Command Reference")
+        errors.append("[examples] no /armil commands found in SKILL.md Command Reference")
         return
     examples_dir = ROOT / "examples"
     if not examples_dir.exists():
         return
     for md in sorted(examples_dir.rglob("*.md")):
         text = _read_text(md)
-        for cmd in re.findall(r"/CareerOS ([a-z]+)", text):
+        for cmd in re.findall(r"/armil ([a-z]+)", text):
             if cmd not in known:
-                errors.append(f"[examples] {md.relative_to(ROOT)}: unknown command /CareerOS {cmd}")
+                errors.append(f"[examples] {md.relative_to(ROOT)}: unknown command /armil {cmd}")
 
 
 def check_doc_pairs():

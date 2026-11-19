@@ -1,6 +1,6 @@
 ---
 name: Bug 报告
-about: 报告 CareerOS Skill 的问题，方便我们修复
+about: 报告 ArmilGrid Skill 的问题，方便我们修复
 title: "[Bug] "
 labels: bug
 assignees: ''
@@ -10,7 +10,7 @@ assignees: ''
 清楚、简洁地说明这是什么问题。
 
 **复现步骤**
-1. 执行 `/CareerOS ...`
+1. 执行 `/armil ...`
 2. 输入了……
 3. 看到报错 / 错误输出……
 

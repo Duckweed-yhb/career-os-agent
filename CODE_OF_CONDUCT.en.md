@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement by opening an
-issue at https://github.com/Duckweed-yhb/career-os-agent/issues.
+issue at https://github.com/Duckweed-yhb/ArmilGrid/issues.
 
 All complaints will be reviewed and investigated promptly and fairly.
 

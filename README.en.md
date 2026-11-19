@@ -1,10 +1,10 @@
-# CareerOS
+# ArmilGrid
 
 > An operating system for your career growth. The skill is the recipe; the agent is the cook who can light the stove.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.7.1-blue.svg)](CHANGELOG.md)
-[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-agent)](https://github.com/Duckweed-yhb/career-os-agent)
+[![Version](https://img.shields.io/badge/version-0.8.0-blue.svg)](CHANGELOG.md)
+[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/ArmilGrid)](https://github.com/Duckweed-yhb/ArmilGrid)
 
 **English | [简体中文](README.md)**
 
@@ -12,7 +12,7 @@
 
 ## What this is
 
-CareerOS gives you a route, not a course list: lock a target role → find the skill gaps against that role → close them with one real project → split the project into Markdown lessons you build through → end up with something you can put on a resume.
+ArmilGrid gives you a route, not a course list: lock a target role → find the skill gaps against that role → close them with one real project → split the project into Markdown lessons you build through → end up with something you can put on a resume.
 
 The repository holds two layers:
 
@@ -28,7 +28,7 @@ How they divide the work: the skill settles the methodology, module boundaries a
 1. Clone the repository (or download and extract it):
 
    ```bash
-   git clone https://github.com/Duckweed-yhb/career-os-agent.git
+   git clone https://github.com/Duckweed-yhb/ArmilGrid.git
    ```
 
 2. Locate your AI assistant's skills directory:
@@ -39,11 +39,11 @@ How they divide the work: the skill settles the methodology, module boundaries a
    | Doubao Agent | `<workspace>/.skills/` |
    | Other assistants | See your assistant's documentation |
 
-3. Put the whole repository inside a `career-os/` folder there — `templates/` and `examples/` are referenced by the skill automatically, so don't copy `SKILL.md` alone:
+3. Put the whole repository inside a `armilgrid/` folder there — `templates/` and `examples/` are referenced by the skill automatically, so don't copy `SKILL.md` alone:
 
    ```bash
    # example (Claude Code)
-   git clone https://github.com/Duckweed-yhb/career-os-agent.git ~/.claude/skills/career-os
+   git clone https://github.com/Duckweed-yhb/ArmilGrid.git ~/.claude/skills/armilgrid
    ```
 
    The assistant loads only `SKILL.md`, which is the Chinese core instruction. For English instructions, rename `SKILL.en.md` over it.
@@ -51,7 +51,7 @@ How they divide the work: the skill settles the methodology, module boundaries a
 4. Restart your assistant session and verify:
 
    ```text
-   /CareerOS init
+   /armil init
    ```
 
    If you see the init welcome message, you are set.
@@ -75,16 +75,16 @@ Two modules need the network: `company` (company intelligence) and `simulate` (p
 ## Common commands
 
 ```text
-/CareerOS init
-/CareerOS analyze [your resume or current skill list]
-/CareerOS generate project --focus=[specific tech, e.g. Redis/microservices]
-/CareerOS generate course [project]   # turn a chosen project into learning-by-doing lessons
-/CareerOS build resume [role]         # draft a resume from your profile, Chinese and English editions
-/CareerOS review resume [resume]      # review your resume and find what to improve
-/CareerOS mock interview [role]       # interview drill, one question at a time, with feedback
-/CareerOS mock test [role]            # timed written-test practice with scoring
-/CareerOS company [company] [role]    # research interview flow, test style and pay
-/CareerOS simulate [company] [role]   # run the full pipeline: apply → screening → test → interview
+/armil init
+/armil analyze [your resume or current skill list]
+/armil generate project --focus=[specific tech, e.g. Redis/microservices]
+/armil generate course [project]   # turn a chosen project into learning-by-doing lessons
+/armil build resume [role]         # draft a resume from your profile, Chinese and English editions
+/armil review resume [resume]      # review your resume and find what to improve
+/armil mock interview [role]       # interview drill, one question at a time, with feedback
+/armil mock test [role]            # timed written-test practice with scoring
+/armil company [company] [role]    # research interview flow, test style and pay
+/armil simulate [company] [role]   # run the full pipeline: apply → screening → test → interview
 ```
 
 For a full walkthrough see [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md); for questions see the [FAQ](FAQ.en.md).
@@ -110,7 +110,7 @@ Five-stage roadmap:
 ## Repository structure
 
 ```
-career-os-agent/
+ArmilGrid/
 ├── SKILL.md / SKILL.en.md        # Skill core instructions (Chinese / English)
 ├── README.md / README.en.md      # This document (Chinese / English)
 ├── FAQ.md / FAQ.en.md            # FAQ
@@ -139,14 +139,14 @@ Docs are Chinese-first: every main doc is Chinese with an English twin using an 
 - **Print to PDF**: choose "Print / Save as PDF", margins None, and enable background graphics to keep the accent colour
 - **Nine ATS checks**: name, contact, summary length, bullet count, 40% quantified, consistent date format, 5–15 skills, and whether it fits one page — every failing item is listed on the spot
 
-Where the content comes from: `/CareerOS build resume` drafts it from the profile and projects, paste it into the editor for layout and PDF, then `/CareerOS review resume` to score and iterate.
+Where the content comes from: `/armil build resume` drafts it from the profile and projects, paste it into the editor for layout and PDF, then `/armil review resume` to score and iterate.
 
 ## What comes next
 
 Anything not built yet lives in [docs/ROADMAP.en.md](docs/ROADMAP.en.md): where comparable projects already are, the priority order, and when each item should be deleted. The README only covers what works today.
 ## Repo history
 
-This repo used to be called `career-os-skill`; it is now `career-os-agent`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.
+This repo used to be called `armilgrid-skill`; it is now `ArmilGrid`. The skill layer was already here, and the agent layer grows straight out of its nine modules. The old URL redirects, so existing clones keep working without touching their remote.
 
 ## License
 

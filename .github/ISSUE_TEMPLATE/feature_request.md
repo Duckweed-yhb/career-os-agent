@@ -1,13 +1,13 @@
 ---
 name: 功能建议
-about: 为 CareerOS 提一个想法或改进建议
+about: 为 ArmilGrid 提一个想法或改进建议
 title: "[Feature] "
 labels: enhancement
 assignees: ''
 ---
 
 **这个需求与某个问题有关吗？**
-清楚、简洁地说明问题是什么。例如"我跑 `/CareerOS analyze` 时，希望……"
+清楚、简洁地说明问题是什么。例如"我跑 `/armil analyze` 时，希望……"
 
 **你希望的方案**
 清楚、简洁地说明你希望发生什么。

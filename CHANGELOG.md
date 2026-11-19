@@ -6,6 +6,13 @@
 
 格式遵循 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)，版本号遵循 [语义化版本](https://semver.org/spec/v2.0.0.html)。
 
+## [0.8.0] - 2026-11-19
+
+### 变更
+
+- 仓库更名为 **ArmilGrid（浑仪格）**，原名 `career-os-agent`；skill 标识 `career-os` 同步改为 `armilgrid`
+- 指令前缀 `/CareerOS` 统一改为 `/armil`（如 `/armil init`、`/armil generate course`）
+- 中英文档、徽章、示例中的旧名一并替换；历史条目保留原样
 ## [未发布]
 
 ### 变更

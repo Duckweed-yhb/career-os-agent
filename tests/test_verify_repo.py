@@ -38,7 +38,7 @@ CHANGELOG_TMPL = """# Changelog
 """
 
 CMD_REF_TMPL = """
-| `/CareerOS {cmd}` | trigger | — | out |
+| `/armil {cmd}` | trigger | — | out |
 """
 
 
@@ -71,8 +71,8 @@ class VerifyRepoTestCase(unittest.TestCase):
         return p
 
     def _build_healthy_repo(self):
-        self._write("SKILL.md", SKILL_TMPL.format(name="career-os", version="0.1.0"))
-        self._write("SKILL.en.md", SKILL_TMPL.format(name="career-os-en", version="0.1.0"))
+        self._write("SKILL.md", SKILL_TMPL.format(name="armilgrid", version="0.1.0"))
+        self._write("SKILL.en.md", SKILL_TMPL.format(name="armilgrid-en", version="0.1.0"))
         self._write("README.md", README_TMPL.format(version="0.1.0"))
         self._write("README.en.md", README_TMPL.format(version="0.1.0"))
         self._write("FAQ.md", "# FAQ\n")
@@ -90,8 +90,8 @@ class VerifyRepoTestCase(unittest.TestCase):
         self._write("references/methodology.en.md", "# Methodology\n")
         self._write("docs/ROADMAP.md", "# 路线\n")
         self._write("docs/ROADMAP.en.md", "# Roadmap\n")
-        self._write("examples/demo.md", "用户: /CareerOS init")
-        self._write("SKILL.md", SKILL_TMPL.format(name="career-os", version="0.1.0") + CMD_REF_TMPL.format(cmd="init"))
+        self._write("examples/demo.md", "用户: /armil init")
+        self._write("SKILL.md", SKILL_TMPL.format(name="armilgrid", version="0.1.0") + CMD_REF_TMPL.format(cmd="init"))
 
     def test_healthy_repo_passes(self):
         self._build_healthy_repo()
@@ -123,7 +123,7 @@ class VerifyRepoTestCase(unittest.TestCase):
 
     def test_unknown_example_command_fails(self):
         self._build_healthy_repo()
-        self._write("examples/demo.md", "用户: /CareerOS notacommand")
+        self._write("examples/demo.md", "用户: /armil notacommand")
         errs = self._run_all()
         self.assertTrue(any("[examples]" in e for e in errs))
 

@@ -1,10 +1,10 @@
-# Contributing to CareerOS
+# Contributing to ArmilGrid
 
 First off, thanks for taking the time to contribute! 🎉
 
 ## What you can contribute
 
-- **Skill prompt improvements** — make the `/CareerOS` commands smarter, add new sub-commands, or refine the decision logic.
+- **Skill prompt improvements** — make the `/armil` commands smarter, add new sub-commands, or refine the decision logic.
 - **Project recommendation rules** — new templates for target roles, tech stacks, difficulty calibration, or acceptance criteria.
 - **Examples** — real conversation walkthroughs under `examples/`. A good example shows the full flow from `init` to a project recommendation.
 - **Documentation** — fix typos, clarify wording, or improve the README.

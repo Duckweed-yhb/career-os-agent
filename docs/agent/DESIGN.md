@@ -1,4 +1,4 @@
-# CareerOS Agent · 设计方案
+# ArmilGrid Agent · 设计方案
 
 > 版本：v0.1（草稿，待评审）
 > 状态：规划阶段，尚未进入开发
@@ -18,13 +18,13 @@
 
 ## 一、功能：有哪些能力
 
-> **一句话**：CareerOS Agent 是本仓库 skill 层的 Agent 化升级——保留九大职业能力，新增**主动编排、跨会话记忆、可视化看板**三层，让它从「你问它答」变成「自主运转的职业成长陪练」。
+> **一句话**：ArmilGrid Agent 是本仓库 skill 层的 Agent 化升级——保留九大职业能力，新增**主动编排、跨会话记忆、可视化看板**三层，让它从「你问它答」变成「自主运转的职业成长陪练」。
 > **状态约定**：⚪ 待确认 / 🟢 已明确 / 🔵 进行中
 
 ### 1.1 能力总览
 
 ```
-CareerOS Agent（三层结构）
+ArmilGrid Agent（三层结构）
 ├── Agent 运行时层（内核，必备）
 │   ├── 意图理解        听懂目标/背景/情绪，拆成任务
 │   ├── 规划与编排      多步工作流（定位→差距→项目→课程）
@@ -232,7 +232,7 @@ skill 层（现在，SKILL.md 指令文件）
    │  方法论   = 决策规则
    │  profile  = 记忆原型
    ▼
-CareerOS Agent（本项目，目标）
+ArmilGrid Agent（本项目，目标）
    │  工具层：skill 九模块 → tools（几乎零改动平移）
    │  内核层：新增运行时（编排/反思/跟进/记忆）
    ▼
@@ -268,7 +268,7 @@ CareerOS Agent（本项目，目标）
 #### 2.8.1 仓库结构
 
 ```
-career-os-agent/
+ArmilGrid/
 ├── README.md / README.en.md      项目门面（定位）
 ├── SKILL.md / SKILL.en.md        skill 层核心指令（能力来源）
 ├── references/methodology.md     评分口径与数据纪律
@@ -359,14 +359,14 @@ Django（Day46–60）｜爬虫（Day61–65）｜Excel/PDF/图像/邮件（Day2
 Python 线位点：**Day04 已学**（2026-10-18）→ 到 Day22 还差 **18 篇**（1 篇/天）。
 
 - 仪表文件：`12-知识库\02-职业与发展\02-技术栈笔记\02-编程语言\Python\学习进度.md`
-- 相关方案：`12-知识库\00-成长系统\04-项目模式\01-CareerOS-agent化方案.md`（2026-10-18 核对路径；原编号 10 已改为 01）
+- 相关方案：`12-知识库\00-成长系统\04-项目模式\01-ArmilGrid-agent化方案.md`（2026-10-18 核对路径；原编号 10 已改为 01）
 
 ---
 
 ## 附：与 skill 层的映射
 
 ```
-skill 层的九大模块          ──→  CareerOS Agent 的工具层（tools）
+skill 层的九大模块          ──→  ArmilGrid Agent 的工具层（tools）
 references/methodology.md  ──→  Agent 的决策规则库（评分/校准/纪律）
 career-profile.md          ──→  Agent 的长期档案（升级为可检索记忆）
 课程/验收标准               ──→  学习进度跟踪（Agent 主动跟进的数据源）

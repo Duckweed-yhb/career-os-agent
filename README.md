@@ -1,10 +1,10 @@
-# CareerOS
+# ArmilGrid
 
 > 一套为你的职业成长而设计的操作系统。Skill 是配方，Agent 是能自己开火做饭的厨师。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.7.1-blue.svg)](CHANGELOG.md)
-[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/career-os-agent)](https://github.com/Duckweed-yhb/career-os-agent)
+[![Version](https://img.shields.io/badge/version-0.8.0-blue.svg)](CHANGELOG.md)
+[![Last Commit](https://img.shields.io/github/last-commit/Duckweed-yhb/ArmilGrid)](https://github.com/Duckweed-yhb/ArmilGrid)
 
 **[English](README.en.md) | 简体中文**
 
@@ -12,7 +12,7 @@
 
 ## 这是什么
 
-CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗位要求找出技能差距 → 用一个真实项目把差距补上 → 项目拆成 Markdown 课程，边做边学 → 攒成能写进简历的作品。
+ArmilGrid 给的是路线，不是课程清单：锁定目标岗位 → 对照岗位要求找出技能差距 → 用一个真实项目把差距补上 → 项目拆成 Markdown 课程，边做边学 → 攒成能写进简历的作品。
 
 这个仓库装了两层东西：
 
@@ -28,7 +28,7 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
 1. 克隆仓库（或下载后解压）：
 
    ```bash
-   git clone https://github.com/Duckweed-yhb/career-os-agent.git
+   git clone https://github.com/Duckweed-yhb/ArmilGrid.git
    ```
 
 2. 找到你所用 AI 助手的 skills 目录：
@@ -39,11 +39,11 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
    | 豆包 Agent | `<workspace>/.skills/` |
    | 其他助手 | 查阅对应助手的文档 |
 
-3. 把整个仓库放进该目录下的 `career-os/` 文件夹——`templates/` 和 `examples/` 会被 Skill 自动引用，别只拷一份 `SKILL.md`：
+3. 把整个仓库放进该目录下的 `armilgrid/` 文件夹——`templates/` 和 `examples/` 会被 Skill 自动引用，别只拷一份 `SKILL.md`：
 
    ```bash
    # 示例（Claude Code）
-   git clone https://github.com/Duckweed-yhb/career-os-agent.git ~/.claude/skills/career-os
+   git clone https://github.com/Duckweed-yhb/ArmilGrid.git ~/.claude/skills/armilgrid
    ```
 
    助手只加载 `SKILL.md`，它是中文核心指令；想用英文指令就把 `SKILL.en.md` 改名替换过去。
@@ -51,7 +51,7 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
 4. 重启助手会话并验证：
 
    ```text
-   /CareerOS init
+   /armil init
    ```
 
    看到初始化欢迎语，就装好了。
@@ -75,16 +75,16 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
 ## 常用指令
 
 ```text
-/CareerOS init
-/CareerOS analyze [你的简历内容或当前技能列表]
-/CareerOS generate project --focus=[具体技术点，如 Redis/微服务]
-/CareerOS generate course [项目]   # 把选定项目拆成边做边学的课程
-/CareerOS build resume [岗位]      # 从档案起草简历，中英双版，交给本地编辑器排版
-/CareerOS review resume [简历]     # 评估简历，找出还能完善的地方
-/CareerOS mock interview [岗位]    # 一次一题的面试演练，带反馈
-/CareerOS mock test [岗位]         # 限时笔试练习，带评分
-/CareerOS company [公司] [岗位]    # 查证面试流程、笔试方向与薪资
-/CareerOS simulate [公司] [岗位]   # 走一遍"投简历→初筛→笔试→面试"完整流程
+/armil init
+/armil analyze [你的简历内容或当前技能列表]
+/armil generate project --focus=[具体技术点，如 Redis/微服务]
+/armil generate course [项目]   # 把选定项目拆成边做边学的课程
+/armil build resume [岗位]      # 从档案起草简历，中英双版，交给本地编辑器排版
+/armil review resume [简历]     # 评估简历，找出还能完善的地方
+/armil mock interview [岗位]    # 一次一题的面试演练，带反馈
+/armil mock test [岗位]         # 限时笔试练习，带评分
+/armil company [公司] [岗位]    # 查证面试流程、笔试方向与薪资
+/armil simulate [公司] [岗位]   # 走一遍"投简历→初筛→笔试→面试"完整流程
 ```
 
 完整对话示例见 [examples/frontend-to-fullstack.md](examples/frontend-to-fullstack.md)，常见问题见 [FAQ.md](FAQ.md)。
@@ -110,7 +110,7 @@ CareerOS 给的是路线，不是课程清单：锁定目标岗位 → 对照岗
 ## 目录结构
 
 ```
-career-os-agent/
+ArmilGrid/
 ├── SKILL.md / SKILL.en.md        # Skill 核心指令（中 / 英）
 ├── README.md / README.en.md      # 本文档（中 / 英）
 ├── FAQ.md / FAQ.en.md            # 常见问题
@@ -139,14 +139,14 @@ career-os-agent/
 - **打印成 PDF**：点「打印 / 存为 PDF」，边距选「无」，勾选「背景图形」保住强调色
 - **ATS 自查**：姓名、联系方式、简介长度、要点条数、四成要点带数字、日期写法统一、技能 5–15 项、是否接近单页，共 9 项，缺哪项当场列出来
 
-内容从哪来：先 `/CareerOS build resume` 从档案和项目起草一版，粘进编辑器排版导出，最后 `/CareerOS review resume` 打分迭代。
+内容从哪来：先 `/armil build resume` 从档案和项目起草一版，粘进编辑器排版导出，最后 `/armil review resume` 打分迭代。
 
 ## 后续方向
 
 没做完的事都写在 [docs/ROADMAP.md](docs/ROADMAP.md)：同类项目已经做到哪、下一步的优先级、每条什么时候该删。README 只讲现在能用什么。
 ## 仓库沿革
 
-本仓库原名 `career-os-skill`，现更名为 `career-os-agent`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。
+本仓库原名 `armilgrid-skill`，现更名为 `ArmilGrid`——skill 层原本就在这里，Agent 层直接从它的九大模块长出来。旧地址会自动重定向，已有的克隆不改 remote 也能继续拉。
 
 ## 许可证
 

@@ -1,4 +1,4 @@
-# CareerOS Agent · Design
+# ArmilGrid Agent · Design
 
 > Version: v0.1 (draft, pending review)
 > Status: planning stage — no development yet
@@ -18,13 +18,13 @@
 
 ## Part I — Capabilities
 
-> **In one line**: CareerOS Agent is the agent-side upgrade of this repository's skill layer — it keeps the nine career modules and adds three new layers (proactive orchestration, cross-session memory, a visual dashboard), turning "you ask, it answers" into a career coach that runs on its own.
+> **In one line**: ArmilGrid Agent is the agent-side upgrade of this repository's skill layer — it keeps the nine career modules and adds three new layers (proactive orchestration, cross-session memory, a visual dashboard), turning "you ask, it answers" into a career coach that runs on its own.
 > **Status legend**: ⚪ to confirm / 🟢 settled / 🔵 in progress
 
 ### 1.1 Capability overview
 
 ```
-CareerOS Agent (three layers)
+ArmilGrid Agent (three layers)
 ├── Agent runtime (kernel, required)
 │   ├── Intent parsing      goals, background, emotions → tasks
 │   ├── Planning            multi-step flow (role → gaps → project → course)
@@ -216,7 +216,7 @@ skill layer (today: SKILL.md instruction file)
    │  methodology  = decision rules
    │  profile      = memory prototype
    ▼
-CareerOS Agent (this project, the goal)
+ArmilGrid Agent (this project, the goal)
    │  tool layer: nine modules → tools (ported almost unchanged)
    │  kernel: new runtime (orchestration / reflection / follow-up / memory)
    ▼
@@ -252,7 +252,7 @@ A career growth agent that runs on its own
 #### 2.8.1 Repository layout
 
 ```
-career-os-agent/
+ArmilGrid/
 ├── README.md / README.en.md      front page (positioning)
 ├── SKILL.md / SKILL.en.md        skill layer core instructions (capability source)
 ├── references/methodology.md / *.en.md  scoring rules and data discipline
@@ -343,14 +343,14 @@ Django (Day46–60) · web scraping (Day61–65) · Excel/PDF/image/email (Day23
 Python position: **Day04 done** (2026-10-18) → **18 lessons to go** before Day22 (one per day).
 
 - Progress file: `12-知识库\02-职业与发展\02-技术栈笔记\02-编程语言\Python\学习进度.md`
-- Related plan: `12-知识库\00-成长系统\04-项目模式\01-CareerOS-agent化方案.md` (paths checked 2026-10-18; the old number 10 is now 01)
+- Related plan: `12-知识库\00-成长系统\04-项目模式\01-ArmilGrid-agent化方案.md` (paths checked 2026-10-18; the old number 10 is now 01)
 
 ---
 
 ## Appendix — Mapping to the skill layer
 
 ```
-nine modules of the skill layer   ──→  CareerOS Agent's tool layer (tools)
+nine modules of the skill layer   ──→  ArmilGrid Agent's tool layer (tools)
 references/methodology.md         ──→  the agent's rule book (scoring / calibration / discipline)
 career-profile.md                 ──→  the agent's long-term profile (upgraded to searchable memory)
 courses / acceptance criteria     ──→  learning progress tracking (the follow-up layer's data source)

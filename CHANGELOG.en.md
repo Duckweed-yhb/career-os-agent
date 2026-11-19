@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-11-19
+
+### Changed
+
+- Repository renamed to **ArmilGrid**, previously `career-os-agent`; the skill id `career-os` becomes `armilgrid`
+- Command prefix `/CareerOS` becomes `/armil` (`/armil init`, `/armil generate course`, ...)
+- Old names replaced across both languages, badges and examples; historical entries left untouched
 ## [Unreleased]
 
 ### Changed

@@ -1,7 +1,7 @@
 # Example: From Frontend to Full-Stack
 
-> 一个完整的使用示例：前端开发者小明，用 CareerOS 从 `init` 到拿到第一个项目推荐的完整流程。
-> 对话内容为模拟展示，用于说明 CareerOS 的输出形态与交互方式。
+> 一个完整的使用示例：前端开发者小明，用 ArmilGrid 从 `init` 到拿到第一个项目推荐的完整流程。
+> 对话内容为模拟展示，用于说明 ArmilGrid 的输出形态与交互方式。
 
 ---
 
@@ -14,12 +14,12 @@
 
 ---
 
-## Part 1 · 初始化（/CareerOS init）
+## Part 1 · 初始化（/armil init）
 
 ```
-用户: /CareerOS init
+用户: /armil init
 
-CareerOS: 欢迎使用 CareerOS。开始前我需要了解几件事，这会决定后续所有推荐的精准度：
+ArmilGrid: 欢迎使用 ArmilGrid。开始前我需要了解几件事，这会决定后续所有推荐的精准度：
 
 1. 你当前的岗位 / 主要技术栈是什么？
 2. 你有多少年相关经验？
@@ -29,7 +29,7 @@ CareerOS: 欢迎使用 CareerOS。开始前我需要了解几件事，这会决�
 用户: 我是前端工程师，主要用 React 和 TypeScript，3 年经验。
       想转全栈，每周大概能投入 10 小时，喜欢边做边学。
 
-CareerOS: 【目标定位】完成 ✅
+ArmilGrid: 【目标定位】完成 ✅
 
 目标岗位：Full-Stack Engineer（Node.js 方向）
 
@@ -48,14 +48,14 @@ CareerOS: 【目标定位】完成 ✅
 
 ---
 
-## Part 2 · 技能差距分析（/CareerOS analyze）
+## Part 2 · 技能差距分析（/armil analyze）
 
 ```
-用户: /CareerOS analyze
+用户: /armil analyze
       我的技能：React、TypeScript、CSS、Vite，
       用 Express 写过简单的 REST 接口，MongoDB 会基础增删改查。
 
-CareerOS: 【技能差距分析】完成 ✅
+ArmilGrid: 【技能差距分析】完成 ✅
 
 现有水平评估：
 ┌─────────────────────────────────────┐
@@ -78,12 +78,12 @@ CareerOS: 【技能差距分析】完成 ✅
 
 ---
 
-## Part 3 · 项目生成（/CareerOS generate project）
+## Part 3 · 项目生成（/armil generate project）
 
 ```
-用户: /CareerOS generate project
+用户: /armil generate project
 
-CareerOS: 【项目生成器】完成 ✅
+ArmilGrid: 【项目生成器】完成 ✅
 
 推荐项目：TaskFlow —— 企业级任务管理系统
 这是一套工业级复杂度的实战项目，覆盖你的全部关键缺失环节。
@@ -113,7 +113,7 @@ Node.js + TypeScript + Fastify + PostgreSQL + Redis + Docker + GitHub Actions
 ```
 用户: 我还没用过 Redis，这个项目会不会太难？
 
-CareerOS: 不会。我会把 Redis 部分拆成渐进增强阶段，你随时可以暂停：
+ArmilGrid: 不会。我会把 Redis 部分拆成渐进增强阶段，你随时可以暂停：
 
 - 阶段一（2 周）：PostgreSQL 完成核心功能，交付一个完整可展示的项目
 - 阶段二（+1 周）：引入 Redis 缓存热点数据，学习缓存一致性
@@ -138,9 +138,9 @@ CareerOS: 不会。我会把 Redis 部分拆成渐进增强阶段，你随时可
 
 上面的示例只走了"定位 → 差距 → 项目"三段。完整指令面还包括：
 
-- `/CareerOS review resume` —— 评估简历，按优先级列出必修/建议/可选问题
-- `/CareerOS mock interview`、`/CareerOS mock test` —— 一次一题的面试演练与限时笔试
-- `/CareerOS company` —— 查证目标公司的面试流程、笔试题方向与薪资（查不到就留空，绝不编造）
-- `/CareerOS simulate` —— 从投简历开始走完整招聘流程：初筛 → 笔试 → 面试 → 结果
+- `/armil review resume` —— 评估简历，按优先级列出必修/建议/可选问题
+- `/armil mock interview`、`/armil mock test` —— 一次一题的面试演练与限时笔试
+- `/armil company` —— 查证目标公司的面试流程、笔试题方向与薪资（查不到就留空，绝不编造）
+- `/armil simulate` —— 从投简历开始走完整招聘流程：初筛 → 笔试 → 面试 → 结果
 
 完整指令表见 README 的"使用方式"章节。

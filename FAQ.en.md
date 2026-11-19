@@ -1,12 +1,12 @@
 # FAQ
 
-## What is CareerOS?
+## What is ArmilGrid?
 
-CareerOS is a Skill for AI assistants that turns career growth into action. It identifies your target role, analyzes skill gaps, recommends industrial-complexity projects, and — uniquely — turns any project into a step-by-step **learning-by-doing** course made of Markdown lessons.
+ArmilGrid is a Skill for AI assistants that turns career growth into action. It identifies your target role, analyzes skill gaps, recommends industrial-complexity projects, and — uniquely — turns any project into a step-by-step **learning-by-doing** course made of Markdown lessons.
 
 ## How do I install it?
 
-See the **Installation** section of the README. In short: copy the whole repo into a `career-os/` folder inside your assistant's skills directory, restart the session, then run `/CareerOS init`.
+See the **Installation** section of the README. In short: copy the whole repo into a `armilgrid/` folder inside your assistant's skills directory, restart the session, then run `/armil init`.
 
 ## Which assistants does it support?
 
@@ -18,24 +18,24 @@ Both. Docs are Chinese-first: `SKILL.md` is the Chinese main doc, `SKILL.en.md` 
 
 ## What's the difference between "generate project" and "generate course"?
 
-- `/CareerOS generate project` proposes 2–3 project ideas targeting your skill gaps.
-- `/CareerOS generate course` takes a chosen project and breaks it into a `course/` folder of Markdown lessons — each lesson has learning goals, minimal knowledge, a hands-on task (a real piece of the project), and acceptance criteria.
+- `/armil generate project` proposes 2–3 project ideas targeting your skill gaps.
+- `/armil generate course` takes a chosen project and breaks it into a `course/` folder of Markdown lessons — each lesson has learning goals, minimal knowledge, a hands-on task (a real piece of the project), and acceptance criteria.
 
 ## I'm a complete beginner. Will this work for me?
 
-Yes — that's a core use case. When building a course, CareerOS asks for your base level first. Zero-base users get smaller, more scaffolded lessons that start from environment setup.
+Yes — that's a core use case. When building a course, ArmilGrid asks for your base level first. Zero-base users get smaller, more scaffolded lessons that start from environment setup.
 
 ## I'm stuck on a lesson. What do I do?
 
-Tell CareerOS the exact error message and the step where you got stuck. It will give you a minimal hint first — not the full solution — and only escalate to a concrete fix if you're still blocked. The struggle is where the learning happens.
+Tell ArmilGrid the exact error message and the step where you got stuck. It will give you a minimal hint first — not the full solution — and only escalate to a concrete fix if you're still blocked. The struggle is where the learning happens.
 
-## Does CareerOS remember my progress between sessions?
+## Does ArmilGrid remember my progress between sessions?
 
-Yes. CareerOS persists a `career-profile.md` (target role, skill matrix, projects, difficulty preferences) and tracks course progress through the acceptance-criteria checkboxes in each lesson file.
+Yes. ArmilGrid persists a `career-profile.md` (target role, skill matrix, projects, difficulty preferences) and tracks course progress through the acceptance-criteria checkboxes in each lesson file.
 
 ## How do I uninstall?
 
-Remove the `career-os/` folder from your skills directory. Your `career-profile.md` and any `course/` folders are plain Markdown files — keep them, they're your own work.
+Remove the `armilgrid/` folder from your skills directory. Your `career-profile.md` and any `course/` folders are plain Markdown files — keep them, they're your own work.
 
 ## How do I report a bug or request a feature?
 
@@ -47,4 +47,4 @@ Yes — see `CONTRIBUTING.md`. Templates for new domains, example courses, and t
 
 ## I have another question.
 
-Open an issue, or ask your assistant while running CareerOS — it will route you appropriately.
+Open an issue, or ask your assistant while running ArmilGrid — it will route you appropriately.
